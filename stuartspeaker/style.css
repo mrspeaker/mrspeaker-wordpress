@@ -1,0 +1,385 @@
+/*
+THEME NAME: Stuart's Speaker
+THEME URI: http://www.mrspeaker.net/
+DESCRIPTION: Stu's effort
+VERSION: 0.0.1
+AUTHOR: Mr Speaker
+AUTHOR URI: http://www.mrspeaker.net/
+*/
+
+body{
+		color:#585858;
+		line-height:160%;
+		margin:0 1em;padding:0;
+		/*background:#000 url(images/backtracks.png) no-repeat top right;*/
+		background:#f9f9f9;
+}
+body div#container{
+		margin-left:51px;
+	 	float: left; 
+		width:475px;
+}
+body div#outerWrapper{ margin:0 auto; }
+body div#wrapper{ margin:0 auto;
+	/*background:transparent url(images/backcontainer.png) repeat-y 0 0;*/
+}
+
+#lol {
+	margin-top:15px;
+	position:relative;
+	background:#000 url(images/jqninja_red.png) no-repeat right top;
+	color:#fff;
+	text-align:center;
+	margin-bottom:15px;
+	line-height:3em;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border-top: 1px solid #3075a3;
+	border-left: 1px solid #3075a3;
+	-moz-box-shadow: 0 0 15px #443; /* FF3.5+ */
+  	-webkit-box-shadow: 0 0 15px #443; /* Saf3.0+, Chrome */
+    box-shadow: 0 0 35px #443; /* Opera 10.5, IE 9.0 */
+	/*background-image: -moz-linear-gradient(top, #004573, #13679F); 
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #004573),color-stop(1, #13679F)); */
+}
+#lol a { color:#00BFFF }
+#lol div{
+	position:absolute;
+	top:5px;
+	left:-15px;
+	width:84px;
+	height:74px;
+	background:transparent url(images/jqninja.png) no-repeat 0 0;
+}
+a { color: #F140A9;
+	text-decoration:none;
+	font-size:0.9em;
+	font-family:courier new, courier, monospace;
+	}
+	
+a img
+{
+	border:0;
+}
+.entry-content a {
+	
+}
+.frame-left, .frame-right
+{
+	border:1px solid #ccc;
+	margin:3px;
+	padding:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+  -moz-box-shadow: 0px 0px 3px #aaa; /* FF3.5+ */
+  -webkit-box-shadow: 0px 0px 3px #aaa; /* Saf3.0+, Chrome */
+          box-shadow: 0px 0px 3px #aaa; /* Opera 10.5, IE 9.0 */
+}
+.frame-left{
+	float:left;
+}
+.frame-right
+{
+	float:right;
+}
+	
+.bubble
+{
+	position:absolute;
+	text-align:center;
+}
+.bubble a{
+	color:#cacaca;
+	font-size:7pt;
+}
+#bubbleContainer{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:900px;
+	overflow:hidden;
+	z-index:-1;
+}
+
+body div.sidebar{
+	width:462px;
+	/*background:transparent url(images/vertical_dash.png) repeat-y left top;*/
+	padding-left:30px;
+	margin-bottom:30px;
+	float: left; 
+}
+	
+#compy{
+	background:transparent url(images/mrspeaker_des.gif) no-repeat right top;
+	width:331px;
+	height:311px;
+	position:absolute;
+	left:765px;
+	top:11px;	
+}
+
+#postHead, div#header h1#blog-title{
+	width:100%;
+	height:28px;
+	background:transparent url(images/contentab.png) no-repeat 48px 30px;
+	padding-top:20px;
+	padding-bottom:30px;
+	margin:0;
+	text-indent:-9999px;
+}
+
+
+/*div#header {
+	margin-top:15px;
+	background:transparent url(images/backHead_des.png) no-repeat 0 0;
+	height:256px;
+	position:relative;
+	display:none;
+}
+div#header div#blog-description{
+	background:transparent url(images/shapes_des.png) no-repeat 0 0;
+	height:283px;
+	width:355px;
+	position:absolute;
+	left:-66px;
+	top:-15px;
+	overflow:hidden;
+	text-indent:-200em;
+}
+
+div#header h1#blog-title{
+	background:transparent url(images/mrspeaker_head_des.png) no-repeat 0 0;
+	height:67px;
+	width:507px;
+	position:absolute;
+	left:343px;
+	top:58px;
+	overflow:hidden;
+	text-indent:-100em;
+}*/
+
+
+.hentry
+{
+	padding-bottom:25px;
+	margin-bottom:35px;
+	background:transparent url(images/horizontal_dash.png) no-repeat left bottom;
+}
+
+#content
+{
+	padding-right:20px;
+}
+
+.delicious
+{
+
+}
+#cool_things li{
+	padding-bottom:10px;
+	clear:both;
+}
+#cool_things img{
+	padding-top:10px;
+	width:50px;
+	height:50px;
+	float:right;
+}
+
+.twitter
+{
+	clear:both;
+}
+.twitter li
+{
+	clear:both;
+	padding-bottom:10px;
+	padding-top:10px;
+}
+.twitter img
+{
+	float:right;
+	width:50px;
+	height:50px;	
+	border:1px solid #444;
+}
+.twitter img.lil
+{
+	width:25px;
+	height:25px;
+	margin-right:-53px;
+	margin-top:27px;
+}
+
+#twitterList h3
+{
+	padding-bottom:0;
+	margin-bottom:0;
+}
+
+.lolblink{ 
+	font-family: courier new, courier, monospace;
+}
+	
+body{
+	font: normal normal normal large/1.556 Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
+}
+body.home div#globalnav,body.archive div#globalnav,body.search div#globalnav,body.four04 div#globalnav,body div#globalnav ul li ul,div.access,span#theme-link span.additional-name,span#theme-link span.family-name{display:none;}
+
+div.entry-content .clearer{ clear:both;width:99%; }
+
+div#wrapper div.entry-content .html,div#wrapper div.entry-content .download,div#wrapper div.entry-content .pdf,div#wrapper div.entry-content .zip{margin-left:2px;padding:2px 0 2px 19px;}
+div#wrapper div.entry-content .download{ background:url(images/file-download.png) no-repeat center left; }
+div#wrapper div.entry-content .html{ background:url(images/file-html.png) no-repeat center left; }
+div#wrapper div.entry-content .pdf{ background:url(images/file-pdf.png) no-repeat center left; }
+div#wrapper div.entry-content .zip{ background:url(images/file-zip.png) no-repeat center left; }
+div#wrapper .important{ background:#f5f5dc url(images/important.png) no-repeat 0.5em center;border-bottom:1px solid #d0d0bb;border-top:1px solid #d0d0bb;padding:0.2em 0.5em 0.2em 2.3em;}
+div.entry-content abbr,div.comments ol.commentlist abbr{ border-bottom:1px dotted #333;cursor:help;}
+div.entry-content blockquote,div.comments ol.commentlist blockquote{ background:url(images/blockquote.png) no-repeat top left;margin-left:0;margin-right:3em;padding:0 0 0 2em;}
+div.entry-content cite,div.comments ol.commentlist cite{ border-bottom:1px dotted #999;cursor:help;}
+
+div.entry-content div.page-link{ font-size:1em;margin:-0.5em 0 1em;}
+div.entry-content img.alignleft,div.entry-content img.alignright,div.entry-content img.center{ border:1px solid #000;padding:0.2em;}
+div.entry-content img{ max-width:99%; }
+div.entry-content ins,div.comments ol.commentlist ins{ border-bottom:1px solid #000;color:#666;text-decoration:none; }
+div.entry-content .caps,div.comments ol.commentlist .caps{ font-size:1em;font-variant:small-caps; }
+div.entry-content span.more-link{ }
+
+div.entry-content .wp-caption-text{ font-style:italic;margin:0.2em auto 1em auto;text-align:center;color:#444; }
+
+body.single div.entry-meta,body.attachment div.entry-meta{clear:both;}
+div.entry-date abbr.published{
+		border:none;display:block;
+		margin:0 0 -0.5em;
+		color:#006FAF;
+		font-size:8pt;
+}
+
+.cleaner{ clear:both; }
+div.navigation div.nav-previous{ float:left;}
+div.navigation div.nav-next{ float:right;}
+
+div#footer{ 
+		clear:both;
+		font-size:0.8em;
+	
+		padding:20px 0 0 50px;
+
+		/*background:transparent url(images/footer.png) no-repeat 5px 0;*/
+		height:250px;
+		line-height:1.1em;
+	}
+#footer a{
+	text-decoration:none;
+}
+div#footer span.meta-sep{padding:0 0.5em;}
+.footCol li a { font-family: Times New Roman;}
+.footCol{
+	float:left;
+	width:150px;
+	color:#222;
+	list-style-type:none;
+	padding:0;
+}
+.footCol li ul{ color:#770; margin:0;padding:0;}
+.footCol li ul li { list-style-type:none; }
+.footCol li ul li:before { content: "\002A"; }
+.footCol li ul li a
+{
+	margin-left:3px;
+	color:#770;
+}
+#footCol2 li ul li a, #footCol2 li ul
+{
+	color:#070;
+}
+#footCol3 li ul li a,#footCol3 li ul{
+	color: #707;
+}
+#footCol4 li ul li a,#footCol4 li ul{
+	color: #007;
+}
+#footCol4{
+	width:300px;
+}
+#footCol3 li ul li{
+	/*float:left; width:130px;*/
+	
+}
+#footCol3 li ul br{
+	clear:both;
+}
+.fcCol4{
+	color: #007;
+}
+div#globalnav ul,div#globalnav ul li{display:inline;list-style:none;}
+div#globalnav ul li{line-height:200%;margin:0 1em;}
+
+h2, h3
+{
+	font-family: courier new, courier, monospace;
+	font-weight:normal;
+}
+h2.entry-title, h2.page-title{
+	font-size:11pt;
+	margin-bottom:0;
+}
+h2.entry-title, h2.entry-title a, h2.page-title a{
+	font-family: "IM Fell DW Pica";
+	text-decoration:none;
+	font-size:14pt;
+	color:#006faf;
+}
+
+.sidebar ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+.entry-meta
+{
+	margin-top:25px;
+	font-size:0.8em;
+}
+.single .entry-meta
+{
+	border:1px solid #eee;
+	display:block;
+}
+
+div.comments{margin:3em 0;width:89%;}
+div.comments span.req-field{color:red;}
+div.comments span.unapproved{color:#800;font-style:italic;}
+div.comments h3{font-size:1.2em;font-weight:400;}
+div.comments ol#comments li{background:#f4f4f4;-moz-border-radius:10px;-webkit-border-radius:10px;}
+div.comments ol#comments div.comment-author span.fn,div.comments ol#pingbacks div.comment-meta span.fn{font-size:0.9em;font-style:normal;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+div.comments ol#comments div.comment-meta{font-size:7pt;}
+div.comments ol#comments li p{margin:0.7em 0;}
+div.comments ol#comments li.alt{background:#fafafa;color:#222;}
+div.comments ol#comments li.bypostauthor{background:#eee;border:1px solid #999;color:#111;}
+div.comments ol#pingbacks li{background:#fcfcfc;border-bottom:2px solid #777;border-top:1px solid #777;color:#666;}
+div.comments ol#pingbacks li p{margin:0.5em 0;}
+div.comments ol.commentlist{margin:0 0 3em 1.5em;padding:0;}
+div.comments ol.commentlist li{margin:0 0 1.5em;padding:0.5em;}
+div.comments ol.commentlist li img.photo{margin:0.3em 0.3em 1em 1em;float:right;border:1px solid #000;}
+
+div.entry-meta abbr.published{border:none;}
+
+div.formcontainer div#comment-notes em,div.entry-content div.page-link a,div.comments div.nopassword,div.sidebar ul li.widget_calendar table#wp-calendar tfoot{font-weight:700;}
+
+textarea{ border:1px solid #999; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius:5px; padding:5px;}
+code,pre{ font-family:"courier new",courier,monospace; background-color: #f5f5f5;}
+pre { padding: 3px; font-size: 8pt; width: 450px; overflow: auto; line-height: 1.2em;}
+
+.try_body { background:#000 url(images/backtracks.png) no-repeat top right !important; font-family:arial;}
+.try_wrapper { background:transparent url(images/backcontainer.png) repeat-y 0 0 !important;}
+.try_footer { background:transparent url(images/footer.png) no-repeat 5px 0 !important; margin-top:100px !important; }
+.try_desc { background-image: url(images/shapes.png) !important;}
+.try_head { display:block !important;background-image:url(images/backHead.png) !important;}
+.try_compy { background: transparent url(images/mrspeaker.gif) no-repeat right top !important}
+.try_title { background-image: url(images/mrspeaker_head.png) !important;}
+
