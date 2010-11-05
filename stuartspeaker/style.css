@@ -259,6 +259,15 @@ div.entry-date abbr.published{
 }
 
 .cleaner{ clear:both; }
+div.navigation .nav-previous a, .navigation .nav-next a{
+    background-color: #F140A9;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -border-radius: 5px;
+}
 div.navigation div.nav-previous{ float:left;}
 div.navigation div.nav-next{ float:right;}
 
@@ -355,7 +364,7 @@ div.comments{margin:3em 0;width:89%;}
 div.comments span.req-field{color:red;}
 div.comments span.unapproved{color:#800;font-style:italic;}
 div.comments h3{font-size:1.2em;font-weight:400;}
-div.comments ol#comments li{background:#f4f4f4;-moz-border-radius:10px;-webkit-border-radius:10px;}
+div.comments ol#comments li{background:#f4f4f4;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
 div.comments ol#comments div.comment-author span.fn,div.comments ol#pingbacks div.comment-meta span.fn{font-size:0.9em;font-style:normal;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
 div.comments ol#comments div.comment-meta{font-size:7pt;}
 div.comments ol#comments li p{margin:0.7em 0;}
