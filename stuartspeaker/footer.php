@@ -1,6 +1,4 @@
 	<div id="footer">
-		<?php //veryplaintxt_admin_hCard(); ?>
-		
 		<ul id="footCol1" class="footCol">
 			<li id="categories">
 				<h3><?php _e('Categories', 'veryplaintxt'); ?></h3>
@@ -41,17 +39,20 @@
 		
 	</div><!-- #footer -->
 	<br style="clear:both" />
-<?php wp_footer() // Do not remove; helps plugins work ?>
+<?php wp_footer() ?>
 
 </div><!-- #wrapper -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/underscore.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/jquery.oneup.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/speaker.js"></script>
 <script type="text/javascript">
 	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
 	try {
-	var pageTracker = _gat._getTracker("UA-8233321-1");
-	pageTracker._trackPageview();
+	    var pageTracker = _gat._getTracker("UA-8233321-1");
+	    pageTracker._trackPageview();
 	} catch(err) {}
 </script>
 </body><!-- end trasmission -->
