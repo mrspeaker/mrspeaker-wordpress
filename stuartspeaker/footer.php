@@ -43,7 +43,6 @@
 
 </div><!-- #wrapper -->
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="/scripts/underscore.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/jquery.oneup.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/speaker.js"></script>

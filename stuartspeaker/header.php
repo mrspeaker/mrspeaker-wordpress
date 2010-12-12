@@ -12,6 +12,7 @@
     
     <link  href="http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica" rel="stylesheet" type="text/css" />
 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8">
         var baseUrl = "<?php bloginfo('template_directory'); ?>",
             template_directory_path = "<?php bloginfo('template_directory'); ?>";
