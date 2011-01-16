@@ -40,8 +40,6 @@ body div#wrapper{ margin:0 auto;
 	-moz-box-shadow: 0 0 15px #443; /* FF3.5+ */
   	-webkit-box-shadow: 0 0 15px #443; /* Saf3.0+, Chrome */
     box-shadow: 0 0 35px #443; /* Opera 10.5, IE 9.0 */
-	/*background-image: -moz-linear-gradient(top, #004573, #13679F); 
-	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #004573),color-stop(1, #13679F)); */
 }
 #lol a { color:#00BFFF }
 #lol div{
@@ -106,7 +104,6 @@ a img
 
 body div.sidebar{
 	width:462px;
-	/*background:transparent url(images/vertical_dash.png) repeat-y left top;*/
 	padding-left:30px;
 	margin-bottom:30px;
 	float: left; 
@@ -167,6 +164,9 @@ div#header h1#blog-title{
 	padding-bottom:25px;
 	margin-bottom:35px;
 	background:transparent url(images/horizontal_dash.png) no-repeat left bottom;
+}
+.single .hentry {
+    margin-top:50px;
 }
 
 #content
@@ -327,11 +327,10 @@ div#footer span.meta-sep{padding:0 0.5em;}
 div#globalnav ul,div#globalnav ul li{display:inline;list-style:none;}
 div#globalnav ul li{line-height:200%;margin:0 1em;}
 
-h2, h3
-{
+h2, h3{
 	font-family: courier new, courier, monospace;
-	font-weight:normal;
 }
+h2{ font-weight: normal;}
 h2.entry-title, h2.page-title{
 	font-size:11pt;
 	margin-bottom:0;
@@ -381,8 +380,21 @@ div.entry-meta abbr.published{border:none;}
 div.formcontainer div#comment-notes em,div.entry-content div.page-link a,div.comments div.nopassword,div.sidebar ul li.widget_calendar table#wp-calendar tfoot{font-weight:700;}
 
 textarea{ border:1px solid #999; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius:5px; padding:5px;}
-code,pre{ font-family:"courier new",courier,monospace; background-color: #f5f5f5;}
-pre { padding: 3px; font-size: 8pt; width: 450px; overflow: auto; line-height: 1.2em;}
+code,pre{ font-family:"courier new",courier,monospace; }
+code{ font-weight: bold;}
+pre { 
+    padding: 3px; font-size: 8pt; width: 450px; overflow: auto; line-height: 1.2em;
+    background-color: #111;
+    color: #0f0;
+    }
+pre code {
+    background-color: #111;
+    color: #0f0;
+    font-weight: normal;
+}
+.codez{
+    max-height: 500px;
+}
 
 .try_body { background:#000 url(images/backtracks.png) no-repeat top right !important; font-family:arial;}
 .try_wrapper { background:transparent url(images/backcontainer.png) repeat-y 0 0 !important;}
@@ -392,3 +404,5 @@ pre { padding: 3px; font-size: 8pt; width: 450px; overflow: auto; line-height: 1
 .try_compy { background: transparent url(images/mrspeaker.gif) no-repeat right top !important}
 .try_title { background-image: url(images/mrspeaker_head.png) !important;}
 
+p.note {background:#FFF9D8!important; padding: 10px!important;color:#760!important;border-left:6px solid #F3E378!important;}
+p.note a { color: #006FAF; }
