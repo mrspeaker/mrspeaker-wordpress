@@ -782,10 +782,8 @@ add_action('admin_menu', 'veryplaintxt_add_admin');
 add_action('wp_head', 'veryplaintxt_wp_head');
 add_action('init', 'veryplaintxt_widgets_init');
 
-add_filter('archive_meta', 'wptexturize');
-add_filter('archive_meta', 'convert_smilies');
-add_filter('archive_meta', 'convert_chars');
 add_filter('archive_meta', 'wpautop');
+remove_filter("the_content", "wptexturize");
 
 add_shortcode('gallery', 'veryplaintxt_gallery', $attr);
 
