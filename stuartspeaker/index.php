@@ -49,7 +49,7 @@
 	<div id="post-0" class="<?php veryplaintxt_post_class(); ?>">
 		
 		<form id="searchform" method="get" action="<?php bloginfo('home') ?>">
-			<p>You find yourself at the entrance to the <a href="http://www.mrspeaker.net/" title="Mr Speaker's Hompage">Hompage</a> of <?php veryplaintxt_admin_hCard(); ?>. 
+			<p class="intro">You find yourself at the entrance to the <a href="http://www.mrspeaker.net/" title="Mr Speaker's Hompage">Hompage</a> of <?php veryplaintxt_admin_hCard(); ?>. 
 				In a darkened corner sits a trunk containing <a href="/javascript" title="JavaScript experiments">JavaScript tidbits</a>. Exits are North, East,
 			and <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'veryplaintxt') ?>" /><input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="10" />
 			.

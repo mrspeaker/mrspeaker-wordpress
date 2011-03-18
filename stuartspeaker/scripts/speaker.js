@@ -1,18 +1,5 @@
 $(document).ready( function(){	
 	
-	$( '.lolblink' ).click( function(){
-		$( 'body' ).toggleClass( "try_body" );
-		$( '#wrapper' ).toggleClass( "try_wrapper" );
-		$( '#footer' ).toggleClass( "try_footer" );
-		$( '#blog-description' ).toggleClass( "try_desc" );
-		$( '#header' ).toggleClass( "try_head" );
-		$( '#compy' ).toggleClass( "try_compy" );
-		$( '#blog-title' ).toggleClass( "try_title" );
-		$( '#bubbleContainer img' ).each( function(){
-			$(this).attr("src", baseUrl + "/images/circle_" + bubbleController.colours[ Math.floor( Math.random() * bubbleController.colours.length ) ] + ".png" );
-		});
-	});
-	
 	var yrTotal = psTotal = 0;
 	$( "#archives li" ).each( function(){
 		var match = $(this).text().match(/([0-9]+).+\(([^)]*)\)/, "");
@@ -26,7 +13,7 @@ $(document).ready( function(){
 });
 
 $( window ).load( function(){
-		
+
 	bubbleController.init();
 	setInterval( "bubbleController.update()", 200 ); 
 	
@@ -37,9 +24,6 @@ $( window ).load( function(){
 	if( $( ".leftcolumn" ).length )
 	{
 		//main page
-		// Set up google wave: eh, no one's usin it yet...
-		//$( "#wavey" ).wavey( "VqcT1n7Y%A" );
-		//$( "#wavey" ).wavey( "tDdk_pDuC" );		
 		var leftColumn = parseInt( $( ".leftcolumn" ).height(), 10 );
 		var rightColumn = parseInt( $( ".rightcolumn" ).height(), 10 );
 		/* Going to add extra stuff if the columns are uneven */
@@ -47,7 +31,6 @@ $( window ).load( function(){
 	else{
 		swapTwitterPix();
 	}
-
 });
 
 function swapTwitterPix(){
@@ -76,23 +59,18 @@ var bubbleController = {
 	screenWidth : 0,
 	leftEdge : 0,
 	rightEdge : 0,
-	
 	channelWidths : [],
-	
 	minBubbleWidth : 10,
 	maxBubbleWidth : 100,
 	
 	init : function(){
 		this.setBoundaries();
-		
 		$("<div></div>").attr("id", "bubbleContainer").appendTo( $("body") );
-		
-		for( var i = 0; i < 18; i++ ){
+		for( var i = 0; i < 18; i++ ) {
 			var side = ( i % 2 === 0 ) ? 1 : 0;
 			var bub = new bubble();
 			this.bubbles.push( bub );
 			var width = Math.floor( Math.random() * this.maxBubbleWidth ) + this.minBubbleWidth;
-
 			bub.init(
 				this.getXPos( side ),
 				Math.floor( Math.random() * 800 ),
@@ -101,18 +79,13 @@ var bubbleController = {
 				width,
 				Math.floor( ( ( ( this.maxBubbleWidth + this.minBubbleWidth ) - width ) / 8 ) / 5 ) + 1,
 				"#bubbleContainer" );
-		}
-	
+		}	
 	},
-	
-	getXPos : function( blnLeftOrRight )
-	{	
+	getXPos : function( blnLeftOrRight ) {
 		var xpos = ( Math.random() * this.channelWidths[ blnLeftOrRight ] );// + ( this.maxBubbleWidth / 2 );
 		return Math.floor(  xpos / ( this.channelWidths[ blnLeftOrRight ] ) * 100 );
 	},
-	
-	setBoundaries : function()
-	{
+	setBoundaries : function() {
 		this.screenWidth = $("body").width();
 		this.leftEdge = $("#outerWrapper").position().left;
 		this.rightEdge = this.leftEdge + 1040;
@@ -120,11 +93,8 @@ var bubbleController = {
 		this.channelWidths[ 0 ] = this.leftEdge;
 		this.channelWidths[ 1 ] = this.screenWidth - this.rightEdge;
 	},
-	
-	update : function()
-	{
-		$.each( this.bubbles, function()
-		{
+	update : function() {
+		$.each( this.bubbles, function() {
 			this.update();
 		});
 	}
@@ -165,21 +135,16 @@ function bubble(){
 				});
 	};
 	
-	this.getXPos = function()
-	{
-		
+	this.getXPos = function() {
 		this.x = ( bubbleController.channelWidths[ this.side ] * ( this.xPerc / 100 ) ) - ( this.diameter / 2 );
 		this.x += this.side == 1 ? bubbleController.rightEdge : 0;
 		return this.x;
 	};
 	
-	this.update = function()
-	{
-		
+	this.update = function() {
 		this.y -= this.speed;
 		this.x = this.getXPos();
-		if( this.y < -this.diameter )
-		{
+		if( this.y < -this.diameter ) {
 			this.y = 800;
 			this.xPerc =  bubbleController.getXPos( this.side );
 			this.x = this.getXPos();
@@ -188,15 +153,13 @@ function bubble(){
 		this.updateDom();
 	};
 	
-	this.updateDom = function()
-	{
+	this.updateDom = function() {
 		this.domRef
 			.css("top", this.y )
 			.css("left", this.x );
 	};
 	
-	this.fireFadeIn = function()
-	{
+	this.fireFadeIn = function() {
 		this.domRef
 			.hide()
 			.fadeIn( 10000 );

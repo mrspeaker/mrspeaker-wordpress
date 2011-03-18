@@ -1,121 +1,41 @@
 /*
 THEME NAME: Stuart's Speaker
 THEME URI: http://www.mrspeaker.net/
-DESCRIPTION: Stu's effort
-VERSION: 0.0.1
+DESCRIPTION: whatevs
+VERSION: 0.0.13242242
 AUTHOR: Mr Speaker
 AUTHOR URI: http://www.mrspeaker.net/
 */
-
 body{
-		color:#585858;
-		line-height:160%;
-		margin:0 1em;padding:0;
-		/*background:#000 url(images/backtracks.png) no-repeat top right;*/
-		background:#f9f9f9;
+	color:#222;
+	background:#f9f9f9;
+	line-height:160%;
+	margin:0;
+	padding:0;
+	font: normal normal normal large/1.556 Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
 }
+body div#outerWrapper {}
+body div#wrapper{}
 body div#container{
-		margin-left:51px;
-	 	float: left; 
-		width:475px;
-}
-body div#outerWrapper{ margin:0 auto; }
-body div#wrapper{ margin:0 auto;
-	/*background:transparent url(images/backcontainer.png) repeat-y 0 0;*/
+	margin-left:51px;
+	float: left; 
+	width:475px;
 }
 
-#lol {
-	margin-top:15px;
-	position:relative;
-	background:#000 url(images/jqninja_red.png) no-repeat right top;
-	color:#fff;
-	text-align:center;
-	margin-bottom:15px;
-	line-height:3em;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
-	border-top: 1px solid #3075a3;
-	border-left: 1px solid #3075a3;
-	-moz-box-shadow: 0 0 15px #443; /* FF3.5+ */
-  	-webkit-box-shadow: 0 0 15px #443; /* Saf3.0+, Chrome */
-    box-shadow: 0 0 35px #443; /* Opera 10.5, IE 9.0 */
-}
-#lol a { color:#00BFFF }
-#lol div{
-	position:absolute;
-	top:5px;
-	left:-15px;
-	width:84px;
-	height:74px;
-	background:transparent url(images/jqninja.png) no-repeat 0 0;
-}
-a { color: #F140A9;
+a { 
+	color: #F140A9;
 	text-decoration:none;
 	font-size:0.9em;
 	font-family:courier new, courier, monospace;
-	}
-	
-a img
-{
-	border:0;
-}
-.entry-content a {
-	
-}
-.frame-left, .frame-right
-{
-	border:1px solid #ccc;
-	margin:3px;
-	padding:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-  -moz-box-shadow: 0px 0px 3px #aaa; /* FF3.5+ */
-  -webkit-box-shadow: 0px 0px 3px #aaa; /* Saf3.0+, Chrome */
-          box-shadow: 0px 0px 3px #aaa; /* Opera 10.5, IE 9.0 */
-}
-.frame-left{
-	float:left;
-}
-.frame-right
-{
-	float:right;
 }
 	
-.bubble
-{
-	position:absolute;
-	text-align:center;
-}
-.bubble a{
-	color:#cacaca;
-	font-size:7pt;
-}
-#bubbleContainer{
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:900px;
-	overflow:hidden;
-	z-index:-1;
-}
+a img{ border:0; }
 
 body div.sidebar{
 	width:462px;
 	padding-left:30px;
 	margin-bottom:30px;
 	float: left; 
-}
-	
-#compy{
-	background:transparent url(images/mrspeaker_des.gif) no-repeat right top;
-	width:331px;
-	height:311px;
-	position:absolute;
-	left:765px;
-	top:11px;	
 }
 
 #postHead, div#header h1#blog-title{
@@ -128,39 +48,26 @@ body div.sidebar{
 	text-indent:-9999px;
 }
 
-
-/*div#header {
-	margin-top:15px;
-	background:transparent url(images/backHead_des.png) no-repeat 0 0;
-	height:256px;
-	position:relative;
-	display:none;
+h2, h3{ font-family: courier new, courier, monospace; }
+h2{ font-weight: normal;}
+h2.entry-title, h2.page-title{
+	font-size:11pt;
+	margin-bottom:0;
 }
-div#header div#blog-description{
-	background:transparent url(images/shapes_des.png) no-repeat 0 0;
-	height:283px;
-	width:355px;
-	position:absolute;
-	left:-66px;
-	top:-15px;
-	overflow:hidden;
-	text-indent:-200em;
+h2.entry-title, h2.entry-title a, h2.page-title a{
+	font-family: "IM Fell DW Pica";
+	text-decoration:none;
+	font-size:14pt;
+	color:#006faf;
+	background-color: #bcd9f1;
+	padding: 5px;
+	margin-bottom: 5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
 }
 
-div#header h1#blog-title{
-	background:transparent url(images/mrspeaker_head_des.png) no-repeat 0 0;
-	height:67px;
-	width:507px;
-	position:absolute;
-	left:343px;
-	top:58px;
-	overflow:hidden;
-	text-indent:-100em;
-}*/
-
-
-.hentry
-{
+.hentry {
 	padding-bottom:25px;
 	margin-bottom:35px;
 	background:transparent url(images/horizontal_dash.png) no-repeat left bottom;
@@ -169,68 +76,12 @@ div#header h1#blog-title{
     margin-top:50px;
 }
 
-#content
-{
+#content {
 	padding-right:20px;
 }
 
-.delicious
-{
-
-}
-#cool_things li{
-	padding-bottom:10px;
-	clear:both;
-}
-#cool_things img{
-	padding-top:10px;
-	width:50px;
-	height:50px;
-	float:right;
-}
-
-.twitter
-{
-	clear:both;
-}
-.twitter li
-{
-	clear:both;
-	padding-bottom:10px;
-	padding-top:10px;
-}
-.twitter img
-{
-	float:right;
-	width:50px;
-	height:50px;	
-	border:1px solid #444;
-}
-.twitter img.lil
-{
-	width:25px;
-	height:25px;
-	margin-right:-53px;
-	margin-top:27px;
-}
-
-#twitterList h3
-{
-	padding-bottom:0;
-	margin-bottom:0;
-}
-
-.lolblink{ 
-	font-family: courier new, courier, monospace;
-}
-	
-body{
-	font: normal normal normal large/1.556 Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
-}
-body.home div#globalnav,body.archive div#globalnav,body.search div#globalnav,body.four04 div#globalnav,body div#globalnav ul li ul,div.access,span#theme-link span.additional-name,span#theme-link span.family-name{display:none;}
-
-div.entry-content .clearer{ clear:both;width:99%; }
-
+/*body.home div#globalnav,body.archive div#globalnav,body.search div#globalnav,body.four04 div#globalnav,body div#globalnav ul li ul,div.access,span#theme-link span.additional-name,span#theme-link span.family-name{display:none;}*/
+div.entry-content .clearer{ clear:both;/*width:99%;*/ }
 div#wrapper div.entry-content .html,div#wrapper div.entry-content .download,div#wrapper div.entry-content .pdf,div#wrapper div.entry-content .zip{margin-left:2px;padding:2px 0 2px 19px;}
 div#wrapper div.entry-content .download{ background:url(images/file-download.png) no-repeat center left; }
 div#wrapper div.entry-content .html{ background:url(images/file-html.png) no-repeat center left; }
@@ -240,22 +91,21 @@ div#wrapper .important{ background:#f5f5dc url(images/important.png) no-repeat 0
 div.entry-content abbr,div.comments ol.commentlist abbr{ border-bottom:1px dotted #333;cursor:help;}
 div.entry-content blockquote,div.comments ol.commentlist blockquote{ background:url(images/blockquote.png) no-repeat top left;margin-left:0;margin-right:3em;padding:0 0 0 2em;}
 div.entry-content cite,div.comments ol.commentlist cite{ border-bottom:1px dotted #999;cursor:help;}
-
 div.entry-content div.page-link{ font-size:1em;margin:-0.5em 0 1em;}
 div.entry-content img.alignleft,div.entry-content img.alignright,div.entry-content img.center{ border:1px solid #000;padding:0.2em;}
 div.entry-content img{ max-width:99%; }
 div.entry-content ins,div.comments ol.commentlist ins{ border-bottom:1px solid #000;color:#666;text-decoration:none; }
 div.entry-content .caps,div.comments ol.commentlist .caps{ font-size:1em;font-variant:small-caps; }
 div.entry-content span.more-link{ }
-
 div.entry-content .wp-caption-text{ font-style:italic;margin:0.2em auto 1em auto;text-align:center;color:#444; }
 
-body.single div.entry-meta,body.attachment div.entry-meta{clear:both;}
+body.single div.entry-meta,
+body.attachment div.entry-meta{ clear:both;}
 div.entry-date abbr.published{
-		border:none;display:block;
-		margin:0 0 -0.5em;
-		color:#006FAF;
-		font-size:8pt;
+	border:none;display:block;
+	margin:0 0 -0.5em;
+	color:#006FAF;
+	font-size:8pt;
 }
 
 .cleaner{ clear:both; }
@@ -268,19 +118,20 @@ div.navigation .nav-previous a, .navigation .nav-next a{
     -moz-border-radius: 5px;
     -border-radius: 5px;
 }
-div.navigation div.nav-previous{ float:left;}
-div.navigation div.nav-next{ float:right;}
+div.navigation .nav-previous{ float:left;}
+div.navigation .nav-next{ float:right;}
+.single div.navigation .nav-previous a, 
+.single div.navigation .nav-next a {
+	font-size: 1em;
+}
 
 div#footer{ 
-		clear:both;
-		font-size:0.8em;
-	
-		padding:20px 0 0 50px;
-
-		/*background:transparent url(images/footer.png) no-repeat 5px 0;*/
-		height:250px;
-		line-height:1.1em;
-	}
+	clear:both;
+	font-size:0.8em;
+	padding:20px 0 0 50px;
+	height:250px;
+	line-height:1.1em;
+}
 #footer a{
 	text-decoration:none;
 }
@@ -301,66 +152,27 @@ div#footer span.meta-sep{padding:0 0.5em;}
 	margin-left:3px;
 	color:#770;
 }
-#footCol2 li ul li a, #footCol2 li ul
-{
-	color:#070;
-}
-#footCol3 li ul li a,#footCol3 li ul{
-	color: #707;
-}
-#footCol4 li ul li a,#footCol4 li ul{
-	color: #007;
-}
-#footCol4{
-	width:300px;
-}
-#footCol3 li ul li{
-	/*float:left; width:130px;*/
-	
-}
-#footCol3 li ul br{
-	clear:both;
-}
-.fcCol4{
-	color: #007;
-}
+#footCol2 li ul li a, #footCol2 li ul { color:#070; }
+#footCol3 li ul li a,#footCol3 li ul{ color: #707; }
+#footCol4 li ul li a,#footCol4 li ul{ color: #007; }
+#footCol4{ width:300px; }
+#footCol3 li ul li{}
+#footCol3 li ul br{ clear:both; }
+.fcCol4{ color: #007; }
+
 div#globalnav ul,div#globalnav ul li{display:inline;list-style:none;}
 div#globalnav ul li{line-height:200%;margin:0 1em;}
 
-h2, h3{
-	font-family: courier new, courier, monospace;
-}
-h2{ font-weight: normal;}
-h2.entry-title, h2.page-title{
-	font-size:11pt;
-	margin-bottom:0;
-}
-h2.entry-title, h2.entry-title a, h2.page-title a{
-	font-family: "IM Fell DW Pica";
-	text-decoration:none;
-	font-size:14pt;
-	color:#006faf;
-	background-color: #bcd9f1;
-	padding: 5px;
-	margin-bottom: 5px;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
-    border-radius:5px;
-}
-
-.sidebar ul
-{
+.sidebar ul {
 	list-style-type:none;
 	margin:0;
 	padding:0;
 }
-.entry-meta
-{
+.entry-meta {
 	margin-top:25px;
 	font-size:0.8em;
 }
-.single .entry-meta
-{
+.single .entry-meta {
 	border:1px solid #eee;
 	display:block;
 }
@@ -380,18 +192,20 @@ div.comments ol#pingbacks li p{margin:0.5em 0;}
 div.comments ol.commentlist{margin:0 0 3em 1.5em;padding:0;}
 div.comments ol.commentlist li{margin:0 0 1.5em;padding:0.5em;}
 div.comments ol.commentlist li img.photo{margin:0.3em 0.3em 1em 1em;float:right;border:1px solid #000;}
-
-div.entry-meta abbr.published{border:none;}
-
+div.entry-meta abbr.published{ border:none; }
 div.formcontainer div#comment-notes em,div.entry-content div.page-link a,div.comments div.nopassword,div.sidebar ul li.widget_calendar table#wp-calendar tfoot{font-weight:700;}
-
 textarea{ border:1px solid #999; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius:5px; padding:5px;}
-code,pre{ font-family:"courier new",courier,monospace; }
+
+code, pre{ font-family:"courier new",courier,monospace; }
 code{ font-weight: bold;}
 pre { 
-    padding: 3px; font-size: 8pt; width: 450px; overflow: auto; line-height: 1.2em;
-    background-color: #111;
+    padding: 3px; 
+	font-size: 8pt; width: 450px; overflow: auto; line-height: 1.2em;
+    background-color: #333;
     color: #0f0;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
     }
 pre code {
     background-color: #111;
@@ -402,13 +216,84 @@ pre code {
     max-height: 500px;
 }
 
-.try_body { background:#000 url(images/backtracks.png) no-repeat top right !important; font-family:arial;}
-.try_wrapper { background:transparent url(images/backcontainer.png) repeat-y 0 0 !important;}
-.try_footer { background:transparent url(images/footer.png) no-repeat 5px 0 !important; margin-top:100px !important; }
-.try_desc { background-image: url(images/shapes.png) !important;}
-.try_head { display:block !important;background-image:url(images/backHead.png) !important;}
-.try_compy { background: transparent url(images/mrspeaker.gif) no-repeat right top !important}
-.try_title { background-image: url(images/mrspeaker_head.png) !important;}
-
-p.note {background:#FFF9D8!important; padding: 10px!important;color:#760!important;border-left:6px solid #F3E378!important;}
+p.note { background:#FFF9D8!important; padding: 10px!important;color:#760!important;border-left:6px solid #F3E378!important;}
 p.note a { color: #006FAF; }
+.intro {
+	background: #000 url(/images/mrspeakcon.png) no-repeat right bottom;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px;
+	color: lime;
+	font-family: courier new;
+	font-size: 10pt;
+}
+.intro a {
+	color: orange;
+}
+
+.frame-left, .frame-right {
+	border:1px solid #ccc;
+	margin:3px;
+	padding:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	-moz-box-shadow: 0px 0px 3px #aaa; /* FF3.5+ */
+	-webkit-box-shadow: 0px 0px 3px #aaa; /* Saf3.0+, Chrome */
+	box-shadow: 0px 0px 3px #aaa; /* Opera 10.5, IE 9.0 */
+}
+.frame-left{ float:left; }
+.frame-right{ float:right; }
+.bubble {
+	position:absolute;
+	text-align:center;
+}
+#bubbleContainer{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:900px;
+	overflow:hidden;
+	z-index:-1;
+}
+
+.twitter {
+	clear:both;
+}
+.twitter li {
+	clear:both;
+	padding-bottom:10px;
+	padding-top:10px;
+}
+.twitter img {
+	float:right;
+	width:50px;
+	height:50px;	
+	border:1px solid #444;
+}
+.twitter img.lil {
+	width:25px;
+	height:25px;
+	margin-right:-53px;
+	margin-top:27px;
+}
+
+#twitterList h3 {
+	padding-bottom:0;
+	margin-bottom:0;
+}
+
+#cool_things li{
+	padding-bottom:10px;
+	clear:both;
+}
+#cool_things img{
+	padding-top:10px;
+	width:50px;
+	height:50px;
+	float:right;
+}
+
+.lolblink{ font-family: courier new, courier, monospace; }
