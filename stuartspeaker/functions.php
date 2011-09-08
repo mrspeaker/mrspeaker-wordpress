@@ -755,17 +755,18 @@ function veryplaintxt_wp_head() {
 	} else {
 		$sidebartextalignment = attribute_escape( stripslashes( get_option('veryplaintxt_sidebartextalignment') ) ); 
 	}
-?>
-
+/*
+? >
 <style type="text/css" media="all">
-/*<![CDATA[*/
-/* CSS inserted by theme options */
+/ *<![CDATA[* /
+/ * CSS inserted by theme options * /
 body{font-size:<?php echo $basefontsize; ?>;}
 <?php echo $sidebarposition; ?>
 body div#content div.hentry{text-align:<?php echo $posttextalignment; ?>;}
 body div#outerWrapper{max-width:<?php echo $maxwidth; ?>;min-width:<?php echo $minwidth; ?>;width:<?php echo $layoutwidth; ?>;}
-/*]]>*/
+/ *]]>* /
 </style>
+*/?>
 <?php // Checks that everything has loaded properly
 }
 

@@ -2,12 +2,6 @@
 
 	<div id="container">
 		<div id="content" class="hfeed">
-
-			<div id="nav-below" class="navigation">
-				<div class="nav-previous"><?php previous_post_link(__('&lsaquo; %link', 'veryplaintxt'), '%title', false, '15') ?></div>
-				<div class="nav-next"><?php next_post_link(__('%link &rsaquo;', 'veryplaintxt'), '%title',false, '15') ?></div>
-				<br class="cleaner" />
-			</div>
 			
 <?php the_post(); ?>
 <?php ms_script_includes( true ); ?>
@@ -46,12 +40,19 @@
 <?php ms_script_includes( false ); ?>
 			</div><!-- .post -->
 
+      <div id="nav-below" class="navigation">
+				<div class="nav-previous"><?php previous_post_link(__('&lsaquo; %link', 'veryplaintxt'), '%title', false, '15') ?></div>
+				<div class="nav-next"><?php next_post_link(__('%link &rsaquo;', 'veryplaintxt'), '%title',false, '15') ?></div>
+				<br class="cleaner" />
+			</div>
 <?php comments_template(); ?>
 
 		</div><!-- #content .hfeed -->
 	</div><!-- #container -->
 
-<?php get_sidebar() ?>
+<?php 
+  get_sidebar() 
+?>
 <div style="clear:both"></div>
 </div><!--close wrapper-->
 <?php get_footer() ?>

@@ -9,14 +9,13 @@ $(document).ready( function(){
 	});
 	$( "#arcYear" ).text( yrTotal );
 	$( "#arcTot" ).text( psTotal );
-	
 });
 
 $( window ).load( function(){
-
 	bubbleController.init();
-	setInterval( "bubbleController.update()", 200 ); 
-	
+	setInterval( function(){
+	    bubbleController.update()
+	}, 200 ); 
 	$( window ).resize(function(){
 		bubbleController.setBoundaries();
 	});	
@@ -55,7 +54,6 @@ function swapTwitterPix(){
 
 var bubbleController = {
 	bubbles : [],
-	colours :  [ "green", "yellow", "purple" ],
 	screenWidth : 0,
 	leftEdge : 0,
 	rightEdge : 0,
@@ -75,7 +73,7 @@ var bubbleController = {
 				this.getXPos( side ),
 				Math.floor( Math.random() * 800 ),
 				side,
-				this.colours[ Math.floor( Math.random() * this.colours.length ) ],
+        (Math.random()*20/100).toFixed(2),
 				width,
 				Math.floor( ( ( ( this.maxBubbleWidth + this.minBubbleWidth ) - width ) / 8 ) / 5 ) + 1,
 				"#bubbleContainer" );
@@ -90,7 +88,7 @@ var bubbleController = {
 		this.leftEdge = $("#outerWrapper").position().left;
 		this.rightEdge = this.leftEdge + 1040;
 		
-		this.channelWidths[ 0 ] = this.leftEdge;
+		this.channelWidths[ 0 ] = this.leftEdge < 150 ? 150 : this.leftEdge;
 		this.channelWidths[ 1 ] = this.screenWidth - this.rightEdge;
 	},
 	update : function() {
@@ -107,32 +105,34 @@ function bubble(){
 	this.xPerc;
 	this.y;
 	this.side;
-	this.colour;
+	this.opacity;
 	this.speed;
 	
-	this.init = function( x, y, side, colour, diameter, speed, addToElement ){
+	this.init = function( x, y, side, opacity, diameter, speed, addToElement ){
 		this.side = side;
 		this.xPerc = x;
 		this.y = y;
 		this.speed = speed;
-		this.colour = colour;
+		this.opacity = opacity;
 		this.diameter = diameter;
 		this.domRef = $("<div></div")
 			.addClass( "bubble" )
 			.css("top", this.y )
 			.css("left", this.getXPos() )
+			.css( "opacity", this.opacity )
 			.appendTo( $( addToElement ) );
 			//.css("z-index", "-1")
-			
+			//-webkit-transform: rotate(45deg);
 		var img = $( "<img></img>" )
-				.attr("src", baseUrl + "/images/circle_" + this.colour + "_des.png" )
+				//.attr("src", baseUrl + "/images/circle_" + this.colour + "_des.png" )
+				.attr("src", "/images/circleeye.png" )
 				.attr("height", this.diameter )
-				.css( "opacity", "0.5" )
-				.hide()
 				.appendTo( this.domRef )
-				.load(function(){
+                .show()
+				/*.load(function(){
+				    // Whoa... cpu == 90% for long fades
 					$(this).fadeIn( 20000 );
-				});
+				});*/
 	};
 	
 	this.getXPos = function() {
@@ -146,11 +146,16 @@ function bubble(){
 		this.x = this.getXPos();
 		if( this.y < -this.diameter ) {
 			this.y = 800;
-			this.xPerc =  bubbleController.getXPos( this.side );
+			this.xPerc = bubbleController.getXPos( this.side );
 			this.x = this.getXPos();
+			this.opacity = (Math.random()*15/100).toFixed(2);
 			this.fireFadeIn();
 		}
 		this.updateDom();
+	};
+	
+	this.setInit = function(){
+	  
 	};
 	
 	this.updateDom = function() {
@@ -162,6 +167,7 @@ function bubble(){
 	this.fireFadeIn = function() {
 		this.domRef
 			.hide()
-			.fadeIn( 10000 );
+			.css( "opacity", this.opacity )
+			.fadeIn( 5000 );
 	};
 }

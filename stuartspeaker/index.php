@@ -53,11 +53,28 @@
 				In a darkened corner sits a trunk containing <a href="/javascript" title="JavaScript experiments">JavaScript tidbits</a>. Exits are North, East,
 			and <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'veryplaintxt') ?>" /><input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="10" />
 			.
-			To the west lies an <a href="<?php bloginfo('rss2_url') ?>" title="<?php echo wp_specialchars(get_bloginfo('name'), 1) ?> RSS 2.0 Feed" rel="alternate" type="application/rss+xml"><?php _e('RSS Feed', 'veryplaintxt') ?></a>.
+			To the west lies a <a href="http://twitter.com/#!/mrspeaker" title="Mr Speaker on Twitter">Twitter account</a>.
 			</p>
 			<span class="lolblink">?&gt;<blink>_</blink></span>
 		</form>
 	
+	</div>
+	
+	<div id="postList">
+	<?php
+	    // Spit out the "TOC"
+	    $count = 0;
+	    while ( have_posts() ) : the_post();
+	        if($count++ >0){
+	?>
+	        <h2 class="entry-title">
+	            <a href="<?php the_permalink() ?>" title="<?php printf(__('Permalink to %s', 'veryplaintxt'), wp_specialchars(get_the_title(), 1)) ?>" rel="bookmark"><?php the_title() ?></a>
+	            <span class="cats"><?php the_category(' '); ?></span>
+	        </h2>
+	<?php 
+            }
+	    endwhile 
+	?>
 	</div>
 	
 	<!--<div id="wave-container" class="<?php veryplaintxt_post_class(); ?>" style="">

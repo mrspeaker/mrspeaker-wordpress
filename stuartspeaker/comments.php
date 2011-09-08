@@ -101,8 +101,6 @@ foreach ( $comments as $comment )
 
 <?php else : ?>
 
-			<div id="comment-notes"><?php _e('Your email is <em>never</em> published nor shared.', 'veryplaintxt') ?> <?php if ($req) _e('Required fields are marked <span class="req-field">*</span>', 'veryplaintxt') ?></div>
-
 			<div class="form-label"><label for="author"><?php _e('Name', 'veryplaintxt') ?></label> <?php if ($req) _e('<span class="req-field">*</span>', 'veryplaintxt') ?></div>
 			<div class="form-input"><input id="author" name="author" type="text" value="<?php echo $comment_author ?>" size="30" maxlength="20" tabindex="3" /></div>
 
@@ -118,7 +116,7 @@ foreach ( $comments as $comment )
 			<div class="form-label"><label for="comment"><?php _e('Comment', 'veryplaintxt') ?></label></div>
 			<div class="form-textarea"><textarea id="comment" name="comment" cols="45" rows="8" tabindex="6"></textarea></div>
 
-        	<div class="form-label">Captcha! Please type "lol" here: <span class="req-field">*</span></div>
+        	<div class="form-label">Captcha! Please type "html5" here: <span class="req-field">*</span></div>
         	<div class="form-input>"><input type="text" tabindex="7" name="captchab" id="captchab" maxlength="20" size="30" /></div>
 
         	<div style="display:none">
@@ -127,7 +125,7 @@ foreach ( $comments as $comment )
         	</div>
 
 
-			<div class="form-submit"><input id="submit" name="submit" onclick="if(document.getElementById('captchat').value.length==0){alert('Please type \'lolz\' into the lame captcha box!');document.getElementById('captchat').focus();return false;}" type="submit" value="<?php _e('Submit comment', 'veryplaintxt') ?>" tabindex="8" /><input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" /></div>
+			<div class="form-submit"><input id="submit" name="submit" type="submit" value="<?php _e('Submit comment', 'veryplaintxt') ?>" tabindex="8" /><input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" /></div>
 
 <?php do_action('comment_form', $post->ID); ?>
 

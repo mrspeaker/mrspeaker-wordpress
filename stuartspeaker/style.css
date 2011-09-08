@@ -8,24 +8,47 @@ AUTHOR URI: http://www.mrspeaker.net/
 */
 body{
 	color:#222;
-	background:#f9f9f9;
-	line-height:160%;
+	background:#F9F9F9 url(/images/mrman-up.png) no-repeat center bottom;
+    line-height: 1.8em;
 	margin:0;
 	padding:0;
-	font: normal normal normal large/1.556 Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
+/*	font: 14px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;*/
+	font: .9em 'Helvetica Neue', Helvetica, 'Lucida Grande', 'Lucida Sans Unicode', 'Liberation Sans', FreeSans, sans-serif;
+
+    /*text-shadow: 0 1px 0 #fff;*/
+	/*font: normal normal normal large/1.556 Cambria, Georgia, "Times New Roman", Times, serif;
+	Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
+	font-size: 0.95em;*/
 }
-body div#outerWrapper {}
+body div#outerWrapper {
+	width: 1050px;
+	margin: 0 auto;
+}
 body div#wrapper{}
 body div#container{
 	margin-left:51px;
 	float: left; 
 	width:475px;
 }
+body::-webkit-scrollbar {
+ width: 6px;
+ background: #dddddd;
+ -webkit-border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+ background: #999999;
+ -webkit-border-radius: 3px;
+}
+
+.gist pre {
+    color: #000;
+    width: 430px;
+}
 
 a { 
 	color: #F140A9;
 	text-decoration:none;
-	font-size:0.9em;
 	font-family:courier new, courier, monospace;
 }
 	
@@ -35,49 +58,62 @@ body div.sidebar{
 	width:462px;
 	padding-left:30px;
 	margin-bottom:30px;
-	float: left; 
+	float: left;
 }
 
+div#header{
+	width: 1050px;
+	margin: 0 auto;
+}
 #postHead, div#header h1#blog-title{
 	width:100%;
 	height:28px;
-	background:transparent url(images/contentab.png) no-repeat 48px 30px;
+	/*background:transparent url(images/contentab.png) no-repeat 48px 30px;*/
+	background:transparent url(/images/mrman.png) no-repeat center -10px;
 	padding-top:20px;
 	padding-bottom:30px;
 	margin:0;
 	text-indent:-9999px;
+	height: 327px;
 }
 
 h2, h3{ font-family: courier new, courier, monospace; }
 h2{ font-weight: normal;}
 h2.entry-title, h2.page-title{
-	font-size:11pt;
-	margin-bottom:0;
-}
-h2.entry-title, h2.entry-title a, h2.page-title a{
-	font-family: "IM Fell DW Pica";
-	text-decoration:none;
-	font-size:14pt;
-	color:#006faf;
-	background-color: #bcd9f1;
-	padding: 5px;
+	font-size:13pt;
 	margin-bottom: 5px;
+	margin-left: -10px;
+	padding: 2px 5px 2px 10px;
+	background-color: #ddd;/*#bcd9f1;*/
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
     border-radius:5px;
+    border-bottom: 1px solid #bbb;
 }
-
+h2.entry-title, h2.entry-title a, h2.page-title a,
+.single div.sidebar h3 {
+	font-family: "IM Fell DW Pica";
+	text-decoration:none;
+	/*font-size:14pt;*/
+	color: #333;/*#006faf;*/
+}
+.single div.sidebar h3 {
+	font-weight: normal;
+}
 .hentry {
 	padding-bottom:25px;
 	margin-bottom:35px;
-	background:transparent url(images/horizontal_dash.png) no-repeat left bottom;
+	/*background:transparent url(images/horizontal_dash.png) no-repeat left bottom;*/
 }
-.single .hentry {
-    margin-top:50px;
+#search.hentry{
+	background: none;
 }
 
 #content {
 	padding-right:20px;
+}
+p {
+    line-height: 1.8em;
 }
 
 /*body.home div#globalnav,body.archive div#globalnav,body.search div#globalnav,body.four04 div#globalnav,body div#globalnav ul li ul,div.access,span#theme-link span.additional-name,span#theme-link span.family-name{display:none;}*/
@@ -104,7 +140,7 @@ body.attachment div.entry-meta{ clear:both;}
 div.entry-date abbr.published{
 	border:none;display:block;
 	margin:0 0 -0.5em;
-	color:#006FAF;
+	color: #555;/*#006FAF;*/
 	font-size:8pt;
 }
 
@@ -117,6 +153,10 @@ div.navigation .nav-previous a, .navigation .nav-next a{
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -border-radius: 5px;
+	-moz-box-shadow: 0 2px 3px #999;
+	-webkit-box-shadow: 0 2px 3px #999;
+	-o-box-shadow: 0 2px 3px #999;
+	box-shadow: 0 2px 3px #999;
 }
 div.navigation .nav-previous{ float:left;}
 div.navigation .nav-next{ float:right;}
@@ -124,13 +164,17 @@ div.navigation .nav-next{ float:right;}
 .single div.navigation .nav-next a {
 	font-size: 1em;
 }
+.sidebar div.navigation {
+	margin-top: 35px;
+}
 
 div#footer{ 
 	clear:both;
 	font-size:0.8em;
-	padding:20px 0 0 50px;
+	padding:70px 0 0 120px;
 	height:250px;
 	line-height:1.1em;
+
 }
 #footer a{
 	text-decoration:none;
@@ -153,9 +197,9 @@ div#footer span.meta-sep{padding:0 0.5em;}
 	color:#770;
 }
 #footCol2 li ul li a, #footCol2 li ul { color:#070; }
+#footCol2{ width:395px }
 #footCol3 li ul li a,#footCol3 li ul{ color: #707; }
 #footCol4 li ul li a,#footCol4 li ul{ color: #007; }
-#footCol4{ width:300px; }
 #footCol3 li ul li{}
 #footCol3 li ul br{ clear:both; }
 .fcCol4{ color: #007; }
@@ -169,7 +213,6 @@ div#globalnav ul li{line-height:200%;margin:0 1em;}
 	padding:0;
 }
 .entry-meta {
-	margin-top:25px;
 	font-size:0.8em;
 }
 .single .entry-meta {
@@ -200,7 +243,7 @@ code, pre{ font-family:"courier new",courier,monospace; }
 code{ font-weight: bold;}
 pre { 
     padding: 3px; 
-	font-size: 8pt; width: 450px; overflow: auto; line-height: 1.2em;
+	font-size: 9pt; width: 450px; overflow: auto; line-height: 1.2em;
     background-color: #333;
     color: #0f0;
 	-webkit-border-radius: 8px;
@@ -219,17 +262,21 @@ pre code {
 p.note { background:#FFF9D8!important; padding: 10px!important;color:#760!important;border-left:6px solid #F3E378!important;}
 p.note a { color: #006FAF; }
 .intro {
-	background: #000 url(/images/mrspeakcon.png) no-repeat right bottom;
+	/*background: #ddd url(/images/mrspeakcon.png) no-repeat right bottom;*/
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	padding: 5px;
-	color: lime;
+	color: #333;
 	font-family: courier new;
 	font-size: 10pt;
+	-moz-box-shadow: 0 2px 3px #999;
+	-webkit-box-shadow: 0 2px 3px #999;
+	-o-box-shadow: 0 2px 3px #999;
+	box-shadow: 0 2px 3px #999;
 }
 .intro a {
-	color: orange;
+	font-weight: bold;
 }
 
 .frame-left, .frame-right {
@@ -285,15 +332,43 @@ p.note a { color: #006FAF; }
 	margin-bottom:0;
 }
 
-#cool_things li{
-	padding-bottom:10px;
-	clear:both;
+li#twitterList {
+	background:transparent url(images/horizontal_dash.png) no-repeat left bottom;
 }
-#cool_things img{
-	padding-top:10px;
-	width:50px;
-	height:50px;
+
+#post-0{
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+#postList{
+	margin-top:35px;
+	margin-bottom: 20px;
+	/*background:transparent url(images/horizontal_dash.png) no-repeat left bottom;*/
+	padding-bottom: 20px;
+}
+#postList h2{
+	background: transparent;
+	border-bottom: 2px dotted #ddd;
+}
+#postList .cats{
+	font-size:8pt;
+	display:block;
 	float:right;
 }
 
-.lolblink{ font-family: courier new, courier, monospace; }
+.bigbutton {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    border:1px solid #d4d4d4;
+    padding: 10px;
+    font-family: verdana;
+    color:#000;
+    text-shadow:1px 1px 0 rgba(255,255,255,0.6);
+    border-color:#c9c9c9;
+    border-bottom-color:#9a9a9a;
+    background:#d7d7d7;
+    background:-webkit-gradient(linear,left top,left bottom,from(#d7d7d7),to(#ababab));
+    background:-moz-linear-gradient(top,#d7d7d7,#ababab);
+}
+
