@@ -135,6 +135,10 @@ div.entry-content .caps,div.comments ol.commentlist .caps{ font-size:1em;font-va
 div.entry-content span.more-link{ }
 div.entry-content .wp-caption-text{ font-style:italic;margin:0.2em auto 1em auto;text-align:center;color:#444; }
 
+.entry-content h3 {
+    padding-top: 20px;
+    padding-bottom: 8px;
+}
 body.single div.entry-meta,
 body.attachment div.entry-meta{ clear:both;}
 div.entry-date abbr.published{
