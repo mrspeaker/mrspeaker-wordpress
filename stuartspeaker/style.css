@@ -136,8 +136,7 @@ div.entry-content span.more-link{ }
 div.entry-content .wp-caption-text{ font-style:italic;margin:0.2em auto 1em auto;text-align:center;color:#444; }
 
 .entry-content h3 {
-    padding-top: 20px;
-    padding-bottom: 8px;
+    padding: 8px 0;
 }
 body.single div.entry-meta,
 body.attachment div.entry-meta{ clear:both;}
