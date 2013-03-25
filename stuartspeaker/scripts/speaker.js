@@ -9,6 +9,8 @@ $(document).ready( function(){
 	});
 	$( "#arcYear" ).text( yrTotal );
 	$( "#arcTot" ).text( psTotal );
+
+	addGitHubLolz();
 });
 
 $( window ).load( function(){
@@ -31,6 +33,13 @@ $( window ).load( function(){
 		swapTwitterPix();
 	}
 });
+
+function addGitHubLolz(){
+	$("<div></div>", {id: "githubble"}).appendTo("body");
+	$("<div></div>", {id: "gitcommit"})
+		.text("Not on GitHub!")
+		.appendTo("#githubble");
+}
 
 function swapTwitterPix(){
 	$(".twitter li").each(function(){

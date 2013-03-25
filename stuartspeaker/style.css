@@ -41,6 +41,32 @@ body::-webkit-scrollbar-thumb {
  -webkit-border-radius: 3px;
 }
 
+/* for github lolz */
+#githubble {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 90px;
+	height: 90px;
+	overflow: hidden;
+}
+#gitcommit {
+	border: 1px solid #ccc;
+	width: 150px;
+	position: absolute;
+	right: -20px;
+	font-size: 9pt;
+	font-weight: bold;
+	text-align: center;
+	right: -35px;
+	top: 27px;
+	background-color: #fff;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
 .gist pre {
     color: #000;
     width: 430px;
