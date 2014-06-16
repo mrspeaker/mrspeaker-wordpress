@@ -49,7 +49,7 @@
 	<div id="post-0" class="<?php veryplaintxt_post_class(); ?>">
 
 		<form id="searchform" method="get" action="<?php bloginfo('home') ?>">
-			<p class="intro">You find yourself at the entrance to the Hompage of <?php veryplaintxt_admin_hCard(); ?>.
+			<p class="intro"><a href="http://twitter.com/mrspeaker"><img src="/images/mrspeaker_400x400.png" style="width:130px" class="frame-right" /></a>You find yourself at the entrance to the Hompage of <?php veryplaintxt_admin_hCard(); ?>.
 				In a darkened corner sits a trunk containing <a href="/games" style="font-size:24pt" title="HTML5 games">HTML5 games</a> and some
 				<a href="/javascript" title="JavaScript experiments">JavaScript tidbits</a>. In a dark corner you spy a
 				<a href="http://twitter.com/mrspeaker" style="font-size:24pt;color:hsl(196, 100%, 47%);" title="Mr Speaker on Twitter">Twitter</a> account.

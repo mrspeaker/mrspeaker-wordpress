@@ -6,7 +6,7 @@
 
 				<li id="search" class="hentry">
 					<form id="searchform" method="get" action="<?php bloginfo('home') ?>">
-							<p class="intro">You find yourself in the bowels of the <a href="http://www.mrspeaker.net/" title="Mr Speaker's Hompage">Hompage</a> of <?php veryplaintxt_admin_hCard(); ?>.
+							<p class="intro"><a href="http://twitter.com/mrspeaker"><img src="/images/mrspeaker_400x400.png" style="width:130px" class="frame-right" /></a>You find yourself in the bowels of the <a href="http://www.mrspeaker.net/" title="Mr Speaker's Hompage">Hompage</a> of <?php veryplaintxt_admin_hCard(); ?>.
 							In a darkened corner sits a trunk containing <a href="/javascript" title="JavaScript experiments">JavaScript tidbits</a>.
 							Exits are <a href="<?php bloginfo('home') ?>" title="<?php echo wp_specialchars(get_bloginfo('name'), 1) ?>"><?php _e('Home', 'veryplaintxt') ?></a>
 							and <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'veryplaintxt') ?>" /><input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="10" /><br/>
@@ -28,11 +28,6 @@
                 <a href="http://twitter.com/mrspeaker" style="font-size:22pt;color:hsl(196, 100%, 47%);" title="Mr Speaker on Twitter">
                   Say hello on Twitter</a>
               </div>
-              <br/>
-              <a href="http://www.mrspeaker.net/tips">
-                <img src="/images/btc.png" width="80" alt="Spare some bitcoin?" /> &lt- BTC | DOGE -&gt;
-                <img src="/images/doge.png" width="80" />
-              </a>
             </div>
   				</li>
 
@@ -66,9 +61,6 @@
             <div style="clear:both;">A <a href="http://www.mrspeaker.net/games/">a bunch more web games</a> 'n' stuff.</div>
           </div>
 
-
-
-
         </li>
 
 				<li class="hentry" >
@@ -85,6 +77,13 @@
   						<img src="/images/mobile-book.png" alt="Build Mobile Websites and Apps for Smart Devices" />
   					</a>-->
   				</li>
+
+        <li>
+          <a href="http://www.mrspeaker.net/tips">
+            <img src="/images/btc.png" width="80" alt="Spare some bitcoin?" /> &lt- BTC | DOGE -&gt;
+            <img src="/images/doge.png" width="80" />
+          </a>
+        </li>
 
 <?php endif; // End Widgets ?>
 
