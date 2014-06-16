@@ -19,7 +19,7 @@ nocache_headers();
 
 // Added by Mr Speaker for spam stoppin...
 $captch = strtolower(trim($_POST['captchab']));
-if( $captch != "html5" && $captch != "\"html5\"")
+if( $captch != "radical" && $captch != "\"radical\"")
 {
 	die( "Error adding comment - Captcha failed: Do please try again!<br/><br/>If it keeps failing, could you give me an email? That'd be awesome!" );
 }

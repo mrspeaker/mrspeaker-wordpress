@@ -23,12 +23,56 @@
   				</li>
 
   				<li class="hentry" id="twitterList">
-  					<h3 style="margin-top:-20px"><a href="http://www.twitter.com/mrspeaker" title="Mr Speaker on twitter"><img style="vertical-align:middle;" src="<?php bloginfo('template_directory'); ?>/images/icon-twitter.png" alt="twitter"/></a> 'lil messages by <a href="http://www.twitter.com/mrspeaker" title="Mr Speaker on twitter">Mr Speaker</a></h3>
-  					<?php twitter_messages('mrspeaker', 3, true, false, '&raquo;', true, true, true); ?>
+            <div style="margin:-20px auto 20px 0">
+              <div style="padding-bottom:10px">
+                <a href="http://twitter.com/mrspeaker" style="font-size:22pt;color:hsl(196, 100%, 47%);" title="Mr Speaker on Twitter">
+                  Say hello on Twitter</a>
+              </div>
+              <br/>
+              <a href="http://www.mrspeaker.net/tips">
+                <img src="/images/btc.png" width="80" alt="Spare some bitcoin?" /> &lt- BTC | DOGE -&gt;
+                <img src="/images/doge.png" width="80" />
+              </a>
+            </div>
   				</li>
 
-				<li>
-					<h3 style="margin-top:0px">Books by Mr Speaker (and friends)</h3>
+        <li class="hentry" >
+          <h3 style="margin-top:0px">Radical games by Mr Speaker</h3>
+          <div style="margin-left: 30px">
+            <strong>iPad &amp; iPhone</strong>
+            <div style="clear:both">
+              <a href="https://itunes.apple.com/us/app/wafty-man/id824792309">
+                <img src="/images/wafty-side.png" style="width:40%" alt="Wafty Man for iPhone &amp; iPad" />
+              </a>
+              <a href="https://itunes.apple.com/us/app/mister-moonboots/id806971888">
+                <img src="/images/mrmoon-side.png" style="width:40%" alt="Mister Moonboots for iPad" />
+              </a>
+            </div>
+            <strong>HTML5 games</strong>
+            <div style="clear:both;margin-left:-10px;">
+              <a href="http://www.mrspeaker.net/dev/ld27">
+                <img src="/images/tfsCarl.png" width="80" height="80" alt="Time Flies Straight" class="frame-left">
+              </a>
+              <a href="http://www.mrspeaker.net/dev/game/digibots">
+                <img src="/images/digibots-level.jpg" width="80" height="80" alt="DIGIBOTS &amp CO." class="frame-left">
+              </a>
+              <a href="http://www.mrspeaker.net/dev/games/flappy">
+                <img src="/images/fbtt.png" width="80" height="80" alt="Flappy Bird Typing Tutor" class="frame-left">
+              </a>
+              <a href="http://mrspeaker.net/dev/game/glowbougs">
+                <img src="/images/glowbougs.jpg" width="80" height="80" alt="Glowbougs" class="frame-left">
+              </a>
+            </div>
+            <div style="clear:both;">A <a href="http://www.mrspeaker.net/games/">a bunch more web games</a> 'n' stuff.</div>
+          </div>
+
+
+
+
+        </li>
+
+				<li class="hentry" >
+					<h3 style="margin-top:0px">Serious books by Mr Speaker (and friends)</h3>
   					<a href="http://www.sitepoint.com/books/jquery1/">
   						<img src="/images/jQuery-ninja.jpg" alt="jQuery: Novice to Ninja" />
   					</a>
@@ -36,10 +80,10 @@
   					<a href="http://shop.oreilly.com/product/9780987247827.do">
   						<img src="/images/coffeescript-book.png" alt="Jump Start CoffeeScript" />
   					</a>
-  					<br/>
+  					<!--<br/>
   					<a href="http://www.sitepoint.com/books/mobile1/">
   						<img src="/images/mobile-book.png" alt="Build Mobile Websites and Apps for Smart Devices" />
-  					</a>
+  					</a>-->
   				</li>
 
 <?php endif; // End Widgets ?>

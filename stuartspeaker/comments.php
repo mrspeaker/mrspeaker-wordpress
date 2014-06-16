@@ -60,7 +60,7 @@ foreach ( $comments as $comment )
 <?php if ( get_comment_type() != "comment" ) : ?>
 
 		<li id="comment-<?php comment_ID() ?>" class="<?php veryplaintxt_comment_class() ?>">
-			<div class="comment-meta"> 
+			<div class="comment-meta">
 				<?php printf(__('<span class="pingback-author fn">%1$s</span> <span class="pingback-datetime">on %2$s at %3$s</span>', 'veryplaintxt'),
 					get_comment_author_link(),
 					get_comment_date('l, F j, Y'),
@@ -88,7 +88,7 @@ foreach ( $comments as $comment )
 
 <?php else : ?>
 
-	<div class="formcontainer">	
+	<div class="formcontainer">
 
 		<form id="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post-nospam.php" method="post">
 
@@ -116,7 +116,7 @@ foreach ( $comments as $comment )
 			<div class="form-label"><label for="comment"><?php _e('Comment', 'veryplaintxt') ?></label></div>
 			<div class="form-textarea"><textarea id="comment" name="comment" cols="45" rows="8" tabindex="6"></textarea></div>
 
-        	<div class="form-label">Captcha! Please type "html5" here: <span class="req-field">*</span></div>
+        	<div class="form-label">Captcha! Please type 'radical' here: <span class="req-field">*</span></div>
         	<div class="form-input>"><input type="text" tabindex="7" name="captchab" id="captchab" maxlength="20" size="30" /></div>
 
         	<div style="display:none">

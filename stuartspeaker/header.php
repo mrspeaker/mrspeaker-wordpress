@@ -23,7 +23,7 @@
 <div id="outerWrapper">
     <div id="header">
         <a href="<?php echo get_settings('home') ?>/" title="<?php bloginfo('name') ?>">
-            <h1 id="blog-title">Mr Speaker</h1>
+            <h1 id="blog-title" class="headShader">Mr Speaker</h1>
         </a>
     </div>
     <div id="wrapper">

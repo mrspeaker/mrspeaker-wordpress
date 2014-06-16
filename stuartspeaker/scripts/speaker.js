@@ -1,5 +1,5 @@
-$(document).ready( function(){	
-	
+$(document).ready( function(){
+
 	var yrTotal = psTotal = 0;
 	$( "#archives li" ).each( function(){
 		var match = $(this).text().match(/([0-9]+).+\(([^)]*)\)/, "");
@@ -14,14 +14,16 @@ $(document).ready( function(){
 });
 
 $( window ).load( function(){
-	bubbleController.init();
+	/*
+	// done with the bubbles, i reckon.
+		bubbleController.init();
 	setInterval( function(){
 	    bubbleController.update()
-	}, 200 ); 
+	}, 200 );
 	$( window ).resize(function(){
 		bubbleController.setBoundaries();
-	});	
-	
+	});	*/
+
 	if( $( ".leftcolumn" ).length )
 	{
 		//main page
@@ -49,14 +51,14 @@ function swapTwitterPix(){
 		if(user.text() === "") return true;
 
 		// = "mrspeaker";
-		$.getJSON('http://twitter.com/users/show/'+ (user.text().replace('@', ''))+'.json?callback=?', function(data){ 
+		$.getJSON('http://twitter.com/users/show/'+ (user.text().replace('@', ''))+'.json?callback=?', function(data){
 			if(!data || !data.profile_image_url || data.profile_image_url === ""){
 				return;
 			}
 			$("<img />").attr("src", data.profile_image_url).addClass("twitter_with").insertBefore($(listItem).find("img:first"));
 			$(listItem).find("img:eq(1)").addClass("lil");
 		});
-		
+
 		return true;
 	});
 }
@@ -69,7 +71,7 @@ var bubbleController = {
 	channelWidths : [],
 	minBubbleWidth : 10,
 	maxBubbleWidth : 100,
-	
+
 	init : function(){
 		this.setBoundaries();
 		$("<div></div>").attr("id", "bubbleContainer").appendTo( $("body") );
@@ -86,7 +88,7 @@ var bubbleController = {
 				width,
 				Math.floor( ( ( ( this.maxBubbleWidth + this.minBubbleWidth ) - width ) / 8 ) / 5 ) + 1,
 				"#bubbleContainer" );
-		}	
+		}
 	},
 	getXPos : function( blnLeftOrRight ) {
 		var xpos = ( Math.random() * this.channelWidths[ blnLeftOrRight ] );// + ( this.maxBubbleWidth / 2 );
@@ -96,7 +98,7 @@ var bubbleController = {
 		this.screenWidth = $("body").width();
 		this.leftEdge = $("#outerWrapper").position().left;
 		this.rightEdge = this.leftEdge + 1040;
-		
+
 		this.channelWidths[ 0 ] = this.leftEdge < 150 ? 150 : this.leftEdge;
 		this.channelWidths[ 1 ] = this.screenWidth - this.rightEdge;
 	},
@@ -116,7 +118,7 @@ function bubble(){
 	this.side;
 	this.opacity;
 	this.speed;
-	
+
 	this.init = function( x, y, side, opacity, diameter, speed, addToElement ){
 		this.side = side;
 		this.xPerc = x;
@@ -143,13 +145,13 @@ function bubble(){
 					$(this).fadeIn( 20000 );
 				});*/
 	};
-	
+
 	this.getXPos = function() {
 		this.x = ( bubbleController.channelWidths[ this.side ] * ( this.xPerc / 100 ) ) - ( this.diameter / 2 );
 		this.x += this.side == 1 ? bubbleController.rightEdge : 0;
 		return this.x;
 	};
-	
+
 	this.update = function() {
 		this.y -= this.speed;
 		this.x = this.getXPos();
@@ -162,17 +164,17 @@ function bubble(){
 		}
 		this.updateDom();
 	};
-	
+
 	this.setInit = function(){
-	  
+
 	};
-	
+
 	this.updateDom = function() {
 		this.domRef
 			.css("top", this.y )
 			.css("left", this.x );
 	};
-	
+
 	this.fireFadeIn = function() {
 		this.domRef
 			.hide()
