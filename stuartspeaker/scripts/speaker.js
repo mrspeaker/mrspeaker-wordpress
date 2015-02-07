@@ -25,15 +25,15 @@ $(document).ready(function() {
 
 		function glitch() {
 			var man = Math.random() * 5 | 0;
-			console.log(man);
+
 			if (man < 3) {
 				man = "";
 			} else {
 				man -= 1;
 			}
-			console.log("mrman" + man + ".png");
+
 			$("h1:first").css("background-image", "url(/images/mrman" + man + ".png)");
-			
+
 			setTimeout(function () {
 				glitch();
 			}, Math.random() * 2000 | 0);
