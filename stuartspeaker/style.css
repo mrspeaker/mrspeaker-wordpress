@@ -1,7 +1,7 @@
 /*
 THEME NAME: Stuart's Speaker
 THEME URI: http://www.mrspeaker.net/
-DESCRIPTION: whatevs
+DESCRIPTION: This crud is from, like, 2007.
 VERSION: 0.0.13242242
 AUTHOR: Mr Speaker
 AUTHOR URI: http://www.mrspeaker.net/
@@ -76,7 +76,7 @@ body::-webkit-scrollbar-thumb {
 a {
 	color: #d63695; /*#F140A9;*/
 	text-decoration:none;
-	font-family:courier new, courier, monospace;
+	font-family: "IM Fell DW Pica", courier new, courier, monospace;
 }
 
 a img{ border:0; }
@@ -135,12 +135,12 @@ h2.entry-title, h2.page-title{
 	font-size:13pt;
 	margin-bottom: 5px;
 	margin-left: -10px;
-	padding: 2px 5px 2px 10px;
+	padding: 12px 5px 12px 10px;
 	background-color: #efefef;
 }
 h2.entry-title, h2.entry-title a, h2.page-title a,
 .single div.sidebar h3 {
-	font-family: "IM Fell DW Pica";
+	font-family: "IM Fell DW Pica", monospace;
 	text-decoration:none;
 	/*font-size:14pt;*/
 	color: #333;/*#006faf;*/
@@ -271,6 +271,10 @@ div#globalnav ul li{line-height:200%;margin:0 1em;}
 	display:block;
 }
 
+.entry-meta {
+	display: none !important;
+}
+
 div.comments{margin:3em 0;width:89%;}
 div.comments span.req-field{color:red;}
 div.comments span.unapproved{color:#800;font-style:italic;}
@@ -396,6 +400,8 @@ li#twitterList {
 #postList h2{
 	background: transparent;
 	border-bottom: 2px dotted #ddd;
+	padding-bottom: 2px;
+	padding-top: 4px;
 }
 #postList .cats{
 	font-size:8pt;

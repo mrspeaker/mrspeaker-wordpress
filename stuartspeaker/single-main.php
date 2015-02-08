@@ -2,12 +2,17 @@
 
 	<div id="container">
 		<div id="content" class="hfeed">
-			
+
 <?php the_post(); ?>
 <?php ms_script_includes( true ); ?>
 			<div id="post-<?php the_ID(); ?>" class="<?php veryplaintxt_post_class(); ?>">
 				<h2 class="entry-title"><?php the_title(); ?></h2>
-				<div class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO'); ?>"><?php unset($previousday); printf(__('%1$s', 'veryplaintxt'), the_date('l, F j, Y', false)) ?></abbr></div>
+				<div class="entry-date">
+					<abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO'); ?>">
+						<?php unset($previousday); printf(__('%1$s', 'veryplaintxt'), the_date('l, F j, Y', false)) ?>
+						<?php edit_post_link(__('Edit this entry.', 'veryplaintxt'),'',''); ?>
+					</abbr>
+				</div>
 				<div class="entry-content">
 <?php the_content('<span class="more-link">'.__('Read on for more &raquo;', 'veryplaintxt').'</span>'); ?>
 
@@ -50,8 +55,8 @@
 		</div><!-- #content .hfeed -->
 	</div><!-- #container -->
 
-<?php 
-  get_sidebar() 
+<?php
+  get_sidebar()
 ?>
 <div style="clear:both"></div>
 </div><!--close wrapper-->
