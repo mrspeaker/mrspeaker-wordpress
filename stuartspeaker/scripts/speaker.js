@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-	var glitchLoaded = false;
-
 	function addGitHubLolz(){
 		$("<div></div>", {id: "githubble"}).appendTo("body");
 		$("<div></div>", {id: "gitcommit"})
@@ -42,7 +40,7 @@ $(document).ready(function() {
 
 		[2, 3].map(function (i) {
 			(new Image()).src = "images/mrman" + i + ".png";
-		})
+		});
 
 	}
 

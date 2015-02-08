@@ -15,21 +15,23 @@
 							<span class="lolblink">?&gt;<blink>_</blink></span>
 					</form>
 
-						<div id="nav-below" class="navigation">
-      				<div class="nav-previous"><?php previous_post_link(__('&lsaquo; %link', 'veryplaintxt'), '%title', false, '15') ?></div>
-      				<div class="nav-next"><?php next_post_link(__('%link &rsaquo;', 'veryplaintxt'), '%title',false, '15') ?></div>
-      				<br class="cleaner" />
-      			</div>
   				</li>
 
   				<li class="hentry" id="twitterList">
-            <div style="margin:-20px auto 20px 0">
-              <div style="padding-bottom:10px">
+            <div style="margin:-20px auto 0px 0">
+              <div>
                 <a href="http://twitter.com/mrspeaker" style="font-size:22pt;color:hsl(196, 100%, 47%);" title="Mr Speaker on Twitter">
-                  Say hello on Twitter</a>
+                  @mrspeaker</a>
               </div>
             </div>
   				</li>
+
+          <li class="hentry">
+                      <div id="nav-below" class="navigation">
+                        <div class="nav-previous"><?php previous_post_link(__('&lsaquo; %link', 'veryplaintxt'), '%title', false, '15') ?></div>
+                        <div class="nav-next"><?php next_post_link(__('%link &rsaquo;', 'veryplaintxt'), '%title',false, '15') ?></div>
+                      </div>
+          </li>
 
         <li class="hentry" >
           <h3 style="margin-top:0px">Radical games by Mr Speaker</h3>
@@ -77,13 +79,6 @@
   						<img src="/images/mobile-book.png" alt="Build Mobile Websites and Apps for Smart Devices" />
   					</a>-->
   				</li>
-
-        <li>
-          <a href="http://www.mrspeaker.net/tips">
-            <img src="/images/btc.png" width="80" alt="Spare some bitcoin?" /> &lt- BTC | DOGE -&gt;
-            <img src="/images/doge.png" width="80" />
-          </a>
-        </li>
 
 <?php endif; // End Widgets ?>
 
