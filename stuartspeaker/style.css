@@ -7,23 +7,43 @@ AUTHOR: Mr Speaker
 AUTHOR URI: http://www.mrspeaker.net/
 */
 
+@-moz-keyframes huey {
+    from { filter: hue-rotate(0deg); }
+    to { filter: hue-rotate(360deg); }
+}
+
+@-webkit-keyframes huey {
+  0% {
+    -webkit-filter:hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter:hue-rotate(360deg);
+  }
+}
+
 body{
 	color:hsl(0, 0%, 32%);
 	background:#F9F9F9 url(/images/mrman-up.png) no-repeat center bottom;
 	line-height: 1.8em;
 	margin:0;
 	padding:0;
-/*	font: 14px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;*/
 	font: .9em 'Helvetica Neue', Helvetica, 'Lucida Grande', 'Lucida Sans Unicode', 'Liberation Sans', FreeSans, sans-serif;
 
-	/*text-shadow: 0 1px 0 #fff;*/
-	/*font: normal normal normal large/1.556 Cambria, Georgia, "Times New Roman", Times, serif;
-	Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
-	font-size: 0.95em;*/
+	/*
+		Sorry guys... you is usin' wayyyy too much CPU for this lolz.
+		-moz-animation: huey 120s linear 0s infinite;
+    -webkit-animation: huey 120s linear 0 infinite;
+	*/
+
 }
+
+
 body div#outerWrapper {
 	width: 1050px;
 	margin: 0 auto;
+	    -moz-animation: rotate 20s linear 0s infinite;
+    -webkit-animation: rotate 20s linear 0 infinite;
+
 }
 body div#wrapper{}
 body div#container{
@@ -41,6 +61,7 @@ body::-webkit-scrollbar-thumb {
  background: #999999;
  -webkit-border-radius: 3px;
 }
+
 
 /* for github lolz */
 #githubble {
@@ -95,12 +116,10 @@ div#header{
 #postHead, div#header h1#blog-title{
 	width:100%;
 	height:28px;
-	/*background:transparent url(images/contentab.png) no-repeat 48px 30px;*/
 	background:transparent url(/images/mrman.png) no-repeat center -10px;
 	padding-top:20px;
 	padding-bottom:30px;
 	margin:0;
-	/*text-indent:-9999px;*/
 	color: transparent;
 	height: 327px;
 }
@@ -142,8 +161,7 @@ h2.entry-title, h2.entry-title a, h2.page-title a,
 .single div.sidebar h3 {
 	font-family: "IM Fell DW Pica", monospace;
 	text-decoration:none;
-	/*font-size:14pt;*/
-	color: #333;/*#006faf;*/
+	color: #333;
 }
 .single div.sidebar h3 {
 	font-weight: normal;
@@ -151,7 +169,6 @@ h2.entry-title, h2.entry-title a, h2.page-title a,
 .hentry {
 	padding-bottom:25px;
 	margin-bottom:35px;
-	/*background:transparent url(images/horizontal_dash.png) no-repeat left bottom;*/
 }
 #search.hentry{
 	background: none;
@@ -164,8 +181,7 @@ p {
 	line-height: 1.8em;
 }
 
-/*body.home div#globalnav,body.archive div#globalnav,body.search div#globalnav,body.four04 div#globalnav,body div#globalnav ul li ul,div.access,span#theme-link span.additional-name,span#theme-link span.family-name{display:none;}*/
-div.entry-content .clearer{ clear:both;/*width:99%;*/ }
+div.entry-content .clearer{ clear:both; }
 div#wrapper div.entry-content .html,div#wrapper div.entry-content .download,div#wrapper div.entry-content .pdf,div#wrapper div.entry-content .zip{margin-left:2px;padding:2px 0 2px 19px;}
 div#wrapper div.entry-content .download{ background:url(images/file-download.png) no-repeat center left; }
 div#wrapper div.entry-content .html{ background:url(images/file-html.png) no-repeat center left; }
@@ -191,7 +207,7 @@ body.attachment div.entry-meta{ clear:both;}
 div.entry-date abbr.published{
 	border:none;display:block;
 	margin:0 0 -0.5em;
-	color: #555;/*#006FAF;*/
+	color: #555;
 	font-size:8pt;
 }
 
@@ -394,7 +410,6 @@ li#twitterList {
 #postList{
 	margin-top:35px;
 	margin-bottom: 20px;
-	/*background:transparent url(images/horizontal_dash.png) no-repeat left bottom;*/
 	padding-bottom: 20px;
 }
 #postList h2{

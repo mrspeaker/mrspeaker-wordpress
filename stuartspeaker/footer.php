@@ -7,11 +7,11 @@
 				</ul>
 			</li>
 		</ul>
-		
-		<ul id="footCol2" class="footCol">			
+
+		<ul id="footCol2" class="footCol">
 			<?php wp_list_bookmarks('title_before=<h3>&title_after=</h3>') ?>
 		</ul>
-		
+
 		<ul id="footCol3" class="footCol">
 			<li>
 				<h3><?php _e('Roundabout', 'veryplaintxt'); ?></h3>
@@ -21,7 +21,7 @@
 				</ul>
 			</li>
 		</ul>
-		
+
 		<ul id="footCol4" class="footCol">
 			<li id="archives">
 				<h3><?php _e('Archives', 'veryplaintxt') ?></h3>
@@ -36,7 +36,7 @@
 				<span id="arcYear">12039</span>&nbsp;(<span id="arcTot">lots</span>)
 			</li>
 		</ul>
-		
+
 	</div><!-- #footer -->
 	<br style="clear:both" />
 <?php wp_footer() ?>
@@ -57,5 +57,8 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+<script src="<?php bloginfo('template_directory'); ?>/scripts/Three-Detector.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/scripts/threen.js"></script>
 </body><!-- end trasmission -->
 </html>

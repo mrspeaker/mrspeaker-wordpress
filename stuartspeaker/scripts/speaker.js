@@ -46,7 +46,7 @@ $(document).ready(function() {
 
 	addYearTotalLolz();
 	addGitHubLolz();
-	addGlitchLolz();
+	//addGlitchLolz();
 
 });
 
