@@ -66,7 +66,7 @@ var segments = 32;
 var circleGeometry = new THREE.CircleGeometry( radius, segments );
 var circle = new THREE.Mesh( circleGeometry, material );
 circle.position.y = -1.5;
-circle.rotation.x = 0.7;
+circle.rotation.x = 0.9;
 scene.add( circle );
 
   window._sceen = {
