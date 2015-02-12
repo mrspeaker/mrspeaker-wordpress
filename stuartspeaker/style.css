@@ -7,43 +7,19 @@ AUTHOR: Mr Speaker
 AUTHOR URI: http://www.mrspeaker.net/
 */
 
-@-moz-keyframes huey {
-    from { filter: hue-rotate(0deg); }
-    to { filter: hue-rotate(360deg); }
-}
-
-@-webkit-keyframes huey {
-  0% {
-    -webkit-filter:hue-rotate(0deg);
-  }
-  100% {
-    -webkit-filter:hue-rotate(360deg);
-  }
-}
-
 body{
 	color:hsl(0, 0%, 32%);
 	background:#F9F9F9 url(/images/mrman-up.png) no-repeat center bottom;
 	line-height: 1.8em;
 	margin:0;
 	padding:0;
-	font: .9em 'Helvetica Neue', Helvetica, 'Lucida Grande', 'Lucida Sans Unicode', 'Liberation Sans', FreeSans, sans-serif;
-
-	/*
-		Sorry guys... you is usin' wayyyy too much CPU for this lolz.
-		-moz-animation: huey 120s linear 0s infinite;
-    -webkit-animation: huey 120s linear 0 infinite;
-	*/
-
+	font: .9em 'Helvetica Neue', Helvetica, 'Lucida Grande', FreeSans, sans-serif;
 }
 
 
 body div#outerWrapper {
 	width: 1050px;
 	margin: 0 auto;
-	    -moz-animation: rotate 20s linear 0s infinite;
-    -webkit-animation: rotate 20s linear 0 infinite;
-
 }
 body div#wrapper{}
 body div#container{
@@ -95,7 +71,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 a {
-	color: #d63695; /*#F140A9;*/
+	color: #d63695;
 	text-decoration:none;
 	font-family: "IM Fell DW Pica", courier new, courier, monospace;
 }
