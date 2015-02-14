@@ -100,30 +100,6 @@ div#header{
 	height: 327px;
 }
 
-/* Css shader */
-/*
-@-webkit-keyframes wave{
-	0%{
-		-webkit-filter: custom(
-			url(/scripts/ms.vs) mix(url(/scripts/ms.fs) normal source-atop),
-			20 20,
-			phase 270.0,
-			rot rotateX(30deg));
-	}
-
-	100% {
-		-webkit-filter: custom(
-			url(/scripts/ms.vs) mix(url(/scripts/ms.fs) normal source-atop),
-			20 20,
-			phase -90.0,
-			rot rotateX(30deg));
-	}
-}
-.headShader {
-	-webkit-animation: wave linear 35s infinite;
-	margin-top: -45px !important;
-}*/
-
 h2, h3{ font-family: courier new, courier, monospace; }
 h2{ font-weight: normal;}
 h2.entry-title, h2.page-title{
