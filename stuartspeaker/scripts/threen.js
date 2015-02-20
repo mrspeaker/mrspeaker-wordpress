@@ -10,7 +10,7 @@
     height = 377,
     width = 1050,
     camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000),
-    r = new THREE.WebGLRenderer({ alpha: true }),
+    r = new THREE.WebGLRenderer({ alpha: true,  antialias: true }),
     dom = r.domElement;
 
   r.setSize(width, height);
