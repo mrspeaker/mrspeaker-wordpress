@@ -13,7 +13,7 @@ body{
 	line-height: 1.8em;
 	margin:0;
 	padding:0;
-	font: .9em 'Helvetica Neue', Helvetica, 'Lucida Grande', FreeSans, sans-serif;
+	font: .9em Raleway, 'Helvetica Neue', Helvetica, 'Lucida Grande', FreeSans, sans-serif;
 }
 
 
@@ -73,7 +73,7 @@ body::-webkit-scrollbar-thumb {
 a {
 	color: #d63695;
 	text-decoration:none;
-	font-family: "IM Fell DW Pica", courier new, courier, monospace;
+	font-family: Raleway, courier new, courier, monospace;
 }
 
 a img{ border:0; }
@@ -107,14 +107,27 @@ h2.entry-title, h2.page-title{
 	margin-bottom: 5px;
 	margin-left: -10px;
 	padding: 12px 5px 12px 10px;
-	background-color: #efefef;
+	/*background-color: #efefef;*/
+
+  -webkit-background-size: 20px 20px;
+	-moz-background-size: 20px 20px;
+	background-size: 20px 20px;
+	background-image: linear-gradient(-45deg,
+        transparent,
+        transparent 48%,
+        #ddd 48%,
+        #ddd 52%,
+        transparent 52%,
+        transparent);
 }
 h2.entry-title, h2.entry-title a, h2.page-title a,
 .single div.sidebar h3 {
-	font-family: "IM Fell DW Pica", monospace;
+	font-family: Raleway, monospace;
 	text-decoration:none;
 	color: #333;
 }
+
+
 .single div.sidebar h3 {
 	font-weight: normal;
 }
@@ -159,7 +172,8 @@ body.attachment div.entry-meta{ clear:both;}
 div.entry-date abbr.published{
 	border:none;display:block;
 	margin:0 0 -0.5em;
-	color: #555;
+	padding-bottom: 10px;
+	color: #888;
 	font-size:8pt;
 }
 
@@ -289,10 +303,6 @@ p.note a { color: #006FAF; }
 	color: #333;
 	font-family: courier new;
 	font-size: 10pt;
-	-moz-box-shadow: 0 2px 3px #999;
-	-webkit-box-shadow: 0 2px 3px #999;
-	-o-box-shadow: 0 2px 3px #999;
-	box-shadow: 0 2px 3px #999;
 }
 .intro a {
 	font-weight: bold;

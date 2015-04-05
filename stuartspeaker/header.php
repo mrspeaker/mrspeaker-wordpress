@@ -8,7 +8,8 @@
     <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url') ?>" title="<?php bloginfo('name') ?> RSS feed" />
     <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php bloginfo('name') ?> comments RSS feed" />
     <link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
-    <link  href="http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,300' rel='stylesheet' type='text/css'>
+
 
     <meta http-equiv="content-type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
     <meta name="verify-v1" content="Su0WP34ksvUTeQiv+x7000nj1PuFSwt4BEMt3aZIny4=" />

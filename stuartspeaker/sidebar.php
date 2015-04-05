@@ -12,7 +12,6 @@
 							and <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'veryplaintxt') ?>" /><input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="10" /><br/>
 							To the west lies an <a href="<?php bloginfo('rss2_url') ?>" title="<?php echo wp_specialchars(get_bloginfo('name'), 1) ?> RSS 2.0 Feed" rel="alternate" type="application/rss+xml"><?php _e('RSS Feed', 'veryplaintxt') ?></a>.
 							</p>
-							<span class="lolblink">?&gt;<blink>_</blink></span>
 					</form>
 
   				</li>
@@ -34,18 +33,7 @@
           </li>
 
         <li class="hentry" >
-          <h3 style="margin-top:0px">Radical games by Mr Speaker</h3>
           <div style="margin-left: 30px">
-            <strong>iPad &amp; iPhone</strong>
-            <div style="clear:both">
-              <a href="https://itunes.apple.com/us/app/wafty-man/id824792309">
-                <img src="/images/wafty-side.png" style="width:40%" alt="Wafty Man for iPhone &amp; iPad" />
-              </a>
-              <a href="https://itunes.apple.com/us/app/mister-moonboots/id806971888">
-                <img src="/images/mrmoon-side.png" style="width:40%" alt="Mister Moonboots for iPad" />
-              </a>
-            </div>
-            <strong>HTML5 games</strong>
             <div style="clear:both;margin-left:-10px;">
               <a href="http://www.mrspeaker.net/dev/ld27">
                 <img src="/images/tfsCarl.png" width="80" height="80" alt="Time Flies Straight" class="frame-left">
@@ -66,15 +54,14 @@
         </li>
 
 				<li class="hentry" >
-					<h3 style="margin-top:0px">Serious books by Mr Speaker (and friends)</h3>
-  					<a href="http://www.sitepoint.com/books/jquery1/">
+						<a href="http://www.sitepoint.com/books/jquery1/">
   						<img src="/images/jQuery-ninja.jpg" alt="jQuery: Novice to Ninja" />
   					</a>
-  					<br/>
-  					<a href="http://shop.oreilly.com/product/9780987247827.do">
-  						<img src="/images/coffeescript-book.png" alt="Jump Start CoffeeScript" />
-  					</a>
   					<!--<br/>
+            a href="http://shop.oreilly.com/product/9780987247827.do">
+              <img src="/images/coffeescript-book.png" alt="Jump Start CoffeeScript" />
+            </a>
+  					<br/>
   					<a href="http://www.sitepoint.com/books/mobile1/">
   						<img src="/images/mobile-book.png" alt="Build Mobile Websites and Apps for Smart Devices" />
   					</a>-->
