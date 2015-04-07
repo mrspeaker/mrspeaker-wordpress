@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
-	<div id="container">
+	<div id="container" style="margin:auto;float:none;width: 600px">
 		<div id="content" class="hfeed">
 
 <?php the_post(); ?>
 <?php ms_script_includes( true ); ?>
 			<div id="post-<?php the_ID(); ?>" class="<?php veryplaintxt_post_class(); ?>">
-				<h2 class="entry-title"><?php the_title(); ?></h2>
+				<h2 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf(__('Permalink to %s', 'veryplaintxt'), wp_specialchars(get_the_title(), 1)) ?>" rel="bookmark"><?php the_title() ?></a></h2>
 				<div class="entry-date">
 					<abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO'); ?>">
 						<?php unset($previousday); printf(__('%1$s', 'veryplaintxt'), the_date('l, F j, Y', false)) ?>
@@ -50,13 +50,21 @@
 				<div class="nav-next"><?php next_post_link(__('%link &rsaquo;', 'veryplaintxt'), '%title',false, '15') ?></div>
 				<br class="cleaner" />
 			</div>
-<?php comments_template(); ?>
+
+			<div id="footer-bits">
+				<?php comments_template(); ?>
+				<div id="footer-about">
+					Thank you for stoping by the <a href="/">homepage of Mr Speaker</a>.
+					For more exciting things, be sure to follow along with
+					<a href="https://twitter.com/mrspeaker" style="color:hsl(196, 100%, 47%);">Mr Speaker's <strong>Twitter</strong> shenanigans</a>!
+				</div>
+			</div>
 
 		</div><!-- #content .hfeed -->
 	</div><!-- #container -->
 
 <?php
-  get_sidebar()
+  // get_sidebar()
 ?>
 <div style="clear:both"></div>
 </div><!--close wrapper-->

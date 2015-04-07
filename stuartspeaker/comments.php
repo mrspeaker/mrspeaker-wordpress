@@ -81,7 +81,7 @@ foreach ( $comments as $comment )
 
 <?php if ( 'open' == $post->comment_status ) : ?>
 
-	<h3 id="respond"><?php _e('Post a Comment', 'veryplaintxt') ?></h3>
+	<!--h3 id="respond"><?php _e('Post a Comment', 'veryplaintxt') ?></h3-->
 <?php if ( get_option('comment_registration') && !$user_ID ) : ?>
 	<div id="mustlogin"><?php printf(__('You must be <a href="%s" title="Log in">logged in</a> to post a comment.', 'veryplaintxt'),
 			get_option('siteurl') . '/wp-login.php?redirect_to=' . get_permalink() ) ?></div>
@@ -114,7 +114,7 @@ foreach ( $comments as $comment )
 
 
 			<div class="form-label"><label for="comment"><?php _e('Comment', 'veryplaintxt') ?></label></div>
-			<div class="form-textarea"><textarea id="comment" name="comment" cols="45" rows="8" tabindex="6"></textarea></div>
+			<div class="form-textarea"><textarea id="comment" name="comment" cols="40" rows="8" tabindex="6"></textarea></div>
 
         	<div class="form-label">Captcha! Please type 'radical' here: <span class="req-field">*</span></div>
         	<div class="form-input>"><input type="text" tabindex="7" name="captchab" id="captchab" maxlength="20" size="30" /></div>
