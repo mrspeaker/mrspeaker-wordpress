@@ -1,7 +1,11 @@
 	<div id="footer">
+		<ul class="footCol"></ul>
+
 		<ul id="footCol1" class="footCol">
 			<li id="categories">
-				<h3><?php _e('Categories', 'veryplaintxt'); ?></h3>
+				<h3>
+					<span><?php _e('Categories', 'veryplaintxt'); ?></span>
+				</h3>
 				<ul>
 					<?php wp_list_categories('title_li=&orderby=name&use_desc_for_title=1&hierarchical=1') ?>
 				</ul>
@@ -9,12 +13,14 @@
 		</ul>
 
 		<ul id="footCol2" class="footCol">
-			<?php wp_list_bookmarks('title_before=<h3>&title_after=</h3>') ?>
+			<?php wp_list_bookmarks('title_before=<h3><span>&title_after</span></h3>') ?>
 		</ul>
+
+		<ul id="footSpace" class="footCol"></ul>
 
 		<ul id="footCol3" class="footCol">
 			<li>
-				<h3><?php _e('Roundabout', 'veryplaintxt'); ?></h3>
+				<h3><span><?php _e('Roundabout', 'veryplaintxt'); ?></span></h3>
 				<ul>
 					<li><?php veryplaintxt_admin_hCard(); ?></li>
 					<li><a href="<?php echo get_settings('home') ?>/" title="<?php bloginfo('name') ?>">Hompage</a></li>
@@ -24,7 +30,7 @@
 
 		<ul id="footCol4" class="footCol">
 			<li id="archives">
-				<h3><?php _e('Archives', 'veryplaintxt') ?></h3>
+				<h3><span><?php _e('Archives', 'veryplaintxt') ?></span></h3>
 				<ul>
 					<?php wp_get_archives('type=yearly&show_post_count=1') ?>
 				</ul>
@@ -37,8 +43,10 @@
 			</li>
 		</ul>
 
+		<ul class="footCol"></ul>
+
+		<br style="clear:both" />
 	</div><!-- #footer -->
-	<br style="clear:both" />
 <?php wp_footer() ?>
 
 </div><!-- #wrapper -->

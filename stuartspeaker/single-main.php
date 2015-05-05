@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 
-	<div id="container" style="margin:auto;float:none;width: 600px">
-		<div id="content" class="hfeed">
+	<div id="container">
+
+		<div id="content">
 
 <?php the_post(); ?>
 <?php ms_script_includes( true ); ?>
@@ -60,7 +61,7 @@
 				</div>
 			</div>
 
-		</div><!-- #content .hfeed -->
+		</div><!-- #content -->
 	</div><!-- #container -->
 
 <?php

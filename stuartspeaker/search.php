@@ -1,7 +1,7 @@
 <?php get_header() ?>
 
 	<div id="container">
-		<div id="content" class="hfeed">
+		<div id="content">
 
 <?php if (have_posts()) : ?>
 
@@ -50,10 +50,9 @@
 
 <?php endif; ?>
 
-		</div><!-- #content .hfeed -->
+		</div><!-- #content-->
 	</div><!-- #container -->
 
-<?php get_sidebar() ?>
 <div style="clear:both"></div>
 </div><!--close wrapper-->
 <?php get_footer() ?>
