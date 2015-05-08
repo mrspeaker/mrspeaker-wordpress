@@ -13,7 +13,7 @@
 		</ul>
 
 		<ul id="footCol2" class="footCol">
-			<?php wp_list_bookmarks('title_before=<h3><span>&title_after</span></h3>') ?>
+			<?php wp_list_bookmarks('title_before=<h3><span>&title_after=</span></h3>') ?>
 		</ul>
 
 		<ul id="footSpace" class="footCol"></ul>
@@ -47,9 +47,10 @@
 
 		<br style="clear:both" />
 	</div><!-- #footer -->
-<?php wp_footer() ?>
+	<?php wp_footer() ?>
 
-</div><!-- #wrapper -->
+	</div><!-- #wrapper -->
+</div><!-- #outerWrapper -->
 
 <script type="text/javascript" src="/scripts/underscore.js" charset="utf-8"></script>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/jquery.oneup.js"></script>

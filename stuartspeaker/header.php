@@ -12,7 +12,7 @@
     <meta name="verify-v1" content="Su0WP34ksvUTeQiv+x7000nj1PuFSwt4BEMt3aZIny4=" />
     <?php wp_head() ?>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript">
         var baseUrl = "<?php bloginfo('template_directory'); ?>",
             template_directory_path = "<?php bloginfo('template_directory'); ?>";
     </script>
@@ -20,7 +20,7 @@
 <body>
 <div id="outerWrapper">
     <div id="header">
-        <a href="<?php echo get_settings('home') ?>/" title="<?php bloginfo('name') ?>">
+        <a id="placeToBe" href="<?php echo get_settings('home') ?>/" title="<?php bloginfo('name') ?>">
             <h1 id="blog-title" class="headShader">Mr Speaker</h1>
         </a>
     </div>
