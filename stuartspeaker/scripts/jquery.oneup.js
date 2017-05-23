@@ -1,11 +1,13 @@
-/* 
-	Do 1UP style notification 
+/* global jQuery */
+
+/*
+	Do 1UP style notification
 	version 0.1
-	
+
 	As inspired by Jeremy Keith post: http://adactio.com/journal/1626/
 */
 (function($) {
-/*
+  /*
  * Do a "1UP notification" on relative/absolute elements
  *
  * @name	oneUp
@@ -20,25 +22,27 @@
  *
  */
 
-$.fn.oneUp = function(options, callback){
-	if($.isFunction(options)){
-		callback = options;
-		options = null;
-	}
-	settings = jQuery.extend({
-		distance: 20,
-		speed: "slow",
-		callback: callback
-	}, options);
+  $.fn.oneUp = function(options, callback) {
+    if ($.isFunction(options)) {
+      callback = options;
+      options = null;
+    }
+    const settings = jQuery.extend(
+      {
+        distance: 20,
+        speed: "slow",
+        callback: callback
+      },
+      options
+    );
 
-	return this.each(function(){
-		$(this).show().animate({ 
-				top:"-=" + settings.distance + "px", 
-				opacity:"toggle" 
-			}, settings.speed, function(){
-				$(this).css({top: ""}).hide( settings.callback );
-			});
-		});
-};
-
+    return this.each(function() {
+      $(this).show().animate({
+        top: "-=" + settings.distance + "px",
+        opacity: "toggle"
+      }, settings.speed, function() {
+        $(this).css({ top: "" }).hide(settings.callback);
+      });
+    });
+  };
 })(jQuery);

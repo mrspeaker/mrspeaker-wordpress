@@ -52,7 +52,7 @@
 	</div><!-- #wrapper -->
 </div><!-- #outerWrapper -->
 
-<script type="text/javascript" src="/scripts/underscore.js" charset="utf-8"></script>
+<!--script type="text/javascript" src="/scripts/underscore.js" charset="utf-8"></script-->
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/jquery.oneup.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/speaker.js"></script>
 <script type="text/javascript">
@@ -67,7 +67,7 @@
   })();
 </script>
 <script src="<?php bloginfo('template_directory'); ?>/scripts/Three-Detector.js" charset="utf-8"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/scripts/threen.js"></script>
 <!--script src="https://cdn.socket.io/socket.io-1.4.5.js"></script-->
 </body>

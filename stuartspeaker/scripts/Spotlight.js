@@ -7,8 +7,10 @@
 	Requires a DIV element(name set in constants) and an alpha PNG (name set in constants).
 	Run with: Spotlight.Init() after div has been loaded.
 */
+
 var Spotlight = {
   /* Constants */
+
   CANVAS_HEIGHT: 500,
   CANVAS_WIDTH: 450,
   SQUARE_SIZE: 100,
@@ -18,11 +20,13 @@ var Spotlight = {
   ANIM_IMAGE: "/images/white.png",
 
   /* DOM element holders */
+
   Masks: [],
   Light: null,
   Container: null,
 
   /* Member fields */
+
   containerPosArray: null,
 
   Init: function() {
@@ -92,9 +96,11 @@ var Spotlight = {
   },
 
   /* Mouse and DOM Helper methods from Quirksmode.org */
+
   UpdateFromMouseCoords: function(e) {
-    var posx = (posy = 0);
-    if (!e) var e = window.event;
+    var posx = 0;
+    var posy = 0;
+    if (!e) e = window.event;
     if (e.pageX || e.pageY) {
       posx = e.pageX;
       posy = e.pageY;
@@ -117,7 +123,8 @@ var Spotlight = {
   },
 
   FindDomObjectPosition: function(obj) {
-    var curleft = (curtop = 0);
+    var curleft = 0;
+    var curtop = 0;
     if (obj.offsetParent) {
       do {
         curleft += obj.offsetLeft;
