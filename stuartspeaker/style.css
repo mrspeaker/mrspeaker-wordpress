@@ -37,11 +37,22 @@ body div#container{
 
 #post-0 {
 
-	border-top: 1px dashed #ddd;
+	/*border-top: 1px dashed #ddd;*/
 	border-bottom: 1px dashed #ddd;
 	padding-bottom: 1em;
 	margin-bottom: 4em;
 
+}
+
+.lolblink {
+  font-family: monospace;
+}
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
 }
 
 /* for github lolz */

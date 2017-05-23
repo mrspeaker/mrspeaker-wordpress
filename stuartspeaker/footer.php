@@ -69,5 +69,6 @@
 <script src="<?php bloginfo('template_directory'); ?>/scripts/Three-Detector.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/scripts/threen.js"></script>
-</body><!-- end trasmission -->
+<!--script src="https://cdn.socket.io/socket.io-1.4.5.js"></script-->
+</body>
 </html>

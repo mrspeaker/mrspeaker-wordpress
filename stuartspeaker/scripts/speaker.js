@@ -19,36 +19,9 @@ $(document).ready(function() {
 		$( "#arcTot" ).text( psTotal );
 	}
 
-	function addGlitchLolz() {
-
-		function glitch() {
-			var man = Math.random() * 5 | 0;
-
-			if (man < 3) {
-				man = "";
-			} else {
-				man -= 1;
-			}
-
-			$("h1:first").css("background-image", "url(/images/mrman" + man + ".png)");
-
-			setTimeout(function () {
-				glitch();
-			}, Math.random() * 2000 | 0);
-		}
-		setTimeout(glitch, 5000);
-
-		[2, 3].map(function (i) {
-			(new Image()).src = "images/mrman" + i + ".png";
-		});
-
-	}
-
 	addYearTotalLolz();
 	addGitHubLolz();
-	//addGlitchLolz();
+
+	// var socket = io.connect("http://192.241.174.97:8080");
 
 });
-
-
-
