@@ -53,7 +53,7 @@
 			</div>
 
 			<div id="footer-bits">
-				<?php comments_template(); ?>
+				<?php /*comments_template();*/ ?>
 				<div id="footer-about">
 					Thank you for stoping by the <a href="/">homepage of Mr Speaker</a>.
 					For more exciting things, be sure to follow along with

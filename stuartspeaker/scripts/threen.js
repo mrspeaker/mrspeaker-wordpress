@@ -6,10 +6,10 @@
   }
 
   const treeImg = THREE.ImageUtils.loadTexture(
-    "/images/tree.png",
+    "/images/tree2.png",
     null,
     () => {
-      $("h1:first").fadeOut(function() {
+      $("h1:first").fadeOut("slow", () => {
         $("h1:first").css("background-image", "none");
         $("h1:first").fadeIn();
       });
@@ -45,10 +45,6 @@
     dom.style.left = 0;
     dom.setAttribute("id", "webngl");
     $("#placeToBe").append(dom);
-
-    // dom.addEventListener("click", function () {
-    //   window.location.href = "http://www.mrspeaker.net/";
-    // }, false);
 
     class Trees {
       constructor () {
@@ -133,7 +129,7 @@
       if (!last) {
         last = time;
       }
-      dt = time - last;
+      dt = Math.min(time - last, 33.333);
       last = time;
 
       time *= 0.0001;
