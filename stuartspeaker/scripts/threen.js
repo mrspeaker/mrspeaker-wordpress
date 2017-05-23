@@ -1,133 +1,153 @@
-(function () {
+/*global $ THREE Detector*/
 
+(function() {
   if (!THREE || !Detector || !Detector.webgl) {
     return;
   }
 
-  $("h1:first").css("background-image", "none");
+  const treeImg = THREE.ImageUtils.loadTexture(
+    "/images/tree.png",
+    null,
+    () => {
+      $("h1:first").fadeOut(function() {
+        $("h1:first").css("background-image", "none");
+        $("h1:first").fadeIn();
+      });
+      anotherDimension();
+    }
+  );
+  //treeImg.magFilter = THREE.NearestFilter;
+  //treeImg.minFilter = THREE.NearestFilter;
 
-  var scene = new THREE.Scene(),
-    height = 377,
-    width = 1050,
-    camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000),
-    r = new THREE.WebGLRenderer({ alpha: true,  antialias: true }),
-    dom = r.domElement;
+  function anotherDimension() {
+    const scene = new THREE.Scene();
+    const height = 377;
+    let width = $(document.body).width();
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    const r = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const dom = r.domElement;
 
-  var geometry = new THREE.Geometry(),
-      materials = [];
+    window.addEventListener(
+      "resize",
+      function() {
+        width = $(document.body).width();
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        r.setSize(width, height);
+      },
+      false
+    );
 
-  for (i = 0; i < 300; i ++) {
-    var vertex = new THREE.Vector3();
-    vertex.x = Math.random() * 2000 - 1000;
-    vertex.y = Math.random() * 2000 - 1000;
-    vertex.z = Math.random() * 2000 - 1000;
-    geometry.vertices.push( vertex );
-  }
+    r.setSize(width, height);
+    r.setClearColor(0, 0);
+    dom.style.position = "absolute";
+    dom.style.top = 0;
+    dom.style.left = 0;
+    dom.setAttribute("id", "webngl");
+    $("#placeToBe").append(dom);
 
-  parameters = [
-    [ [1, 1, 0.8], 5 ],
-    [ [0.95, 1, 0.8], 4 ],
-    [ [0.90, 1, 0.8], 3 ],
-    [ [0.85, 1, 0.8], 2 ],
-    [ [0.80, 1, 0.8], 1 ]
-  ];
+    // dom.addEventListener("click", function () {
+    //   window.location.href = "http://www.mrspeaker.net/";
+    // }, false);
 
-  var color, size, i, particles;
-  for (i = 0; i < parameters.length; i ++) {
-    color = parameters[i][0];
-    size  = parameters[i][1];
+    class Trees {
+      constructor () {
+        const treeGeometry = new THREE.PlaneBufferGeometry(1, 1, 1, 1);
+        const treeMaterial = new THREE.MeshLambertMaterial({
+          transparent: true,
+          map: treeImg
+        });
 
-    materials[i] = new THREE.PointCloudMaterial( { size: size } );
-    particles = new THREE.PointCloud( geometry, materials[i] );
-    particles.rotation.x = Math.random() * 6;
-    particles.rotation.y = Math.random() * 6;
-    particles.rotation.z = Math.random() * 6;
-    scene.add( particles );
-  }
+        this.trees = [];
+        for (let i = 0; i < 60; i++) {
+          const treeMesh = new THREE.Mesh(treeGeometry, treeMaterial);
+          this.trees.push(treeMesh);
+          treeMesh.position.x = (Math.random() - 0.5) * (width * (0.014 * 2)); //(Math.random() - 0.5) *
+          treeMesh.position.y = -1.1;
+          treeMesh.position.z = 1 - Math.random() * 5;
+          treeMesh.scale.set(0.7, 0.7, 0.7);
+          scene.add(treeMesh);
+        }
+      }
 
-  r.setSize(width, height);
-  r.setClearColor(0x000000, 0);
-  dom.style.position = "absolute";
-  dom.style.top = 0;
-  dom.setAttribute("id", "webngl");
-  $("#header").append(dom);
-
-  dom.addEventListener("click", function () {
-    window.location.href = "http://www.mrspeaker.net/";
-  }, false);
-
-  var geometry = new THREE.BoxGeometry(1, 1, 1),
-    material = new THREE.MeshPhongMaterial( { color: 0xf0f0f0 } );
-
-  var cubes = [
-    [0, 0.1],
-    [0, 0.1],
-    [0, 0.1]
-  ].map(function (c, i) {
-    var cube = new THREE.Mesh(geometry, material);
-    cube.position.x = c[0];
-    cube.position.y = c[1];
-    cube.rotation.x = ((Math.PI * 2) / 3) * i;
-    cube.rotation.y = ((Math.PI * 2) / 3) * i;
-    cube._rotSpeed = (1 + (Math.random())) * 0.005;
-    return cube;
-  });
-
-  cubes.forEach(function (c) { scene.add(c); });
-
-  camera.position.z = 2.9;
-
-  var light = new THREE.DirectionalLight(0xf7f7f7, 0.5);
-  light.position.set(0, 0, 1);
-  scene.add(light);
-
-  var light2 = new THREE.DirectionalLight(0xf7f7f7, 0.5);
-  light2.position.set(0, 1, 1);
-  scene.add(light2);
-
-  var light = new THREE.AmbientLight( 0x404040 ); // soft white light
-  scene.add( light );
-
-  var material = new THREE.MeshBasicMaterial({
-    color: 0xdedede,
-    transparent: true,
-    opacity: 0.5
-  });
-
-  var radius = 0.4;
-  var segments = 32;
-
-  var circleGeometry = new THREE.CircleGeometry( radius, segments );
-  var circle = new THREE.Mesh( circleGeometry, material );
-  circle.position.y = -1.5;
-  circle.rotation.x = 0.9;
-  scene.add(circle);
-
-  function cubanimate (time) {
-    time *= 0.0001;
-    requestAnimationFrame(cubanimate);
-    cubes.forEach(function (c) {
-      c.rotation.x += c._rotSpeed * (Math.sin(Date.now() / 5000));
-      c.rotation.y += c._rotSpeed * (Math.cos(Date.now() / 5000));
-    });
-    circle.scale.x = (10 + Math.sin(Date.now() / 1000)) * 0.15
-    circle.scale.y = (10 + Math.sin(Date.now() / 1000)) * 0.15
-
-    for (i = 0; i < scene.children.length; i++) {
-      var obj = scene.children[i];
-      if (obj instanceof THREE.PointCloud) {
-        obj.rotation.y = time * (i < 4 ? i + 1 : - (i + 1));
+      tick(dt) {
+        this.trees.forEach(t => {
+          t.translateX(-0.0005 * dt);
+          if (t.position.x < -width * 0.014) {
+            t.position.x = width * 0.014 + Math.random();
+            t.position.z = 1 - Math.random() * 5;
+          }
+        });
       }
     }
 
-    for (i = 0; i < materials.length; i++) {
-      color = parameters[i][0];
-      var h = (360 * (color[0] + time) % 360 ) / 360;
-      materials[i].color.setHSL(h, 0.2, color[2]);
+    const trees = new Trees();
+    scene.fog = new THREE.Fog(15790320, 0, 4);
+
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshPhongMaterial({ color: 15790320 });
+
+    const cubes = [[0, 0.1], [0, 0.1], [0, 0.1]].map((c, i) => {
+      const cube = new THREE.Mesh(geometry, material);
+      cube.position.x = c[0];
+      cube.position.y = c[1];
+      cube.rotation.x = Math.PI * 2 / 3 * i;
+      cube.rotation.y = Math.PI * 2 / 3 * i;
+      cube._rotSpeed = (1 + Math.random()) * 0.005;
+      return cube;
+    });
+
+    cubes.forEach(c => scene.add(c));
+    camera.position.z = 2.9;
+
+    const light = new THREE.DirectionalLight(16250871, 0.5);
+    light.position.set(0, 0, 1);
+    scene.add(light);
+
+    const light2 = new THREE.DirectionalLight(16250871, 0.5);
+    light2.position.set(0, 1, 1);
+    scene.add(light2);
+
+    const light3 = new THREE.AmbientLight(4210752); // soft white light
+    scene.add(light3);
+
+    const circleMaterial = new THREE.MeshBasicMaterial({
+      color: 14606046,
+      transparent: true,
+      opacity: 0.5
+    });
+
+    var radius = 0.4;
+    var segments = 32;
+
+    var circleGeometry = new THREE.CircleGeometry(radius, segments);
+    var circle = new THREE.Mesh(circleGeometry, circleMaterial);
+    circle.position.y = -1.7;
+    circle.rotation.x = 0.95;
+    circle.position.z = -0.3;
+    scene.add(circle);
+
+    let last;
+    let dt;
+    function cubanimate(time) {
+      if (!last) {
+        last = time;
+      }
+      dt = time - last;
+      last = time;
+
+      time *= 0.0001;
+      requestAnimationFrame(cubanimate);
+      cubes.forEach(c => {
+        c.rotation.x += c._rotSpeed * Math.sin(Date.now() / 5000);
+        c.rotation.y += c._rotSpeed * Math.cos(Date.now() / 5000);
+      });
+      circle.scale.x = (10 + Math.sin(Date.now() / 1000)) * 0.15;
+      circle.scale.y = (10 + Math.sin(Date.now() / 1000)) * 0.15;
+
+      trees.tick(dt);
+      r.render(scene, camera);
     }
-
-    r.render(scene, camera);
-  };
-  requestAnimationFrame(cubanimate);
-
-}());
+    requestAnimationFrame(cubanimate);
+  }
+})();
