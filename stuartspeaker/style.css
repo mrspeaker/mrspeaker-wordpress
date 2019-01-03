@@ -16,12 +16,12 @@ html {
 
 
 body{
-	color:hsl(0, 0%, 32%);
+	color:hsl(0, 0%, 22%);
 	background:#F9F9F9 url(/images/mrman-up.png) no-repeat center bottom;
 	line-height: 1.8em;
 	margin:0;
 	padding:0;
-	font: .9em Raleway, 'Helvetica Neue', Helvetica, 'Lucida Grande', FreeSans, sans-serif;
+	font: 1.1em Raleway, 'Helvetica Neue', Helvetica, 'Lucida Grande', FreeSans, sans-serif;
 }
 
 
@@ -116,7 +116,7 @@ div#header h1#blog-title{
 h2{ font-weight: normal;}
 h2.entry-title,
 h2.page-title {
-	font-size:13pt;
+	font-size:14pt;
 	margin-bottom: 5px;
 	margin-left: -10px;
 	padding: 12px 5px 12px 10px;
@@ -274,7 +274,7 @@ code, pre{ font-family:"courier new",courier,monospace; }
 code{ font-weight: bold;}
 pre {
 	padding: 3px;
-	font-size: 9pt;
+	font-size: 10pt;
 	overflow: auto; line-height: 1.2em;
 	background-color: #333;
 	color: #0f0;
@@ -301,7 +301,7 @@ p.note a { color: #006FAF; }
 	padding: 5px;
 	color: #333;
 	font-family: courier new;
-	font-size: 10pt;
+	font-size: 11pt;
 }
 .intro a {
 	font-weight: bold;
