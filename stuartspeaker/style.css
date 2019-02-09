@@ -21,7 +21,7 @@ body{
 	line-height: 1.8em;
 	margin:0;
 	padding:0;
-	font: 1.1em Raleway, 'Helvetica Neue', Helvetica, 'Lucida Grande', FreeSans, sans-serif;
+	font: 1.1em 'Helvetica Neue', Helvetica, 'Lucida Grande', FreeSans, sans-serif;
 }
 
 
@@ -89,7 +89,7 @@ body div#container{
 a {
 	color: #d63695;
 	text-decoration:none;
-	font-family: Raleway, courier new, courier, monospace;
+	font-family: courier new, courier, monospace;
 }
 
 a img{ border:0; }
@@ -136,7 +136,7 @@ h2.page-title {
 	background-position: right 12px center;
 }
 h2.entry-title, h2.entry-title a, h2.page-title a {
-	font-family: Raleway, monospace;
+	font-family: monospace;
 	text-decoration:none;
 	color: #333;
 	background-color: #f9f9f9;
@@ -333,7 +333,6 @@ p.note a { color: #006FAF; }
 	background:-webkit-gradient(linear,left top,left bottom,from(#d7d7d7),to(#ababab));
 	background:-moz-linear-gradient(top,#d7d7d7,#ababab);
 }
-
 
 #games {
 	width: 60%;
