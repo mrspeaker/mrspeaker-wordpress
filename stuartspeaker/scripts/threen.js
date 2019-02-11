@@ -5,17 +5,13 @@
     return;
   }
 
-  const treeImg = THREE.ImageUtils.loadTexture(
-    "/images/tree2.png",
-    null,
-    () => {
-      $("h1:first").fadeOut("slow", () => {
-        $("h1:first").css("background-image", "none");
-        $("h1:first").fadeIn();
-      });
-      anotherDimension();
-    }
-  );
+  const treeImg = new THREE.TextureLoader().load("/images/tree2.png", () => {
+    $("h1:first").fadeOut("slow", () => {
+      $("h1:first").css("background-image", "none");
+      $("h1:first").fadeIn();
+    });
+    anotherDimension();
+  });
   //treeImg.magFilter = THREE.NearestFilter;
   //treeImg.minFilter = THREE.NearestFilter;
 
@@ -47,7 +43,7 @@
     $("#placeToBe").append(dom);
 
     class Trees {
-      constructor () {
+      constructor() {
         const treeGeometry = new THREE.PlaneBufferGeometry(1, 1, 1, 1);
         const treeMaterial = new THREE.MeshLambertMaterial({
           transparent: true,
@@ -58,20 +54,20 @@
         for (let i = 0; i < 60; i++) {
           const treeMesh = new THREE.Mesh(treeGeometry, treeMaterial);
           this.trees.push(treeMesh);
-          treeMesh.position.x = (Math.random() - 0.5) * (width * (0.014 * 2)); //(Math.random() - 0.5) *
+          treeMesh.position.x = (Math.random() - 0.5) * (width * (0.014 * 2));
           treeMesh.position.y = -1.1;
           treeMesh.position.z = 1 - Math.random() * 5;
-          treeMesh.scale.set(0.7, 0.7, 0.7);
+          treeMesh.scale.set(0.8, 0.8, 0.8);
           scene.add(treeMesh);
         }
       }
 
       tick(dt) {
         this.trees.forEach(t => {
-          t.translateX(-0.0005 * dt);
-          if (t.position.x < -width * 0.014) {
-            t.position.x = width * 0.014 + Math.random();
-            t.position.z = 1 - Math.random() * 5;
+          t.translateZ(-0.0001 * dt);
+          if (t.position.z < -1.5) {
+            t.position.x = (Math.random() - 0.5) * (width * (0.014 * 2)); // width * 0.014 + Math.random();
+            t.position.z = 0.5; //1 - Math.random() * 5;
           }
         });
       }
@@ -87,8 +83,8 @@
       const cube = new THREE.Mesh(geometry, material);
       cube.position.x = c[0];
       cube.position.y = c[1];
-      cube.rotation.x = Math.PI * 2 / 3 * i;
-      cube.rotation.y = Math.PI * 2 / 3 * i;
+      cube.rotation.x = ((Math.PI * 2) / 3) * i;
+      cube.rotation.y = ((Math.PI * 2) / 3) * i;
       cube._rotSpeed = (1 + Math.random()) * 0.005;
       return cube;
     });
@@ -141,7 +137,7 @@
       circle.scale.x = (10 + Math.sin(Date.now() / 1000)) * 0.15;
       circle.scale.y = (10 + Math.sin(Date.now() / 1000)) * 0.15;
 
-      trees.tick(dt);
+      // trees.tick(dt);
       r.render(scene, camera);
     }
     requestAnimationFrame(cubanimate);
