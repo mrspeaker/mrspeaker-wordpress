@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<title>TE</title>
+		<link href="te.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="prototype.js"></script>
+
+		<script type="text/javascript" src="TheMagic.js"></script>
+		<script type="text/javascript" src="ThetanEater.js"></script>
+		
+		<script type="text/javascript" src="gears_init.js"></script>
+		
+		<script type="text/javascript">
+
+// alert- "this session has ended..."
+
+			var PageManager = {
+				
+				thetanEater : new ThetanEater(),
+				
+				initialize : function()
+				{
+					Event.observe( 'btnExtract', 'click', this.extract.bindAsEventListener( this ) );
+					Event.observe( 'btnPurchase', 'click', this.topUp.bindAsEventListener( this ) );
+					Element.hide( "imgSpinner" );
+					Element.hide( "divPurchase" );
+				},
+
+				topUp : function()
+				{
+					var amount = Form.Element.getValue("amount");
+					this.thetanEater.addCredit( amount );
+					
+					Element.show( "imgSpinner" );	
+					
+					new PeriodicalExecuter(
+							function(pe)
+							{ 
+								Form.Element.enable( "btnExtract" );
+								Element.hide("divPurchase");
+								Element.hide("imgSpinner");
+								pe.stop(); 
+							}, 3
+						);
+				},
+				
+				extract : function(event)
+				{
+					if( this.thetanEater.hasCredit() )
+					{
+						Form.Element.disable( "btnExtract" );
+						Element.show( "imgSpinner" );
+						
+						this.thetanEater.doExtraction();
+						
+						new PeriodicalExecuter(
+							function(pe)
+							{ 
+								Form.Element.enable( "btnExtract" );
+								Element.hide( "imgSpinner" );
+								pe.stop(); 
+							}, Math.floor( ( Math.random() * 2 ) + 1 )
+						);
+						
+					}
+					else
+					{
+						Element.show("divPurchase");
+						Form.Element.disable("btnExtract");
+					}
+				}
+			}
+
+			Event.observe(window, 'load', function(){PageManager.initialize();});
+
+		</script>
+	</head>
+	<body>
+		<div id="UI">
+			<div id="divHEader" style="height:200px">
+			</div>
+			<div id="divWait" style="height:60px;">
+				<img id="imgSpinner" src="image/spinner.gif" />
+			</div>
+			<input type="button" id="btnExtract" value="Extract" class="extractor" />
+			<br/><br/>
+			<div id="divPurchase">
+				<div class="warning">Your session has come to an end.</div>
+				Start a new session:
+							
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_xclick">
+					<input type="hidden" name="business" value="mrspeaker@gmail.com">
+					<input type="hidden" name="item_name" value="Click">
+					<input type="hidden" name="item_number" value="1">
+					<input type="text" name="amount" id="amount" style="font-size:22pt;width:80px" value="20">
+					<input type="hidden" name="no_shipping" value="1">
+					<input type="hidden" name="no_note" value="1">
+					<input type="hidden" name="custom" value="1234">
+					<input type="hidden" name="currency_code" value="AUD">
+					<input type="hidden" name="lc" value="AU">
+					<input type="hidden" name="bn" value="PP-BuyNowBF">
+					<input type="hidden" name="return" value="index.html?c=1" />
+					<input type="hidden" name="rm" value="2" />
+					<input type="hidden" name="cancel_return" value="index.html" />
+					<input type="hidden" name="cbt" value="Commence Session" />
+					<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-butcc.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+					<img alt="" border="0" src="https://www.paypal.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+				</form>
+				<input type="image" src="image/paypal.gif" border="0" id="btnPurchase">
+				
+			</div>
+						
+			
+			<div id="divFooter" style="display:none">
+				<p>
+					The E-Meter is not medically or scientifically useful for the 
+					diagnosis, treatment or prevention of any disease. It is not medically or 
+					scientifically capable of improving the health or bodily functions of anyone.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

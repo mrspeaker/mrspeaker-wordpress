@@ -1,0 +1,64 @@
+
+/* Deleteable styles */
+.deleteable, .fakeDel, .fakeDelInAction{
+	display:block;
+	width:16px;
+	height:16px;
+	font-size:1px;
+	text-indent:-3px;
+	color:#fff !important;
+	background: transparent url(/images/domdel/lights.gif) no-repeat;
+	border-bottom:0;
+}
+.deleteable:hover, .fakeDel:hover, .fakeDelInAction:hover{
+	border-bottom:0;
+}
+
+.deleteable{ background-position: 0 -32px; }
+.deleteable:hover{ background-position: 0 -48px; }
+
+.fakeDel{ background-position: 0 0 !important; }
+.fakeDel:hover{ background-position:0 -16px !important }
+
+.fakeDelInAction{ background-position: 0 -16px; }
+
+
+#DelList{
+	background-color:#f9f9f9;
+	border:1px solid #ccc;
+	border-spacing: 0;
+	border-collapse:collapse;
+}
+#DelList td{ 
+	border-bottom:1px dotted #eee;
+	padding:5px 8px 3px 8px;
+	background:transparent url(/images/domdel/gradient-item.gif) repeat-y right top;
+}
+.ItemName{ 
+	width:81px;
+	background-image:none !important;
+}
+#rowHead td
+{
+	font-weight:bold;
+	background:#ddd url(/images/domdel/gradient.gif) repeat-x 0 0;
+}
+
+.ListHolder{
+	background:transparent url(/images/domdel/gradient-sides.gif) repeat-y 0 0;
+	padding-left:2px;
+}
+.ListHead
+{
+	background:transparent url(/images/domdel/gradient-top.gif) repeat-y 0 0;
+	padding-left:2px;
+	height:2px;
+	font-size:1px;
+}
+.ListBottom
+{
+	background:transparent url(/images/domdel/gradient-bottom.gif) repeat-y 0 0;
+	padding-left:2px;
+	height:5px;
+	font-size:1px;
+}
