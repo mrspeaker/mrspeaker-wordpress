@@ -8,12 +8,8 @@
 
     <meta http-equiv="content-type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <?php wp_head() ?>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-        var baseUrl = "<?php bloginfo('template_directory'); ?>",
-            template_directory_path = "<?php bloginfo('template_directory'); ?>";
-    </script>
+    <?php wp_head() ?>
 </head>
 <body>
 <div id="outerWrapper">

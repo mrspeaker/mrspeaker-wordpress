@@ -18,30 +18,33 @@ html {
 body{
 	color:hsl(0, 0%, 22%);
 	background:#F9F9F9 url(/images/mrman-up.png) no-repeat center bottom;
-	line-height: 1.8em;
+	line-height: 1.6em;
 	margin:0;
 	padding:0;
 	font: 1.1em 'Helvetica Neue', Helvetica, 'Lucida Grande', FreeSans, sans-serif;
 }
 
+a#placeToBe {
+    outline: 0;
+}
 
 body div#outerWrapper {
 	margin: 0 auto;
 }
 body div#wrapper {}
-body div#container{
+body div#container, body div#primary {
 	margin:auto;
 	width: 600px;
 	padding: 0.5em;
 }
+body div#primary ul {
+    list-style: none;
+}
 
 #post-0 {
-
-	/*border-top: 1px dashed #ddd;*/
 	border-bottom: 1px dashed #ddd;
 	padding-bottom: 1em;
 	margin-bottom: 4em;
-
 }
 
 .lolblink {
@@ -53,32 +56,6 @@ body div#container{
 
 @keyframes blinker {
   50% { opacity: 0; }
-}
-
-/* for github lolz */
-#githubble {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 90px;
-	height: 90px;
-	overflow: hidden;
-}
-#gitcommit {
-	border: 1px solid #ccc;
-	width: 150px;
-	position: absolute;
-	right: -20px;
-	font-size: 9pt;
-	font-weight: bold;
-	text-align: center;
-	right: -35px;
-	top: 27px;
-	background-color: #fff;
-	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	transform: rotate(45deg);
 }
 
 .gist pre {
@@ -196,6 +173,7 @@ div#footer{
 	font-size:0.8em;
 	line-height:1.1em;
 	margin-top: 10em;
+  height: 250px;
 }
 #footer h3 span {
 	background-color: #f9f9f9;
