@@ -45,11 +45,10 @@
 <?php ms_script_includes( false ); ?>
 			</article>
 
-      <div id="nav-below" class="navigation">
+      <nav>
 				<div class="nav-previous"><?php previous_post_link(__('&lsaquo; %link', 'veryplaintxt'), '%title', false, '15') ?></div>
 				<div class="nav-next"><?php next_post_link(__('%link &rsaquo;', 'veryplaintxt'), '%title',false, '15') ?></div>
-				<br class="cleaner" />
-			</div>
+			</nav>
 
 			<div id="footer-bits">
 				<?php /* comments_template(); */ ?>

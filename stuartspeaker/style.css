@@ -160,16 +160,21 @@ div.entry-date abbr.published{
 }
 
 .cleaner{ clear:both; }
-div.navigation .nav-previous a, .navigation .nav-next a{
+
+.nav-previous, .nav-next {
 	background-color: #F140A9;
 	color: #fff;
 	font-size: 1.5em;
 	padding: 5px;
 }
-div.navigation .nav-previous{ float:left;}
-div.navigation .nav-next{ float:right;}
-.single div.navigation .nav-previous a,
-.single div.navigation .nav-next a {
+.nav-previous a, .nav-next a {
+  color: #fff;
+}
+nav .nav-previous{ float:left;}
+nav .nav-next{ float:right;}
+
+.single nav .nav-previous,
+.single nav .nav-next {
 	font-size: 1em;
 }
 .sidebar div.navigation {
@@ -187,6 +192,10 @@ footer a {
 	text-decoration:none;
 }
 
+#footer-bits {
+    clear: both;
+    margin-top: 110px;
+}
 #footer-about {
     width: 36%;
     margin: auto;
