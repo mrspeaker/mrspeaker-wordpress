@@ -1,9 +1,8 @@
 <?php get_header(); ?>
 
 	<div id="container">
-
 		<main>
-
+      
 <?php the_post(); ?>
 <?php ms_script_includes( true ); ?>
 			<article id="post-<?php the_ID(); ?>" class="<?php veryplaintxt_post_class(); ?>">
@@ -53,7 +52,7 @@
 			</div>
 
 			<div id="footer-bits">
-				<?php /* comments_template();*/ ?>
+				<?php /* comments_template(); */ ?>
 				<div id="footer-about">
 					Thank you for stoping by the <a href="/">homepage of Mr Speaker</a>.
 					For more exciting things, be sure to follow along with

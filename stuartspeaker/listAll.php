@@ -1,5 +1,6 @@
 <?php
 /*
+
 Template Name: All posts
 */
 ?>

@@ -9,7 +9,7 @@
     <meta http-equiv="content-type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <?php wp_head() ?>
-    
+
     <script src="<?php bloginfo('template_directory'); ?>/scripts/jquery-3.3.1.min.js"></script>
 </head>
 <body>

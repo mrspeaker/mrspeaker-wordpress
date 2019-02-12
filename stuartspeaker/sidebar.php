@@ -1,6 +1,5 @@
 
 		<div id="primary" class="sidebar">
-
 			<ul>
 <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : // Begin Widgets; displays widgets or default contents below ?>
 
