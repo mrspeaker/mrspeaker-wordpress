@@ -8,14 +8,15 @@
 
     <meta http-equiv="content-type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset') ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/jquery-3.3.1.min.js"></script>
     <?php wp_head() ?>
+    
+    <script src="<?php bloginfo('template_directory'); ?>/scripts/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<div id="outerWrapper">
-    <div id="header">
+<div id="wrapper">
+    <header id="header">
         <a id="placeToBe" href="<?php echo get_settings('home') ?>/" title="<?php bloginfo('name') ?>">
-            <h1 id="blog-title" class="headShader">Mr Speaker</h1>
+            <h1>Mr Speaker</h1>
         </a>
-    </div>
-    <div id="wrapper">
+    </header>
+      

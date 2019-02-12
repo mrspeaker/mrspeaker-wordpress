@@ -7,6 +7,12 @@ remove_action('wp_head', 'wlwmanifest_link');// Windows Live Writer? Ew!
 // remove WP 4.9+ dns-prefetch nonsense
 remove_action( 'wp_head', 'wp_resource_hints', 2 );
 
+function wps_deregister_styles() {
+    wp_dequeue_style( 'wp-block-library' );
+    wp_deregister_style( 'wp-block-library' );
+}
+add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );
+
 function ms_script_includes( $top = true ) {
 	$customKeys = get_post_custom();
 	if( $top )
