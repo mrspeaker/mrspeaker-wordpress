@@ -1,10 +1,8 @@
 <?php get_header() ?>
 	<div id="container">
 		<main>
-			<div id="post-0">
-
-				<form id="searchform" method="get" action="<?php bloginfo('home') ?>">
-					<p class="intro"><a href="http://twitter.com/mrspeaker"><img src="/images/mrspeaker_400x400.png" style="width:130px" alt="mrspeaker's head in a monitor" class="frame-right" /></a>You find yourself at the entrance to the Hompage of <?php veryplaintxt_admin_hCard(); ?>.
+      <form id="searchform" method="get" action="<?php bloginfo('home') ?>">
+            <p class="intro"><a href="http://twitter.com/mrspeaker"><img src="/images/mrspeaker_400x400.png" style="width:130px" alt="mrspeaker's head in a monitor" class="frame-right" /></a>You find yourself at the entrance to the Hompage of <?php veryplaintxt_admin_hCard(); ?>.
 						In a darkened corner sits a trunk containing <a href="/games" style="font-size:24pt" title="HTML5 games">HTML5 games</a> and some
 						<a href="/javascript" title="JavaScript experiments">JavaScript tidbits</a>. In a dark corner you spy a
 						<a href="http://twitter.com/mrspeaker" style="font-size:24pt;color:hsl(196, 100%, 47%);" title="Mr Speaker on Twitter">Twitter</a> account.
@@ -12,11 +10,8 @@
 					and <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'veryplaintxt') ?>" /><input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="10" />
 					.
 					</p>
-					<span class="lolblink">?&gt;&nbsp;<span class="blink_me">_</span></span>
-				</form>
-
-			</div>
-
+          <span class="lolblink">?&gt;&nbsp;<span class="blink_me">_</span></span>
+          </form>
 <?php
 	while ( have_posts() ) : the_post();
 				ms_script_includes( true );
@@ -42,8 +37,8 @@
 ?>
 
 			<nav>
-				<div class="nav-previous"><?php next_posts_link(__('&lsaquo; Older posts', 'veryplaintxt')) ?></div>
-				<div class="nav-next"><?php previous_posts_link(__('Newer posts &rsaquo;', 'veryplaintxt')) ?></div>
+        <?php if( get_next_posts_link() ) : ?><div class="nav-previous"><?php next_posts_link(__('&lsaquo; Older posts', 'veryplaintxt')) ?></div><?php endif ?>
+				<?php if( get_previous_posts_link() ) : ?><div class="nav-next"><?php previous_posts_link(__('Newer posts &rsaquo;', 'veryplaintxt')) ?></div><?php endif ?>
 			</nav>
 
 		</main>

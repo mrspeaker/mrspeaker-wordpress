@@ -749,15 +749,6 @@ body div#outerWrapper{max-width:<?php echo $maxwidth; ?>;min-width:<?php echo $m
 <?php // Checks that everything has loaded properly
 }
 
-function excludeIntresting($query) {
- if ($query->is_home || $query->is_feed) {
-   $query->set('cat','-15');
- }
-return $query;
-}
- 
-add_filter('pre_get_posts','excludeIntresting');
-
 add_action('admin_menu', 'veryplaintxt_add_admin');
 add_action('wp_head', 'veryplaintxt_wp_head');
 add_action('init', 'veryplaintxt_widgets_init');
@@ -765,6 +756,5 @@ add_action('init', 'veryplaintxt_widgets_init');
 add_filter('archive_meta', 'wpautop');
 remove_filter("the_content", "wptexturize");
 
-// Readies for translation.
 load_theme_textdomain('veryplaintxt');
 ?>
