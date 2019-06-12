@@ -24,11 +24,11 @@ body{
 }
 
 a#placeToBe {
-    outline: 0;
+  outline: 0;
 }
 
 ul {
-    line-height: 1.6;
+  line-height: 1.6;
 }
 
 body div#wrapper {
@@ -37,7 +37,7 @@ body div#wrapper {
 body div#container,
 body div#primary {
 	margin:auto;
-	width: 600px;
+	width: 700px;
 	padding: 0.5em;
 }
 body div#primary ul {
@@ -109,6 +109,7 @@ h2.page-title {
 	margin-bottom: 5px;
 	margin-left: -10px;
 	padding: 12px 5px 12px 10px;
+  font-weight: bold;
 
   -webkit-background-size: auto, 20px 20px;
 	-moz-background-size: auto, 20px 20px;
@@ -133,7 +134,7 @@ h2.entry-title, h2.entry-title a, h2.page-title a {
 
 .hentry {
 	padding-bottom:25px;
-	margin-bottom:35px;
+	margin-bottom:60px;
 }
 #search.hentry{
 	padding-bottom:0px;
