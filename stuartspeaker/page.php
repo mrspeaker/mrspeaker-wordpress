@@ -1,6 +1,6 @@
 <?php get_header() ?>
 
-	<div id="container">
+	<main id="container">
 		<div id="content" class="hfeed">
 
 <?php the_post() ?>
@@ -19,7 +19,5 @@
 <?php if ( get_post_custom_values('comments') ) comments_template() // Add a key/value of "comments" to load comments on a page ?>
 
 		</div><!-- #content .hfeed -->
-	</div><!-- #container -->
-
-<?php get_sidebar() ?>
+	</main>
 <?php get_footer() ?>

@@ -1,6 +1,6 @@
 <?php get_header() ?>
 
-	<div id="container">
+	<main>
        <div id="content">
 
 <?php if (have_posts()) : ?>
@@ -51,7 +51,7 @@
 <?php endif; ?>
 
 		</div><!-- #content-->
-	</div><!-- #container -->
+	</main>
 
 <div style="clear:both"></div>
 </div><!--close wrapper-->

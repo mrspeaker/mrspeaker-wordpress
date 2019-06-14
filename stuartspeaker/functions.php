@@ -6,6 +6,9 @@ remove_action('wp_head', 'rsd_link');// Windows Live Writer? Ew!
 remove_action('wp_head', 'wlwmanifest_link');// Windows Live Writer? Ew!
 // remove WP 4.9+ dns-prefetch nonsense
 remove_action( 'wp_head', 'wp_resource_hints', 2 );
+remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+remove_action( 'wp_head', 'feed_links_extra', 3 );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 
 function wps_deregister_styles() {
     wp_dequeue_style( 'wp-block-library' );
@@ -14,40 +17,40 @@ function wps_deregister_styles() {
 add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );
 
 function ms_script_includes( $top = true ) {
-	$customKeys = get_post_custom();
-	if( $top )
-	{	
-		// include external script file if custom key exists
-		if( count( $customKeys[ "script" ] ) ) 
-			echo "\n<script type=\"text/javascript\" src=\"" . ms_script_tokens( $customKeys[ "script" ][ 0 ] ) . "\"></script>";
-		// include pre-post javascript commands if in script-pre
-		if( count( $customKeys[ "script-pre" ] ) ) 
-			echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-pre" ][ 0 ] . "</script>";
-		if( count( $customKeys[ "style" ] ) ) echo "\n<style type=\"text/css\">" . $customKeys[ "style" ][ 0 ] . "</style>";
-	}
-	else
-	{
-		if( count( $customKeys[ "script-post" ] ) ) 
-			echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-post" ][ 0 ] . "</script>";
-	}
+	  $customKeys = get_post_custom();
+	  if( $top )
+	  {	
+		    // include external script file if custom key exists
+		    if( count( $customKeys[ "script" ] ) ) 
+			      echo "\n<script type=\"text/javascript\" src=\"" . ms_script_tokens( $customKeys[ "script" ][ 0 ] ) . "\"></script>";
+		    // include pre-post javascript commands if in script-pre
+		    if( count( $customKeys[ "script-pre" ] ) ) 
+			      echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-pre" ][ 0 ] . "</script>";
+		    if( count( $customKeys[ "style" ] ) ) echo "\n<style type=\"text/css\">" . $customKeys[ "style" ][ 0 ] . "</style>";
+	  }
+	  else
+	  {
+		    if( count( $customKeys[ "script-post" ] ) ) 
+			      echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-post" ][ 0 ] . "</script>";
+	  }
 }
 
 function ms_script_tokens( $key ) {
-	return str_replace( "{BASE}", get_template_directory_uri(), $key );
+	  return str_replace( "{BASE}", get_template_directory_uri(), $key );
 }
 
 /**
  * Disable the emoji's
  */
 function disable_emojis() {
-	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	remove_action( 'admin_print_styles', 'print_emoji_styles' );	
-	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
-	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-	add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+	  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	  remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	  remove_action( 'admin_print_styles', 'print_emoji_styles' );	
+	  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+	  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
+	  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	  add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
 }
 add_action( 'init', 'disable_emojis' );
 
@@ -58,219 +61,207 @@ add_action( 'init', 'disable_emojis' );
  * @return   array             Difference betwen the two arrays
  */
 function disable_emojis_tinymce( $plugins ) {
-	if ( is_array( $plugins ) ) {
-		return array_diff( $plugins, array( 'wpemoji' ) );
-	} else {
-		return array();
-	}
+	  if ( is_array( $plugins ) ) {
+		    return array_diff( $plugins, array( 'wpemoji' ) );
+	  } else {
+		    return array();
+	  }
 }
 
 function deregister_unused_scripts(){
-         wp_deregister_script( 'wp-embed' );
+    wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_footer', 'deregister_unused_scripts' );
 
 
 // Produces links for every page just below the header
 function veryplaintxt_globalnav() {
-	echo "<div id=\"globalnav\"><ul id=\"menu\">";
-	if ( !is_front_page() ) { ?><li class="page_item_home home-link"><a href="<?php bloginfo('home'); ?>/" title="<?php echo wp_specialchars(get_bloginfo('name'), 1) ?>" rel="home"><?php _e('Home', 'veryplaintxt') ?></a></li><?php }
-	$menu = wp_list_pages('title_li=&sort_column=menu_order&echo=0'); // Params for the page list in header.php
-	echo str_replace(array("\r", "\n", "\t"), '', $menu);
-	echo "</ul></div>\n";
-}
+	  echo "<div id=\"globalnav\"><ul id=\"menu\">";
+	  if ( !is_front_page() ) { ?><li class="page_item_home home-link"><a href="<?php bloginfo('home'); ?>/" title="<?php echo wp_specialchars(get_bloginfo('name'), 1) ?>" rel="home"><?php _e('Home', 'veryplaintxt') ?></a></li><?php }
+	                                                                                                                                                                                                                               $menu = wp_list_pages('title_li=&sort_column=menu_order&echo=0'); // Params for the page list in header.php
+	                                                                                                                                                                                                                               echo str_replace(array("\r", "\n", "\t"), '', $menu);
+	                                                                                                                                                                                                                               echo "</ul></div>\n";
+                                                                                                                                                                                                                                 }
 
-// Produces an hCard for the "admin" user
-function veryplaintxt_admin_hCard() {
-	global $wpdb, $user_info;
-	$user_info = get_userdata(1);
-	echo '<span class="vcard"><a class="url fn n" href="' . $user_info->user_url . '"><span class="given-name">' . $user_info->first_name . '</span> <span class="family-name">' . $user_info->last_name . '</span></a></span>';
-}
+                                                                                                                                                                                                                                 // Produces an hCard for the "admin" user
+                                                                                                                                                                                                                                 function veryplaintxt_admin_hCard() {
+	                                                                                                                                                                                                                                   global $wpdb, $user_info;
+	                                                                                                                                                                                                                                   $user_info = get_userdata(1);
+	                                                                                                                                                                                                                                   echo '<span class="vcard"><a class="url fn n" href="' . $user_info->user_url . '"><span class="given-name">' . $user_info->first_name . '</span> <span class="family-name">' . $user_info->last_name . '</span></a></span>';
+                                                                                                                                                                                                                                 }
 
-// Produces an hCard for post authors
-function veryplaintxt_author_hCard() {
-	global $wpdb, $authordata;
-	echo '<span class="entry-author author vcard"><a class="url fn n" href="' . get_author_link(false, $authordata->ID, $authordata->user_nicename) . '" title="View all posts by ' . $authordata->display_name . '">' . get_the_author() . '</a></span>';
-}
+                                                                                                                                                                                                                                 // Produces an hCard for post authors
+                                                                                                                                                                                                                                 function veryplaintxt_author_hCard() {
+	                                                                                                                                                                                                                                   global $wpdb, $authordata;
+	                                                                                                                                                                                                                                   echo '<span class="entry-author author vcard"><a class="url fn n" href="' . get_author_link(false, $authordata->ID, $authordata->user_nicename) . '" title="View all posts by ' . $authordata->display_name . '">' . get_the_author() . '</a></span>';
+                                                                                                                                                                                                                                 }
 
-// Produces semantic classes for the body element; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-function veryplaintxt_body_class( $print = true ) {
-	global $wp_query, $current_user;
+                                                                                                                                                                                                                                 // Produces semantic classes for the body element; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+                                                                                                                                                                                                                                 function veryplaintxt_body_class( $print = true ) {
+	                                                                                                                                                                                                                                   global $wp_query, $current_user;
 
-	$c = array('wordpress');
+	                                                                                                                                                                                                                                   $c = array('wordpress');
 
-	veryplaintxt_date_classes(time(), $c);
+	                                                                                                                                                                                                                                   veryplaintxt_date_classes(time(), $c);
 
-	is_home()       ? $c[] = 'home'       : null;
-	is_archive()    ? $c[] = 'archive'    : null;
-	is_date()       ? $c[] = 'date'       : null;
-	is_search()     ? $c[] = 'search'     : null;
-	is_paged()      ? $c[] = 'paged'      : null;
-	is_attachment() ? $c[] = 'attachment' : null;
-	is_404()        ? $c[] = 'four04'     : null;
+	                                                                                                                                                                                                                                   is_home()       ? $c[] = 'home'       : null;
+	                                                                                                                                                                                                                                   is_archive()    ? $c[] = 'archive'    : null;
+	                                                                                                                                                                                                                                   is_date()       ? $c[] = 'date'       : null;
+	                                                                                                                                                                                                                                   is_search()     ? $c[] = 'search'     : null;
+	                                                                                                                                                                                                                                   is_paged()      ? $c[] = 'paged'      : null;
+	                                                                                                                                                                                                                                   is_attachment() ? $c[] = 'attachment' : null;
+	                                                                                                                                                                                                                                   is_404()        ? $c[] = 'four04'     : null;
 
-	if ( is_single() ) {
-		the_post();
-		$c[] = 'single';
-		if ( isset($wp_query->post->post_date) )
-			veryplaintxt_date_classes(mysql2date('U', $wp_query->post->post_date), $c, 's-');
-		foreach ( (array) get_the_category() as $cat )
-			$c[] = 's-category-' . $cat->category_nicename;
-			$c[] = 's-author-' . get_the_author_login();
-		rewind_posts();
-	}
+	                                                                                                                                                                                                                                   if ( is_single() ) {
+		                                                                                                                                                                                                                                     the_post();
+		                                                                                                                                                                                                                                     $c[] = 'single';
+		                                                                                                                                                                                                                                     if ( isset($wp_query->post->post_date) )
+			                                                                                                                                                                                                                                       veryplaintxt_date_classes(mysql2date('U', $wp_query->post->post_date), $c, 's-');
+		                                                                                                                                                                                                                                     foreach ( (array) get_the_category() as $cat )
+			                                                                                                                                                                                                                                   $c[] = 's-category-' . $cat->category_nicename;
+			                                                                                                                                                                                                                                   $c[] = 's-author-' . get_the_author_login();
+		                                                                                                                                                                                                                                     rewind_posts();
+	                                                                                                                                                                                                                                   }
 
-	else if ( is_author() ) {
-		$author = $wp_query->get_queried_object();
-		$c[] = 'author';
-		$c[] = 'author-' . $author->user_nicename;
-	}
-	
-	else if ( is_category() ) {
-		$cat = $wp_query->get_queried_object();
-		$c[] = 'category';
-		$c[] = 'category-' . $cat->category_nicename;
-	}
+	                                                                                                                                                                                                                                   else if ( is_author() ) {
+		                                                                                                                                                                                                                                     $author = $wp_query->get_queried_object();
+		                                                                                                                                                                                                                                     $c[] = 'author';
+		                                                                                                                                                                                                                                     $c[] = 'author-' . $author->user_nicename;
+	                                                                                                                                                                                                                                   }
+	                                                                                                                                                                                                                                   
+	                                                                                                                                                                                                                                   else if ( is_category() ) {
+		                                                                                                                                                                                                                                     $cat = $wp_query->get_queried_object();
+		                                                                                                                                                                                                                                     $c[] = 'category';
+		                                                                                                                                                                                                                                     $c[] = 'category-' . $cat->category_nicename;
+	                                                                                                                                                                                                                                   }
 
-	else if ( is_page() ) {
-		the_post();
-		$c[] = 'page';
-		$c[] = 'page-author-' . get_the_author_login();
-		rewind_posts();
-	}
+	                                                                                                                                                                                                                                   else if ( is_page() ) {
+		                                                                                                                                                                                                                                     the_post();
+		                                                                                                                                                                                                                                     $c[] = 'page';
+		                                                                                                                                                                                                                                     $c[] = 'page-author-' . get_the_author_login();
+		                                                                                                                                                                                                                                     rewind_posts();
+	                                                                                                                                                                                                                                   }
 
-	if ( $current_user->ID )
-		$c[] = 'loggedin';
-		
-	$c = join(' ', apply_filters('body_class',  $c));
+	                                                                                                                                                                                                                                   if ( $current_user->ID )
+		                                                                                                                                                                                                                                     $c[] = 'loggedin';
+		                                                                                                                                                                                                                                 
+	                                                                                                                                                                                                                                   $c = join(' ', apply_filters('body_class',  $c));
 
-	return $print ? print($c) : $c;
-}
+	                                                                                                                                                                                                                                   return $print ? print($c) : $c;
+                                                                                                                                                                                                                                 }
 
-// Produces semantic classes for the each individual post div; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-function veryplaintxt_post_class( $print = true ) {
-	global $post, $veryplaintxt_post_alt;
+                                                                                                                                                                                                                                 // Produces semantic classes for the each individual post div; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+                                                                                                                                                                                                                                 function veryplaintxt_post_class( $print = true ) {
+	                                                                                                                                                                                                                                   global $post, $veryplaintxt_post_alt;
 
-	$c = array('hentry', "p$veryplaintxt_post_alt", $post->post_type, $post->post_status);
+	                                                                                                                                                                                                                                   foreach ( (array) get_the_category() as $cat )
+		                                                                                                                                                                                                                                 $c[] = 'category-' . $cat->category_nicename;
 
-	$c[] = 'author-' . get_the_author_login();
+	                                                                                                                                                                                                                                   $c = join(' ', apply_filters('post_class', $c));
 
-	if ( is_attachment() )
-		$c[] = 'attachment';
+	                                                                                                                                                                                                                                   return $print ? print($c) : $c;
+                                                                                                                                                                                                                                 }
+                                                                                                                                                                                                                                 $veryplaintxt_post_alt = 1;
 
-	foreach ( (array) get_the_category() as $cat )
-		$c[] = 'category-' . $cat->category_nicename;
+                                                                                                                                                                                                                                 // Produces semantic classes for the each individual comment li; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+                                                                                                                                                                                                                                 function veryplaintxt_comment_class( $print = true ) {
+	                                                                                                                                                                                                                                   global $comment, $post, $veryplaintxt_comment_alt;
 
-	veryplaintxt_date_classes(mysql2date('U', $post->post_date), $c);
+	                                                                                                                                                                                                                                   $c = array($comment->comment_type);
 
-	if ( ++$veryplaintxt_post_alt % 2 )
-		$c[] = 'alt';
-		
-	$c = join(' ', apply_filters('post_class', $c));
+	                                                                                                                                                                                                                                   if ( $comment->user_id > 0 ) {
+		                                                                                                                                                                                                                                     $user = get_userdata($comment->user_id);
 
-	return $print ? print($c) : $c;
-}
-$veryplaintxt_post_alt = 1;
+		                                                                                                                                                                                                                                     $c[] = "byuser commentauthor-$user->user_login";
 
-// Produces semantic classes for the each individual comment li; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-function veryplaintxt_comment_class( $print = true ) {
-	global $comment, $post, $veryplaintxt_comment_alt;
+		                                                                                                                                                                                                                                     if ( $comment->user_id === $post->post_author )
+			                                                                                                                                                                                                                                       $c[] = 'bypostauthor';
+	                                                                                                                                                                                                                                   }
 
-	$c = array($comment->comment_type);
+	                                                                                                                                                                                                                                   veryplaintxt_date_classes(mysql2date('U', $comment->comment_date), $c, 'c-');
+	                                                                                                                                                                                                                                   if ( ++$veryplaintxt_comment_alt % 2 )
+		                                                                                                                                                                                                                                     $c[] = 'alt';
 
-	if ( $comment->user_id > 0 ) {
-		$user = get_userdata($comment->user_id);
+	                                                                                                                                                                                                                                   $c[] = "c$veryplaintxt_comment_alt";
 
-		$c[] = "byuser commentauthor-$user->user_login";
+	                                                                                                                                                                                                                                   if ( is_trackback() ) {
+		                                                                                                                                                                                                                                     $c[] = 'trackback';
+	                                                                                                                                                                                                                                   }
 
-		if ( $comment->user_id === $post->post_author )
-			$c[] = 'bypostauthor';
-	}
+	                                                                                                                                                                                                                                   $c = join(' ', apply_filters('comment_class', $c));
 
-	veryplaintxt_date_classes(mysql2date('U', $comment->comment_date), $c, 'c-');
-	if ( ++$veryplaintxt_comment_alt % 2 )
-		$c[] = 'alt';
+	                                                                                                                                                                                                                                   return $print ? print($c) : $c;
+                                                                                                                                                                                                                                 }
 
-	$c[] = "c$veryplaintxt_comment_alt";
+                                                                                                                                                                                                                                 // Produces date-based classes for the three functions above; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+                                                                                                                                                                                                                                 function veryplaintxt_date_classes($t, &$c, $p = '') {
+	                                                                                                                                                                                                                                   $t = $t + (get_option('gmt_offset') * 3600);
+	                                                                                                                                                                                                                                   $c[] = $p . 'y' . gmdate('Y', $t);
+	                                                                                                                                                                                                                                   $c[] = $p . 'm' . gmdate('m', $t);
+	                                                                                                                                                                                                                                   $c[] = $p . 'd' . gmdate('d', $t);
+	                                                                                                                                                                                                                                   $c[] = $p . 'h' . gmdate('h', $t);
+                                                                                                                                                                                                                                 }
 
-	if ( is_trackback() ) {
-		$c[] = 'trackback';
-	}
+                                                                                                                                                                                                                                 // Returns other categories except the current one (redundant); Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+                                                                                                                                                                                                                                 function veryplaintxt_other_cats($glue) {
+	                                                                                                                                                                                                                                   $current_cat = single_cat_title('', false);
+	                                                                                                                                                                                                                                   $separator = "\n";
+	                                                                                                                                                                                                                                   $cats = explode($separator, get_the_category_list($separator));
 
-	$c = join(' ', apply_filters('comment_class', $c));
+	                                                                                                                                                                                                                                   foreach ( $cats as $i => $str ) {
+		                                                                                                                                                                                                                                     if ( strstr($str, ">$current_cat<") ) {
+			                                                                                                                                                                                                                                       unset($cats[$i]);
+			                                                                                                                                                                                                                                       break;
+		                                                                                                                                                                                                                                     }
+	                                                                                                                                                                                                                                   }
 
-	return $print ? print($c) : $c;
-}
+	                                                                                                                                                                                                                                   if ( empty($cats) )
+		                                                                                                                                                                                                                                     return false;
 
-// Produces date-based classes for the three functions above; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-function veryplaintxt_date_classes($t, &$c, $p = '') {
-	$t = $t + (get_option('gmt_offset') * 3600);
-	$c[] = $p . 'y' . gmdate('Y', $t);
-	$c[] = $p . 'm' . gmdate('m', $t);
-	$c[] = $p . 'd' . gmdate('d', $t);
-	$c[] = $p . 'h' . gmdate('h', $t);
-}
+	                                                                                                                                                                                                                                   return trim(join($glue, $cats));
+                                                                                                                                                                                                                                 }
 
-// Returns other categories except the current one (redundant); Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-function veryplaintxt_other_cats($glue) {
-	$current_cat = single_cat_title('', false);
-	$separator = "\n";
-	$cats = explode($separator, get_the_category_list($separator));
+                                                                                                                                                                                                                                 // Returns other tags except the current one (redundant); Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+                                                                                                                                                                                                                                 function veryplaintxt_other_tags($glue) {
+	                                                                                                                                                                                                                                   $current_tag = single_tag_title('', '',  false);
+	                                                                                                                                                                                                                                   $separator = "\n";
+	                                                                                                                                                                                                                                   $tags = explode($separator, get_the_tag_list("", "$separator", ""));
 
-	foreach ( $cats as $i => $str ) {
-		if ( strstr($str, ">$current_cat<") ) {
-			unset($cats[$i]);
-			break;
-		}
-	}
+	                                                                                                                                                                                                                                   foreach ( $tags as $i => $str ) {
+		                                                                                                                                                                                                                                     if ( strstr($str, ">$current_tag<") ) {
+			                                                                                                                                                                                                                                       unset($tags[$i]);
+			                                                                                                                                                                                                                                       break;
+		                                                                                                                                                                                                                                     }
+	                                                                                                                                                                                                                                   }
 
-	if ( empty($cats) )
-		return false;
+	                                                                                                                                                                                                                                   if ( empty($tags) )
+		                                                                                                                                                                                                                                     return false;
 
-	return trim(join($glue, $cats));
-}
+	                                                                                                                                                                                                                                   return trim(join($glue, $tags));
+                                                                                                                                                                                                                                 }
 
-// Returns other tags except the current one (redundant); Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-function veryplaintxt_other_tags($glue) {
-	$current_tag = single_tag_title('', '',  false);
-	$separator = "\n";
-	$tags = explode($separator, get_the_tag_list("", "$separator", ""));
+                                                                                                                                                                                                                                 // Produces an avatar image with the hCard-compliant photo class
+                                                                                                                                                                                                                                 function veryplaintxt_commenter_link() {
+	                                                                                                                                                                                                                                   $commenter = get_comment_author_link();
+	                                                                                                                                                                                                                                   if ( ereg( '<a[^>]* class=[^>]+>', $commenter ) ) {
+		                                                                                                                                                                                                                                     $commenter = ereg_replace( '(<a[^>]* class=[\'"]?)', '\\1url ' , $commenter );
+	                                                                                                                                                                                                                                   } else {
+		                                                                                                                                                                                                                                     $commenter = ereg_replace( '(<a )/', '\\1class="url "' , $commenter );
+	                                                                                                                                                                                                                                   }
+	                                                                                                                                                                                                                                   $email = get_comment_author_email();
+	                                                                                                                                                                                                                                   $avatar_size = get_option('veryplaintxt_avatarsize');
+	                                                                                                                                                                                                                                   if ( empty($avatar_size) ) $avatar_size = '40';
+	                                                                                                                                                                                                                                   $avatar = str_replace( "class='avatar", "class='photo avatar", get_avatar( "$email", "$avatar_size" ) );
+	                                                                                                                                                                                                                                   echo $avatar . ' <span class="fn n">' . $commenter . '</span>';
+                                                                                                                                                                                                                                 }
 
-	foreach ( $tags as $i => $str ) {
-		if ( strstr($str, ">$current_tag<") ) {
-			unset($tags[$i]);
-			break;
-		}
-	}
-
-	if ( empty($tags) )
-		return false;
-
-	return trim(join($glue, $tags));
-}
-
-// Produces an avatar image with the hCard-compliant photo class
-function veryplaintxt_commenter_link() {
-	$commenter = get_comment_author_link();
-	if ( ereg( '<a[^>]* class=[^>]+>', $commenter ) ) {
-		$commenter = ereg_replace( '(<a[^>]* class=[\'"]?)', '\\1url ' , $commenter );
-	} else {
-		$commenter = ereg_replace( '(<a )/', '\\1class="url "' , $commenter );
-	}
-	$email = get_comment_author_email();
-	$avatar_size = get_option('veryplaintxt_avatarsize');
-	if ( empty($avatar_size) ) $avatar_size = '40';
-	$avatar = str_replace( "class='avatar", "class='photo avatar", get_avatar( "$email", "$avatar_size" ) );
-	echo $avatar . ' <span class="fn n">' . $commenter . '</span>';
-}
-
-// Loads veryplaintxt-style Search widget
-function widget_veryplaintxt_search($args) {
-	extract($args);
-	$options = get_option('widget_veryplaintxt_search');
-	$title = empty($options['title']) ? __( 'Search', 'veryplaintxt' ) : $options['title'];
-	$button = empty($options['button']) ? __( 'Find', 'veryplaintxt' ) : $options['button'];
-?>
+                                                                                                                                                                                                                                 // Loads veryplaintxt-style Search widget
+                                                                                                                                                                                                                                 function widget_veryplaintxt_search($args) {
+	                                                                                                                                                                                                                                   extract($args);
+	                                                                                                                                                                                                                                   $options = get_option('widget_veryplaintxt_search');
+	                                                                                                                                                                                                                                   $title = empty($options['title']) ? __( 'Search', 'veryplaintxt' ) : $options['title'];
+	                                                                                                                                                                                                                                   $button = empty($options['button']) ? __( 'Find', 'veryplaintxt' ) : $options['button'];
+                                                                                                                                                                                                                                 ?>
 		<?php echo $before_widget ?>
 				<?php echo $before_title ?><label for="s"><?php echo $title ?></label><?php echo $after_title ?>
 			<form id="searchform" method="get" action="<?php bloginfo('home') ?>">
@@ -466,16 +457,8 @@ function veryplaintxt_add_admin() {
 	add_theme_page( __( 'veryplaintxt Theme Options', 'veryplaintxt' ), __( 'Theme Options', 'veryplaintxt' ), 'edit_themes', basename(__FILE__), 'veryplaintxt_admin' );
 }
 
-function veryplaintxt_donate() { 
-	$form = '<form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-		<div id="donate">
-			<input type="hidden" name="cmd" value="_s-xclick" />
-			<input type="image" name="submit" src="https://www.paypal.com/en_US/i/btn/x-click-butcc-donate.gif" alt="Donate with PayPal - it\'s fast, free and secure!" />
-			<img src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" alt="Donate with PayPal" />
-			<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHVwYJKoZIhvcNAQcEoIIHSDCCB0QCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYChNkkTap4k9BXzRm4fcW2fxNRQylEXTEtvWuEie1ZRB/BT0j0KgIrjpfDz0ce15PXCxC3pbFlV09WNGXTD16Dq9+m8Hj6l6SJrNWqaoEMPmqf4qBbjvlb3r281LZdWKCb17Iv25x3vdndtepRZMkir/m7AW+4ld9pE6zQArZ6+gzELMAkGBSsOAwIaBQAwgdQGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIWgGlCbE93rCAgbAbMyUNkPDAGTu2MaORZSnQijRmInF0gm9ACF5s+8LNrnejXTa/33UT7r/m4pkAALhGpyScKg6NLHXxXOaXkjv8kCxdFy/iFEakY5yagKHt31mR3AnXuKDRuXOSolT742zSPqapM0bgvix+BTFKS+FnmLQVes/o6crQk0VVZJkYAtovQPH6VVzkF9JQaqqTsOqAxqWxhmS/75JL6O03RLE0HCxU0yMjGmKRU6HfG7SqpqCCA4cwggODMIIC7KADAgECAgEAMA0GCSqGSIb3DQEBBQUAMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTAeFw0wNDAyMTMxMDEzMTVaFw0zNTAyMTMxMDEzMTVaMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAwUdO3fxEzEtcnI7ZKZL412XvZPugoni7i7D7prCe0AtaHTc97CYgm7NsAtJyxNLixmhLV8pyIEaiHXWAh8fPKW+R017+EmXrr9EaquPmsVvTywAAE1PMNOKqo2kl4Gxiz9zZqIajOm1fZGWcGS0f5JQ2kBqNbvbg2/Za+GJ/qwUCAwEAAaOB7jCB6zAdBgNVHQ4EFgQUlp98u8ZvF71ZP1LXChvsENZklGswgbsGA1UdIwSBszCBsIAUlp98u8ZvF71ZP1LXChvsENZklGuhgZSkgZEwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tggEAMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEAgV86VpqAWuXvX6Oro4qJ1tYVIT5DgWpE692Ag422H7yRIr/9j/iKG4Thia/Oflx4TdL+IFJBAyPK9v6zZNZtBgPBynXb048hsP16l2vi0k5Q2JKiPDsEfBhGI+HnxLXEaUWAcVfCsQFvd2A1sxRr67ip5y2wwBelUecP3AjJ+YcxggGaMIIBlgIBATCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwCQYFKw4DAhoFAKBdMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTA4MDMxMDAzNDEyMFowIwYJKoZIhvcNAQkEMRYEFJ4mTlaUsEjh+PfK56RiZRGnmnjkMA0GCSqGSIb3DQEBAQUABIGAUNbI8Wn13aeQtw6SudZ64EBiMcCX7tSgUbv7zrHwbAUTL6J29BVGXb0D8EKRCO+NHN3HpxKKdFWXBqUfgA7Z1h+xdyb9BhFUNE2qnthca5yzYmKbt+N5aFdY4xGyc1VFOttiq98YKgPiLGDAr/96uSXXaoDsoWCRsD4YIEGPm7E=-----END PKCS7-----" />
-		</div>
-	</form>' . "\n\t";
-	echo $form;
+function veryplaintxt_donate() {
+	echo "donate";
 }
 
 function veryplaintxt_admin_head() {
@@ -633,119 +616,119 @@ function veryplaintxt_admin() { // Theme options menu
 	<p><?php _e('Resetting deletes all stored veryplaintxt options from your database. After resetting, default options are loaded but are not stored until you click <i>Save Options</i>. A reset does not affect the actual theme files in any way. If you are uninstalling veryplaintxt, please reset before removing the theme files to clear your databse.', 'veryplaintxt'); ?></p>
 	<form action="<?php echo wp_specialchars( $_SERVER['REQUEST_URI'] ) ?>" method="post">
 		<?php wp_nonce_field('veryplaintxt_reset_options'); echo "\n"; ?>
-		<p class="submit">
-			<input name="reset" type="submit" value="<?php _e('Reset Options', 'veryplaintxt'); ?>" onclick="return confirm('<?php _e('Click OK to reset. Any changes to these theme options will be lost!', 'veryplaintxt'); ?>');" tabindex="27" accesskey="R" />
-			<input name="action" type="hidden" value="reset" />
-			<input name="page_options" type="hidden" value="vp_basefontsize,vp_basefontfamily,vp_headingfontfamily,vp_posttextalignment,vp_layoutwidth,vp_maxwidth,vp_minwidth,vp_sidebarposition,vp_sidebartextalignment,vp_avatarsize" />
-		</p>
+		  <p class="submit">
+			    <input name="reset" type="submit" value="<?php _e('Reset Options', 'veryplaintxt'); ?>" onclick="return confirm('<?php _e('Click OK to reset. Any changes to these theme options will be lost!', 'veryplaintxt'); ?>');" tabindex="27" accesskey="R" />
+			    <input name="action" type="hidden" value="reset" />
+			    <input name="page_options" type="hidden" value="vp_basefontsize,vp_basefontfamily,vp_headingfontfamily,vp_posttextalignment,vp_layoutwidth,vp_maxwidth,vp_minwidth,vp_sidebarposition,vp_sidebartextalignment,vp_avatarsize" />
+		  </p>
 	</form>
 </div>
 <?php
 }
 // Loads settings for the theme options to use
 function veryplaintxt_wp_head() {
-	// Our Web-safe fonts
-	$arial     = "arial,helvetica,sans-serif";
-	$courier   = "'courier new',courier,monospace";
-	$georgia   = "georgia,times,serif";
-	$lconsole  = "'lucida console',monaco,monospace";
-	$lunicode  = "'lucida sans unicode','lucida grande',sans-serif";
-	$tahoma    = "tahoma,geneva,sans-serif";
-	$times     = "'times new roman',times,serif";
-	$trebuchet = "'trebuchet ms',helvetica,sans-serif";
-	$verdana   = "verdana,geneva,sans-serif";
-	// Let's start inserting options
-	if ( get_option('veryplaintxt_basefontsize') == '' ) {
-		$basefontsize = '90%';
-	} else {
-		$basefontsize = attribute_escape( stripslashes( get_option('veryplaintxt_basefontsize') ) ); 
-	}
-	$vp_basefontfamily = get_option('veryplaintxt_basefontfamily');
-	if ( $vp_basefontfamily == '' ) {
-		$basefontfamily = $times;
-	} else {
-		if ( $vp_basefontfamily == 1 ) {
-			$basefontfamily = $arial;
-		} elseif ( $vp_basefontfamily == 2 ) {
-			$basefontfamily = $courier;
-		} elseif ( $vp_basefontfamily == 3 ) {
-			$basefontfamily = $georgia;
-		} elseif ( $vp_basefontfamily == 4 ) {
-			$basefontfamily = $lconsole;
-		} elseif ( $vp_basefontfamily == 5 ) {
-			$basefontfamily = $lunicode;
-		} elseif ( $vp_basefontfamily == 6 ) {
-			$basefontfamily = $tahoma;
-		} elseif ( $vp_basefontfamily == 7 ) {
-			$basefontfamily = $times;
-		} elseif ( $vp_basefontfamily == 8 ) {
-			$basefontfamily = $trebuchet;
-		} elseif ( $vp_basefontfamily == 9 ) {
-			$basefontfamily = $verdana;
-		}
-	}
-	$vp_headfontfamily = get_option('veryplaintxt_headingfontfamily');
-	if ( $vp_headfontfamily == '' ) {
-		$headingfontfamily = $arial;
-	} else {
-		if ( $vp_headfontfamily == 1 ) {
-			$headingfontfamily = $arial;
-		} elseif ( $vp_headfontfamily == 2 ) {
-			$headingfontfamily = $courier;
-		} elseif ( $vp_headfontfamily == 3 ) {
-			$headingfontfamily = $georgia;
-		} elseif ( $vp_headfontfamily == 4 ) {
-			$headingfontfamily = $lconsole;
-		} elseif ( $vp_headfontfamily == 5 ) {
-			$headingfontfamily = $lunicode;
-		} elseif ( $vp_headfontfamily == 6 ) {
-			$headingfontfamily = $tahoma;
-		} elseif ( $vp_headfontfamily == 7 ) {
-			$headingfontfamily = $times;
-		} elseif ( $vp_headfontfamily == 8 ) {
-			$headingfontfamily = $trebuchet;
-		} elseif ( $vp_headfontfamily == 9 ) {
-			$headingfontfamily = $verdana;
-		}
-	}
-	if ( get_option('veryplaintxt_layoutwidth') == "" ) {
-		$layoutwidth = '80%';
-	} else {
-		$layoutwidth = attribute_escape( stripslashes( get_option('veryplaintxt_layoutwidth') ) ); 
-	}
-	if ( get_option('veryplaintxt_maxwidth') == "" ) {
-		$maxwidth = '55em';
-	} else {
-		$maxwidth = attribute_escape( stripslashes( get_option('veryplaintxt_maxwidth') ) ); 
-	}
-	if ( get_option('veryplaintxt_minwidth') == "" ) {
-		$minwidth = '35em';
-	} else {
-		$minwidth = attribute_escape( stripslashes( get_option('veryplaintxt_minwidth') ) ); 
-	}
-	if ( get_option('veryplaintxt_posttextalignment') == "" ) {
-		$posttextalignment = 'left';
-	} else {
-		$posttextalignment = attribute_escape( stripslashes( get_option('veryplaintxt_posttextalignment') ) ); 
-	}
-	
-	if ( get_option('veryplaintxt_sidebartextalignment') == "" ) {
-		$sidebartextalignment = 'center';
-	} else {
-		$sidebartextalignment = attribute_escape( stripslashes( get_option('veryplaintxt_sidebartextalignment') ) ); 
-	}
-/*
-? >
-<style type="text/css" media="all">
-/ *<![CDATA[* /
-/ * CSS inserted by theme options * /
-body{font-size:<?php echo $basefontsize; ?>;}
-<?php echo $sidebarposition; ?>
-body div#content div.hentry{text-align:<?php echo $posttextalignment; ?>;}
-body div#outerWrapper{max-width:<?php echo $maxwidth; ?>;min-width:<?php echo $minwidth; ?>;width:<?php echo $layoutwidth; ?>;}
-/ *]]>* /
-</style>
-*/?>
+	  // Our Web-safe fonts
+	  $arial     = "arial,helvetica,sans-serif";
+	  $courier   = "'courier new',courier,monospace";
+	  $georgia   = "georgia,times,serif";
+	  $lconsole  = "'lucida console',monaco,monospace";
+	  $lunicode  = "'lucida sans unicode','lucida grande',sans-serif";
+	  $tahoma    = "tahoma,geneva,sans-serif";
+	  $times     = "'times new roman',times,serif";
+	  $trebuchet = "'trebuchet ms',helvetica,sans-serif";
+	  $verdana   = "verdana,geneva,sans-serif";
+	  // Let's start inserting options
+	  if ( get_option('veryplaintxt_basefontsize') == '' ) {
+		    $basefontsize = '90%';
+	  } else {
+		    $basefontsize = attribute_escape( stripslashes( get_option('veryplaintxt_basefontsize') ) ); 
+	  }
+	  $vp_basefontfamily = get_option('veryplaintxt_basefontfamily');
+	  if ( $vp_basefontfamily == '' ) {
+		    $basefontfamily = $times;
+	  } else {
+		    if ( $vp_basefontfamily == 1 ) {
+			      $basefontfamily = $arial;
+		    } elseif ( $vp_basefontfamily == 2 ) {
+			      $basefontfamily = $courier;
+		    } elseif ( $vp_basefontfamily == 3 ) {
+			      $basefontfamily = $georgia;
+		    } elseif ( $vp_basefontfamily == 4 ) {
+			      $basefontfamily = $lconsole;
+		    } elseif ( $vp_basefontfamily == 5 ) {
+			      $basefontfamily = $lunicode;
+		    } elseif ( $vp_basefontfamily == 6 ) {
+			      $basefontfamily = $tahoma;
+		    } elseif ( $vp_basefontfamily == 7 ) {
+			      $basefontfamily = $times;
+		    } elseif ( $vp_basefontfamily == 8 ) {
+			      $basefontfamily = $trebuchet;
+		    } elseif ( $vp_basefontfamily == 9 ) {
+			      $basefontfamily = $verdana;
+		    }
+	  }
+	  $vp_headfontfamily = get_option('veryplaintxt_headingfontfamily');
+	  if ( $vp_headfontfamily == '' ) {
+		    $headingfontfamily = $arial;
+	  } else {
+		    if ( $vp_headfontfamily == 1 ) {
+			      $headingfontfamily = $arial;
+		    } elseif ( $vp_headfontfamily == 2 ) {
+			      $headingfontfamily = $courier;
+		    } elseif ( $vp_headfontfamily == 3 ) {
+			      $headingfontfamily = $georgia;
+		    } elseif ( $vp_headfontfamily == 4 ) {
+			      $headingfontfamily = $lconsole;
+		    } elseif ( $vp_headfontfamily == 5 ) {
+			      $headingfontfamily = $lunicode;
+		    } elseif ( $vp_headfontfamily == 6 ) {
+			      $headingfontfamily = $tahoma;
+		    } elseif ( $vp_headfontfamily == 7 ) {
+			      $headingfontfamily = $times;
+		    } elseif ( $vp_headfontfamily == 8 ) {
+			      $headingfontfamily = $trebuchet;
+		    } elseif ( $vp_headfontfamily == 9 ) {
+			      $headingfontfamily = $verdana;
+		    }
+	  }
+	  if ( get_option('veryplaintxt_layoutwidth') == "" ) {
+		    $layoutwidth = '80%';
+	  } else {
+		    $layoutwidth = attribute_escape( stripslashes( get_option('veryplaintxt_layoutwidth') ) ); 
+	  }
+	  if ( get_option('veryplaintxt_maxwidth') == "" ) {
+		    $maxwidth = '55em';
+	  } else {
+		    $maxwidth = attribute_escape( stripslashes( get_option('veryplaintxt_maxwidth') ) ); 
+	  }
+	  if ( get_option('veryplaintxt_minwidth') == "" ) {
+		    $minwidth = '35em';
+	  } else {
+		    $minwidth = attribute_escape( stripslashes( get_option('veryplaintxt_minwidth') ) ); 
+	  }
+	  if ( get_option('veryplaintxt_posttextalignment') == "" ) {
+		    $posttextalignment = 'left';
+	  } else {
+		    $posttextalignment = attribute_escape( stripslashes( get_option('veryplaintxt_posttextalignment') ) ); 
+	  }
+	  
+	  if ( get_option('veryplaintxt_sidebartextalignment') == "" ) {
+		    $sidebartextalignment = 'center';
+	  } else {
+		    $sidebartextalignment = attribute_escape( stripslashes( get_option('veryplaintxt_sidebartextalignment') ) ); 
+	  }
+    /*
+       ? >
+       <style type="text/css" media="all">
+       / *<![CDATA[* /
+       / * CSS inserted by theme options * /
+       body{font-size:<?php echo $basefontsize; ?>;}
+       <?php echo $sidebarposition; ?>
+       body div#content div.hentry{text-align:<?php echo $posttextalignment; ?>;}
+       body div#outerWrapper{max-width:<?php echo $maxwidth; ?>;min-width:<?php echo $minwidth; ?>;width:<?php echo $layoutwidth; ?>;}
+       / *]]>* /
+       </style>
+     */?>
 <?php // Checks that everything has loaded properly
 }
 
@@ -755,6 +738,19 @@ add_action('init', 'veryplaintxt_widgets_init');
 
 add_filter('archive_meta', 'wpautop');
 remove_filter("the_content", "wptexturize");
+
+
+function mrspeaker_indent($content) {
+    return str_replace(array("\n"),"\n\t\t\t",$content);
+}
+add_filter("the_content", "mrspeaker_indent", 100);
+
+function mrspeaker_link($file = "") {
+    $fullPath = get_theme_file_uri( $file );
+    $relPath = wp_make_link_relative($fullPath);
+    $shortPath = str_replace("/wp-content/themes/stuartspeaker", "/stuartspeaker", $relPath); 
+    echo $shortPath;
+}
 
 load_theme_textdomain('veryplaintxt');
 ?>

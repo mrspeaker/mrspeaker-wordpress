@@ -1,23 +1,27 @@
-<?php get_header(); ?>
-
+<?php get_header() ?>
 	<div id="container">
-		<main>
-      
+	  <main>      
 <?php the_post(); ?>
 <?php ms_script_includes( true ); ?>
-			<article id="post-<?php the_ID(); ?>" class="<?php veryplaintxt_post_class(); ?>">
-				<h2 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf(__('Permalink to %s', 'veryplaintxt'), wp_specialchars(get_the_title(), 1)) ?>" rel="bookmark"><?php the_title() ?></a></h2>
-				<div class="entry-date">
-					<abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO'); ?>">
-						<?php unset($previousday); printf(__('%1$s', 'veryplaintxt'), the_date('l, F j, Y', false)) ?>
-						<?php edit_post_link(__('Edit this entry.', 'veryplaintxt'),'',''); ?>
-					</abbr>
-				</div>
-				<div class="entry-content">
+        <article id="post-<?php the_ID(); ?>" class="<?php veryplaintxt_post_class(); ?>">
+		  <h2 class="entry-title">
+            <a href="<?php the_permalink() ?>" title="<?php printf(__('Permalink to %s', 'veryplaintxt'), wp_specialchars(get_the_title(), 1)) ?>" rel="bookmark">
+            <?php the_title() ?>
+            </a>
+          </h2>
+
+		  <div class="entry-date">
+		    <abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO'); ?>">
+			<?php unset($previousday); printf(__('%1$s', 'veryplaintxt'), the_date('l, F j, Y', false)) ?>
+			<?php edit_post_link(__('Edit this entry.', 'veryplaintxt'),'',''); ?>
+			</abbr>
+		  </div>
+
+		 <div class="entry-content">
 <?php the_content('<span class="more-link">'.__('Read on for more &raquo;', 'veryplaintxt').'</span>'); ?>
 
 <?php link_pages('<div class="page-link">'.__('Pages: ', 'veryplaintxt'), "</div>\n", 'number'); ?>
-				</div>
+		 </div>
 
 				<div class="entry-meta">
 					<?php printf(__('This was written by %1$s. Posted on <abbr class="published" title="%2$s">%3$s at %4$s</abbr>. Filed under %5$s. %6$sBookmark the <a href="%7$s" title="Permalink to %8$s" rel="bookmark">permalink</a>. Follow comments here with the <a href="%9$s" title="Comments RSS to %8$s" rel="alternate" type="application/rss+xml">RSS feed</a>.', 'sandbox'),

@@ -4,8 +4,8 @@
     </footer>
   </div><!--wrapper-->
 
-  <script src="<?php bloginfo('template_directory'); ?>/scripts/speaker.js"></script>
-  <script type="module" src="<?php bloginfo('template_directory'); ?>/scripts/ms_head.js"></script>
+  <script src="<?php mrspeaker_link('/scripts/speaker.js') ?>"></script>
+  <script type="module" src="<?php mrspeaker_link( $file ='scripts/ms_head.js' ) ?>"></script>
 
 </body>
 </html>

@@ -34,7 +34,7 @@ ul {
 body div#wrapper {
 	margin: 0 auto;
 }
-body div#container,
+body main,
 body div#primary {
 	margin:auto;
 	width: 700px;
@@ -84,7 +84,7 @@ a {
 a img{ border:0; }
 
 @media only screen and (max-width: 736px) {
-	body div#container {
+	body main {
 		width: 100%;
 	}
 
@@ -129,15 +129,11 @@ h2.entry-title, h2.entry-title a, h2.page-title a {
 	font-family: monospace;
 	text-decoration:none;
 	color: #333;
-	background-color: #f9f9f9;
 }
 
-.hentry {
+article {
 	padding-bottom:25px;
 	margin-bottom:60px;
-}
-#search.hentry{
-	padding-bottom:0px;
 }
 
 p {
@@ -149,8 +145,14 @@ div.entry-content abbr,div.comments ol.commentlist abbr{ border-bottom:1px dotte
 div.entry-content blockquote,div.comments ol.commentlist blockquote{ margin-left:0;margin-right:3em;padding:0 0 0 2em;}
 div.entry-content cite,div.comments ol.commentlist cite{ border-bottom:1px dotted #999;cursor:help;}
 div.entry-content div.page-link{ font-size:1em;margin:-0.5em 0 1em;}
-div.entry-content img{ max-width:99%; }
+div.entry-content img{
+  max-width:100%;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
 div.entry-content span.more-link{ }
+
+div.entry-content img.hero { min-width: 100%; }
 
 .entry-content h3 {
 	padding: 8px 0;
