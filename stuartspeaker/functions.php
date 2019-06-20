@@ -17,40 +17,40 @@ function wps_deregister_styles() {
 add_action( 'wp_print_styles', 'wps_deregister_styles', 100 );
 
 function ms_script_includes( $top = true ) {
-	  $customKeys = get_post_custom();
-	  if( $top )
-	  {	
-		    // include external script file if custom key exists
-		    if( count( $customKeys[ "script" ] ) ) 
-			      echo "\n<script type=\"text/javascript\" src=\"" . ms_script_tokens( $customKeys[ "script" ][ 0 ] ) . "\"></script>";
-		    // include pre-post javascript commands if in script-pre
-		    if( count( $customKeys[ "script-pre" ] ) ) 
-			      echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-pre" ][ 0 ] . "</script>";
-		    if( count( $customKeys[ "style" ] ) ) echo "\n<style type=\"text/css\">" . $customKeys[ "style" ][ 0 ] . "</style>";
-	  }
-	  else
-	  {
-		    if( count( $customKeys[ "script-post" ] ) ) 
-			      echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-post" ][ 0 ] . "</script>";
-	  }
+    $customKeys = get_post_custom();
+    if( $top )
+    {	
+        // include external script file if custom key exists
+        if( count( $customKeys[ "script" ] ) ) 
+            echo "\n<script type=\"text/javascript\" src=\"" . ms_script_tokens( $customKeys[ "script" ][ 0 ] ) . "\"></script>";
+        // include pre-post javascript commands if in script-pre
+        if( count( $customKeys[ "script-pre" ] ) ) 
+            echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-pre" ][ 0 ] . "</script>";
+        if( count( $customKeys[ "style" ] ) ) echo "\n<style type=\"text/css\">" . $customKeys[ "style" ][ 0 ] . "</style>";
+    }
+    else
+    {
+        if( count( $customKeys[ "script-post" ] ) ) 
+            echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-post" ][ 0 ] . "</script>";
+    }
 }
 
 function ms_script_tokens( $key ) {
-	  return str_replace( "{BASE}", get_template_directory_uri(), $key );
+    return str_replace( "{BASE}", get_template_directory_uri(), $key );
 }
 
 /**
  * Disable the emoji's
  */
 function disable_emojis() {
-	  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-	  remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	  remove_action( 'admin_print_styles', 'print_emoji_styles' );	
-	  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-	  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
-	  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-	  add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_action( 'admin_print_styles', 'print_emoji_styles' );	
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+    add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
 }
 add_action( 'init', 'disable_emojis' );
 
@@ -61,11 +61,11 @@ add_action( 'init', 'disable_emojis' );
  * @return   array             Difference betwen the two arrays
  */
 function disable_emojis_tinymce( $plugins ) {
-	  if ( is_array( $plugins ) ) {
-		    return array_diff( $plugins, array( 'wpemoji' ) );
-	  } else {
-		    return array();
-	  }
+    if ( is_array( $plugins ) ) {
+        return array_diff( $plugins, array( 'wpemoji' ) );
+    } else {
+        return array();
+    }
 }
 
 function deregister_unused_scripts(){
@@ -76,201 +76,201 @@ add_action( 'wp_footer', 'deregister_unused_scripts' );
 
 // Produces links for every page just below the header
 function veryplaintxt_globalnav() {
-	  echo "<div id=\"globalnav\"><ul id=\"menu\">";
-	  if ( !is_front_page() ) { ?><li class="page_item_home home-link"><a href="<?php bloginfo('home'); ?>/" title="<?php echo wp_specialchars(get_bloginfo('name'), 1) ?>" rel="home"><?php _e('Home', 'veryplaintxt') ?></a></li><?php }
-	                                                                                                                                                                                                                               $menu = wp_list_pages('title_li=&sort_column=menu_order&echo=0'); // Params for the page list in header.php
-	                                                                                                                                                                                                                               echo str_replace(array("\r", "\n", "\t"), '', $menu);
-	                                                                                                                                                                                                                               echo "</ul></div>\n";
-                                                                                                                                                                                                                                 }
+    echo "<div id=\"globalnav\"><ul id=\"menu\">";
+    if ( !is_front_page() ) { ?><li class="page_item_home home-link"><a href="<?php bloginfo('home'); ?>/" title="<?php echo wp_specialchars(get_bloginfo('name'), 1) ?>" rel="home"><?php _e('Home', 'veryplaintxt') ?></a></li><?php }
+    $menu = wp_list_pages('title_li=&sort_column=menu_order&echo=0'); // Params for the page list in header.php
+    echo str_replace(array("\r", "\n", "\t"), '', $menu);
+    echo "</ul></div>\n";
+}
 
-                                                                                                                                                                                                                                 // Produces an hCard for the "admin" user
-                                                                                                                                                                                                                                 function veryplaintxt_admin_hCard() {
-	                                                                                                                                                                                                                                   global $wpdb, $user_info;
-	                                                                                                                                                                                                                                   $user_info = get_userdata(1);
-	                                                                                                                                                                                                                                   echo '<span class="vcard"><a class="url fn n" href="' . $user_info->user_url . '"><span class="given-name">' . $user_info->first_name . '</span> <span class="family-name">' . $user_info->last_name . '</span></a></span>';
-                                                                                                                                                                                                                                 }
+// Produces an hCard for the "admin" user
+function veryplaintxt_admin_hCard() {
+    global $wpdb, $user_info;
+    $user_info = get_userdata(1);
+    echo '<span class="vcard"><a class="url fn n" href="' . $user_info->user_url . '"><span class="given-name">' . $user_info->first_name . '</span> <span class="family-name">' . $user_info->last_name . '</span></a></span>';
+}
 
-                                                                                                                                                                                                                                 // Produces an hCard for post authors
-                                                                                                                                                                                                                                 function veryplaintxt_author_hCard() {
-	                                                                                                                                                                                                                                   global $wpdb, $authordata;
-	                                                                                                                                                                                                                                   echo '<span class="entry-author author vcard"><a class="url fn n" href="' . get_author_link(false, $authordata->ID, $authordata->user_nicename) . '" title="View all posts by ' . $authordata->display_name . '">' . get_the_author() . '</a></span>';
-                                                                                                                                                                                                                                 }
+// Produces an hCard for post authors
+function veryplaintxt_author_hCard() {
+    global $wpdb, $authordata;
+    echo '<span class="entry-author author vcard"><a class="url fn n" href="' . get_author_link(false, $authordata->ID, $authordata->user_nicename) . '" title="View all posts by ' . $authordata->display_name . '">' . get_the_author() . '</a></span>';
+}
 
-                                                                                                                                                                                                                                 // Produces semantic classes for the body element; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-                                                                                                                                                                                                                                 function veryplaintxt_body_class( $print = true ) {
-	                                                                                                                                                                                                                                   global $wp_query, $current_user;
+// Produces semantic classes for the body element; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+function veryplaintxt_body_class( $print = true ) {
+    global $wp_query, $current_user;
 
-	                                                                                                                                                                                                                                   $c = array('wordpress');
+    $c = array('wordpress');
 
-	                                                                                                                                                                                                                                   veryplaintxt_date_classes(time(), $c);
+    veryplaintxt_date_classes(time(), $c);
 
-	                                                                                                                                                                                                                                   is_home()       ? $c[] = 'home'       : null;
-	                                                                                                                                                                                                                                   is_archive()    ? $c[] = 'archive'    : null;
-	                                                                                                                                                                                                                                   is_date()       ? $c[] = 'date'       : null;
-	                                                                                                                                                                                                                                   is_search()     ? $c[] = 'search'     : null;
-	                                                                                                                                                                                                                                   is_paged()      ? $c[] = 'paged'      : null;
-	                                                                                                                                                                                                                                   is_attachment() ? $c[] = 'attachment' : null;
-	                                                                                                                                                                                                                                   is_404()        ? $c[] = 'four04'     : null;
+    is_home()       ? $c[] = 'home'       : null;
+    is_archive()    ? $c[] = 'archive'    : null;
+    is_date()       ? $c[] = 'date'       : null;
+    is_search()     ? $c[] = 'search'     : null;
+    is_paged()      ? $c[] = 'paged'      : null;
+    is_attachment() ? $c[] = 'attachment' : null;
+    is_404()        ? $c[] = 'four04'     : null;
 
-	                                                                                                                                                                                                                                   if ( is_single() ) {
-		                                                                                                                                                                                                                                     the_post();
-		                                                                                                                                                                                                                                     $c[] = 'single';
-		                                                                                                                                                                                                                                     if ( isset($wp_query->post->post_date) )
-			                                                                                                                                                                                                                                       veryplaintxt_date_classes(mysql2date('U', $wp_query->post->post_date), $c, 's-');
-		                                                                                                                                                                                                                                     foreach ( (array) get_the_category() as $cat )
-			                                                                                                                                                                                                                                   $c[] = 's-category-' . $cat->category_nicename;
-			                                                                                                                                                                                                                                   $c[] = 's-author-' . get_the_author_login();
-		                                                                                                                                                                                                                                     rewind_posts();
-	                                                                                                                                                                                                                                   }
+    if ( is_single() ) {
+        the_post();
+        $c[] = 'single';
+        if ( isset($wp_query->post->post_date) )
+            veryplaintxt_date_classes(mysql2date('U', $wp_query->post->post_date), $c, 's-');
+        foreach ( (array) get_the_category() as $cat )
+            $c[] = 's-category-' . $cat->category_nicename;
+        $c[] = 's-author-' . get_the_author_login();
+        rewind_posts();
+    }
 
-	                                                                                                                                                                                                                                   else if ( is_author() ) {
-		                                                                                                                                                                                                                                     $author = $wp_query->get_queried_object();
-		                                                                                                                                                                                                                                     $c[] = 'author';
-		                                                                                                                                                                                                                                     $c[] = 'author-' . $author->user_nicename;
-	                                                                                                                                                                                                                                   }
+    else if ( is_author() ) {
+        $author = $wp_query->get_queried_object();
+        $c[] = 'author';
+        $c[] = 'author-' . $author->user_nicename;
+    }
 	                                                                                                                                                                                                                                   
-	                                                                                                                                                                                                                                   else if ( is_category() ) {
-		                                                                                                                                                                                                                                     $cat = $wp_query->get_queried_object();
-		                                                                                                                                                                                                                                     $c[] = 'category';
-		                                                                                                                                                                                                                                     $c[] = 'category-' . $cat->category_nicename;
-	                                                                                                                                                                                                                                   }
+    else if ( is_category() ) {
+        $cat = $wp_query->get_queried_object();
+        $c[] = 'category';
+        $c[] = 'category-' . $cat->category_nicename;
+    }
 
-	                                                                                                                                                                                                                                   else if ( is_page() ) {
-		                                                                                                                                                                                                                                     the_post();
-		                                                                                                                                                                                                                                     $c[] = 'page';
-		                                                                                                                                                                                                                                     $c[] = 'page-author-' . get_the_author_login();
-		                                                                                                                                                                                                                                     rewind_posts();
-	                                                                                                                                                                                                                                   }
+    else if ( is_page() ) {
+        the_post();
+        $c[] = 'page';
+        $c[] = 'page-author-' . get_the_author_login();
+        rewind_posts();
+    }
 
-	                                                                                                                                                                                                                                   if ( $current_user->ID )
-		                                                                                                                                                                                                                                     $c[] = 'loggedin';
+    if ( $current_user->ID )
+        $c[] = 'loggedin';
 		                                                                                                                                                                                                                                 
-	                                                                                                                                                                                                                                   $c = join(' ', apply_filters('body_class',  $c));
+    $c = join(' ', apply_filters('body_class',  $c));
 
-	                                                                                                                                                                                                                                   return $print ? print($c) : $c;
-                                                                                                                                                                                                                                 }
+    return $print ? print($c) : $c;
+}
 
-                                                                                                                                                                                                                                 // Produces semantic classes for the each individual post div; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-                                                                                                                                                                                                                                 function veryplaintxt_post_class( $print = true ) {
-	                                                                                                                                                                                                                                   global $post, $veryplaintxt_post_alt;
+// Produces semantic classes for the each individual post div; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+function veryplaintxt_post_class( $print = true ) {
+    global $post, $veryplaintxt_post_alt;
 
-	                                                                                                                                                                                                                                   foreach ( (array) get_the_category() as $cat )
-		                                                                                                                                                                                                                                 $c[] = 'category-' . $cat->category_nicename;
+    foreach ( (array) get_the_category() as $cat )
+        $c[] = 'category-' . $cat->category_nicename;
 
-	                                                                                                                                                                                                                                   $c = join(' ', apply_filters('post_class', $c));
+    $c = join(' ', apply_filters('post_class', $c));
 
-	                                                                                                                                                                                                                                   return $print ? print($c) : $c;
-                                                                                                                                                                                                                                 }
-                                                                                                                                                                                                                                 $veryplaintxt_post_alt = 1;
+    return $print ? print($c) : $c;
+}
+$veryplaintxt_post_alt = 1;
 
-                                                                                                                                                                                                                                 // Produces semantic classes for the each individual comment li; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-                                                                                                                                                                                                                                 function veryplaintxt_comment_class( $print = true ) {
-	                                                                                                                                                                                                                                   global $comment, $post, $veryplaintxt_comment_alt;
+// Produces semantic classes for the each individual comment li; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+function veryplaintxt_comment_class( $print = true ) {
+    global $comment, $post, $veryplaintxt_comment_alt;
 
-	                                                                                                                                                                                                                                   $c = array($comment->comment_type);
+    $c = array($comment->comment_type);
 
-	                                                                                                                                                                                                                                   if ( $comment->user_id > 0 ) {
-		                                                                                                                                                                                                                                     $user = get_userdata($comment->user_id);
+    if ( $comment->user_id > 0 ) {
+        $user = get_userdata($comment->user_id);
 
-		                                                                                                                                                                                                                                     $c[] = "byuser commentauthor-$user->user_login";
+        $c[] = "byuser commentauthor-$user->user_login";
 
-		                                                                                                                                                                                                                                     if ( $comment->user_id === $post->post_author )
-			                                                                                                                                                                                                                                       $c[] = 'bypostauthor';
-	                                                                                                                                                                                                                                   }
+        if ( $comment->user_id === $post->post_author )
+            $c[] = 'bypostauthor';
+    }
 
-	                                                                                                                                                                                                                                   veryplaintxt_date_classes(mysql2date('U', $comment->comment_date), $c, 'c-');
-	                                                                                                                                                                                                                                   if ( ++$veryplaintxt_comment_alt % 2 )
-		                                                                                                                                                                                                                                     $c[] = 'alt';
+    veryplaintxt_date_classes(mysql2date('U', $comment->comment_date), $c, 'c-');
+    if ( ++$veryplaintxt_comment_alt % 2 )
+        $c[] = 'alt';
 
-	                                                                                                                                                                                                                                   $c[] = "c$veryplaintxt_comment_alt";
+    $c[] = "c$veryplaintxt_comment_alt";
 
-	                                                                                                                                                                                                                                   if ( is_trackback() ) {
-		                                                                                                                                                                                                                                     $c[] = 'trackback';
-	                                                                                                                                                                                                                                   }
+    if ( is_trackback() ) {
+        $c[] = 'trackback';
+    }
 
-	                                                                                                                                                                                                                                   $c = join(' ', apply_filters('comment_class', $c));
+    $c = join(' ', apply_filters('comment_class', $c));
 
-	                                                                                                                                                                                                                                   return $print ? print($c) : $c;
-                                                                                                                                                                                                                                 }
+    return $print ? print($c) : $c;
+}
 
-                                                                                                                                                                                                                                 // Produces date-based classes for the three functions above; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-                                                                                                                                                                                                                                 function veryplaintxt_date_classes($t, &$c, $p = '') {
-	                                                                                                                                                                                                                                   $t = $t + (get_option('gmt_offset') * 3600);
-	                                                                                                                                                                                                                                   $c[] = $p . 'y' . gmdate('Y', $t);
-	                                                                                                                                                                                                                                   $c[] = $p . 'm' . gmdate('m', $t);
-	                                                                                                                                                                                                                                   $c[] = $p . 'd' . gmdate('d', $t);
-	                                                                                                                                                                                                                                   $c[] = $p . 'h' . gmdate('h', $t);
-                                                                                                                                                                                                                                 }
+// Produces date-based classes for the three functions above; Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+function veryplaintxt_date_classes($t, &$c, $p = '') {
+    $t = $t + (get_option('gmt_offset') * 3600);
+    $c[] = $p . 'y' . gmdate('Y', $t);
+    $c[] = $p . 'm' . gmdate('m', $t);
+    $c[] = $p . 'd' . gmdate('d', $t);
+    $c[] = $p . 'h' . gmdate('h', $t);
+}
 
-                                                                                                                                                                                                                                 // Returns other categories except the current one (redundant); Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-                                                                                                                                                                                                                                 function veryplaintxt_other_cats($glue) {
-	                                                                                                                                                                                                                                   $current_cat = single_cat_title('', false);
-	                                                                                                                                                                                                                                   $separator = "\n";
-	                                                                                                                                                                                                                                   $cats = explode($separator, get_the_category_list($separator));
+// Returns other categories except the current one (redundant); Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+function veryplaintxt_other_cats($glue) {
+    $current_cat = single_cat_title('', false);
+    $separator = "\n";
+    $cats = explode($separator, get_the_category_list($separator));
 
-	                                                                                                                                                                                                                                   foreach ( $cats as $i => $str ) {
-		                                                                                                                                                                                                                                     if ( strstr($str, ">$current_cat<") ) {
-			                                                                                                                                                                                                                                       unset($cats[$i]);
-			                                                                                                                                                                                                                                       break;
-		                                                                                                                                                                                                                                     }
-	                                                                                                                                                                                                                                   }
+    foreach ( $cats as $i => $str ) {
+        if ( strstr($str, ">$current_cat<") ) {
+            unset($cats[$i]);
+            break;
+        }
+    }
 
-	                                                                                                                                                                                                                                   if ( empty($cats) )
-		                                                                                                                                                                                                                                     return false;
+    if ( empty($cats) )
+        return false;
 
-	                                                                                                                                                                                                                                   return trim(join($glue, $cats));
-                                                                                                                                                                                                                                 }
+    return trim(join($glue, $cats));
+}
 
-                                                                                                                                                                                                                                 // Returns other tags except the current one (redundant); Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
-                                                                                                                                                                                                                                 function veryplaintxt_other_tags($glue) {
-	                                                                                                                                                                                                                                   $current_tag = single_tag_title('', '',  false);
-	                                                                                                                                                                                                                                   $separator = "\n";
-	                                                                                                                                                                                                                                   $tags = explode($separator, get_the_tag_list("", "$separator", ""));
+// Returns other tags except the current one (redundant); Originally from the Sandbox, http://www.plaintxt.org/themes/sandbox/
+function veryplaintxt_other_tags($glue) {
+    $current_tag = single_tag_title('', '',  false);
+    $separator = "\n";
+    $tags = explode($separator, get_the_tag_list("", "$separator", ""));
 
-	                                                                                                                                                                                                                                   foreach ( $tags as $i => $str ) {
-		                                                                                                                                                                                                                                     if ( strstr($str, ">$current_tag<") ) {
-			                                                                                                                                                                                                                                       unset($tags[$i]);
-			                                                                                                                                                                                                                                       break;
-		                                                                                                                                                                                                                                     }
-	                                                                                                                                                                                                                                   }
+    foreach ( $tags as $i => $str ) {
+        if ( strstr($str, ">$current_tag<") ) {
+            unset($tags[$i]);
+            break;
+        }
+    }
 
-	                                                                                                                                                                                                                                   if ( empty($tags) )
-		                                                                                                                                                                                                                                     return false;
+    if ( empty($tags) )
+        return false;
 
-	                                                                                                                                                                                                                                   return trim(join($glue, $tags));
-                                                                                                                                                                                                                                 }
+    return trim(join($glue, $tags));
+}
 
-                                                                                                                                                                                                                                 // Produces an avatar image with the hCard-compliant photo class
-                                                                                                                                                                                                                                 function veryplaintxt_commenter_link() {
-	                                                                                                                                                                                                                                   $commenter = get_comment_author_link();
-	                                                                                                                                                                                                                                   if ( ereg( '<a[^>]* class=[^>]+>', $commenter ) ) {
-		                                                                                                                                                                                                                                     $commenter = ereg_replace( '(<a[^>]* class=[\'"]?)', '\\1url ' , $commenter );
-	                                                                                                                                                                                                                                   } else {
-		                                                                                                                                                                                                                                     $commenter = ereg_replace( '(<a )/', '\\1class="url "' , $commenter );
-	                                                                                                                                                                                                                                   }
-	                                                                                                                                                                                                                                   $email = get_comment_author_email();
-	                                                                                                                                                                                                                                   $avatar_size = get_option('veryplaintxt_avatarsize');
-	                                                                                                                                                                                                                                   if ( empty($avatar_size) ) $avatar_size = '40';
-	                                                                                                                                                                                                                                   $avatar = str_replace( "class='avatar", "class='photo avatar", get_avatar( "$email", "$avatar_size" ) );
-	                                                                                                                                                                                                                                   echo $avatar . ' <span class="fn n">' . $commenter . '</span>';
-                                                                                                                                                                                                                                 }
+// Produces an avatar image with the hCard-compliant photo class
+function veryplaintxt_commenter_link() {
+    $commenter = get_comment_author_link();
+    if ( ereg( '<a[^>]* class=[^>]+>', $commenter ) ) {
+        $commenter = ereg_replace( '(<a[^>]* class=[\'"]?)', '\\1url ' , $commenter );
+    } else {
+        $commenter = ereg_replace( '(<a )/', '\\1class="url "' , $commenter );
+    }
+    $email = get_comment_author_email();
+    $avatar_size = get_option('veryplaintxt_avatarsize');
+    if ( empty($avatar_size) ) $avatar_size = '40';
+    $avatar = str_replace( "class='avatar", "class='photo avatar", get_avatar( "$email", "$avatar_size" ) );
+    echo $avatar . ' <span class="fn n">' . $commenter . '</span>';
+}
 
-                                                                                                                                                                                                                                 // Loads veryplaintxt-style Search widget
-                                                                                                                                                                                                                                 function widget_veryplaintxt_search($args) {
-	                                                                                                                                                                                                                                   extract($args);
-	                                                                                                                                                                                                                                   $options = get_option('widget_veryplaintxt_search');
-	                                                                                                                                                                                                                                   $title = empty($options['title']) ? __( 'Search', 'veryplaintxt' ) : $options['title'];
-	                                                                                                                                                                                                                                   $button = empty($options['button']) ? __( 'Find', 'veryplaintxt' ) : $options['button'];
-                                                                                                                                                                                                                                 ?>
-		<?php echo $before_widget ?>
-				<?php echo $before_title ?><label for="s"><?php echo $title ?></label><?php echo $after_title ?>
-			<form id="searchform" method="get" action="<?php bloginfo('home') ?>">
-				<div>
-					<input id="s" name="s" class="text-input" type="text" value="<?php the_search_query() ?>" size="10" tabindex="1" accesskey="S" />
-					<input id="searchsubmit" name="searchsubmit" class="submit-button" type="submit" value="<?php echo $button ?>" tabindex="2" />
-				</div>
-			</form>
-		<?php echo $after_widget ?>
+// Loads veryplaintxt-style Search widget
+function widget_veryplaintxt_search($args) {
+    extract($args);
+    $options = get_option('widget_veryplaintxt_search');
+    $title = empty($options['title']) ? __( 'Search', 'veryplaintxt' ) : $options['title'];
+    $button = empty($options['button']) ? __( 'Find', 'veryplaintxt' ) : $options['button'];
+    ?>
+<?php echo $before_widget ?>
+<?php echo $before_title ?><label for="s"><?php echo $title ?></label><?php echo $after_title ?>
+    <form id="searchform" method="get" action="<?php bloginfo('home') ?>">
+<div>
+<input id="s" name="s" class="text-input" type="text" value="<?php the_search_query() ?>" size="10" tabindex="1" accesskey="S" />
+<input id="searchsubmit" name="searchsubmit" class="submit-button" type="submit" value="<?php echo $button ?>" tabindex="2" />
+</div>
+</form>
+<?php echo $after_widget ?>
 <?php
 }
 
@@ -287,10 +287,10 @@ function widget_veryplaintxt_search_control() {
 	}
 	$title = attribute_escape( $options['title'] );
 	$button = attribute_escape( $options['button'] );
-?>
-			<p><label for="search-title"><?php _e( 'Title:', 'veryplaintxt' ) ?> <input class="widefat" id="search-title" name="search-title" type="text" value="<?php echo $title; ?>" /></label></p>
-			<p><label for="search-button"><?php _e( 'Button Text:', 'veryplaintxt' ) ?> <input class="widefat" id="search-button" name="search-button" type="text" value="<?php echo $button; ?>" /></label></p>
-			<input type="hidden" id="search-submit" name="search-submit" value="1" />
+    ?>
+    <p><label for="search-title"><?php _e( 'Title:', 'veryplaintxt' ) ?> <input class="widefat" id="search-title" name="search-title" type="text" value="<?php echo $title; ?>" /></label></p>
+    <p><label for="search-button"><?php _e( 'Button Text:', 'veryplaintxt' ) ?> <input class="widefat" id="search-button" name="search-button" type="text" value="<?php echo $button; ?>" /></label></p>
+    <input type="hidden" id="search-submit" name="search-submit" value="1" />
 <?php
 }
 
@@ -299,15 +299,15 @@ function widget_veryplaintxt_meta($args) {
 	extract($args);
 	$options = get_option('widget_meta');
 	$title = empty($options['title']) ? __('Meta', 'veryplaintxt') : $options['title'];
-?>
-		<?php echo $before_widget; ?>
-			<?php echo $before_title . $title . $after_title; ?>
-			<ul>
-				<?php wp_register() ?>
-				<li><?php wp_loginout() ?></li>
-				<?php wp_meta() ?>
-			</ul>
-		<?php echo $after_widget; ?>
+    ?>
+<?php echo $before_widget; ?>
+<?php echo $before_title . $title . $after_title; ?>
+    <ul>
+<?php wp_register() ?>
+<li><?php wp_loginout() ?></li>
+<?php wp_meta() ?>
+</ul>
+<?php echo $after_widget; ?>
 <?php
 }
 
@@ -316,10 +316,10 @@ function widget_veryplaintxt_homelink($args) {
 	$options = get_option('widget_veryplaintxt_homelink');
 	$title = empty($options['title']) ? __( 'Home', 'veryplaintxt' ) : $options['title'];
 	if ( !is_front_page() || is_paged() ) {
-?>
-			<?php echo $before_widget; ?>
-				<?php echo $before_title; ?><a href="<?php bloginfo('home'); ?>/" title="<?php echo wp_specialchars(get_bloginfo('name'), 1) ?>" rel="home"><?php echo $title; ?></a><?php echo $after_title; ?>
-			<?php echo $after_widget; ?>
+        ?>
+<?php echo $before_widget; ?>
+<?php echo $before_title; ?><a href="<?php bloginfo('home'); ?>/" title="<?php echo wp_specialchars(get_bloginfo('name'), 1) ?>" rel="home"><?php echo $title; ?></a><?php echo $after_title; ?>
+<?php echo $after_widget; ?>
 <?php }
 }
 
@@ -334,10 +334,10 @@ function widget_veryplaintxt_homelink_control() {
 		update_option( 'widget_veryplaintxt_homelink', $options );
 	}
 	$title = attribute_escape( $options['title'] );
-?>
-			<p><?php _e('Adds a link to the home page on every page <em>except</em> the home.', 'veryplaintxt'); ?></p>
-			<p><label for="homelink-title"><?php _e( 'Title:', 'veryplaintxt' ) ?> <input class="widefat" id="homelink-title" name="homelink-title" type="text" value="<?php echo $title; ?>" /></label></p>
-			<input type="hidden" id="homelink-submit" name="homelink-submit" value="1" />
+    ?>
+    <p><?php _e('Adds a link to the home page on every page <em>except</em> the home.', 'veryplaintxt'); ?></p>
+    <p><label for="homelink-title"><?php _e( 'Title:', 'veryplaintxt' ) ?> <input class="widefat" id="homelink-title" name="homelink-title" type="text" value="<?php echo $title; ?>" /></label></p>
+    <input type="hidden" id="homelink-submit" name="homelink-submit" value="1" />
 <?php
 }
 
@@ -345,14 +345,14 @@ function widget_veryplaintxt_rsslinks($args) {
 	extract($args);
 	$options = get_option('widget_veryplaintxt_rsslinks');
 	$title = empty($options['title']) ? __( 'RSS Links', 'veryplaintxt' ) : $options['title'];
-?>
-		<?php echo $before_widget; ?>
-			<?php echo $before_title . $title . $after_title; ?>
-			<ul>
-				<li><a href="<?php bloginfo('rss2_url') ?>" title="<?php echo wp_specialchars( get_bloginfo('name'), 1 ) ?> <?php _e( 'Posts RSS feed', 'veryplaintxt' ); ?>" rel="alternate" type="application/rss+xml"><?php _e( 'All posts', 'veryplaintxt' ) ?></a></li>
-				<li><a href="<?php bloginfo('comments_rss2_url') ?>" title="<?php echo wp_specialchars(bloginfo('name'), 1) ?> <?php _e( 'Comments RSS feed', 'veryplaintxt' ); ?>" rel="alternate" type="application/rss+xml"><?php _e( 'All comments', 'veryplaintxt' ) ?></a></li>
-			</ul>
-		<?php echo $after_widget; ?>
+    ?>
+<?php echo $before_widget; ?>
+<?php echo $before_title . $title . $after_title; ?>
+    <ul>
+<li><a href="<?php bloginfo('rss2_url') ?>" title="<?php echo wp_specialchars( get_bloginfo('name'), 1 ) ?> <?php _e( 'Posts RSS feed', 'veryplaintxt' ); ?>" rel="alternate" type="application/rss+xml"><?php _e( 'All posts', 'veryplaintxt' ) ?></a></li>
+<li><a href="<?php bloginfo('comments_rss2_url') ?>" title="<?php echo wp_specialchars(bloginfo('name'), 1) ?> <?php _e( 'Comments RSS feed', 'veryplaintxt' ); ?>" rel="alternate" type="application/rss+xml"><?php _e( 'All comments', 'veryplaintxt' ) ?></a></li>
+</ul>
+<?php echo $after_widget; ?>
 <?php
 }
 
@@ -367,9 +367,9 @@ function widget_veryplaintxt_rsslinks_control() {
 		update_option( 'widget_veryplaintxt_rsslinks', $options );
 	}
 	$title = attribute_escape( $options['title'] );
-?>
-			<p><label for="rsslinks-title"><?php _e( 'Title:', 'veryplaintxt' ) ?> <input class="widefat" id="rsslinks-title" name="rsslinks-title" type="text" value="<?php echo $title; ?>" /></label></p>
-			<input type="hidden" id="rsslinks-submit" name="rsslinks-submit" value="1" />
+    ?>
+    <p><label for="rsslinks-title"><?php _e( 'Title:', 'veryplaintxt' ) ?> <input class="widefat" id="rsslinks-title" name="rsslinks-title" type="text" value="<?php echo $title; ?>" /></label></p>
+    <input type="hidden" id="rsslinks-submit" name="rsslinks-submit" value="1" />
 <?php
 }
 
@@ -462,10 +462,10 @@ function veryplaintxt_donate() {
 }
 
 function veryplaintxt_admin_head() {
-// Additional CSS styles for the theme options menu
-?>
-<style type="text/css" media="screen,projection">
-/*<![CDATA[*/
+    // Additional CSS styles for the theme options menu
+    ?>
+    <style type="text/css" media="screen,projection">
+    /*<![CDATA[*/
 	p.info span{font-weight:bold;}
 	label.arial,label.courier,label.georgia,label.lucida-console,label.lucida-unicode,label.tahoma,label.times,label.trebuchet,label.verdana{font-size:1.2em;line-height:175%;}
 	.arial{font-family:arial,helvetica,sans-serif;}
@@ -478,8 +478,8 @@ function veryplaintxt_admin_head() {
 	.trebuchet{font-family:'trebuchet ms',helvetica,sans-serif;}
 	.verdana{font-family:verdana,geneva,sans-serif;}
 	form#paypal{float:right;margin:1em 0 0.5em 1em;}
-/*]]>*/
-</style>
+        /*]]>*/
+        </style>
 <?php
 }
 
@@ -490,245 +490,245 @@ function veryplaintxt_admin() { // Theme options menu
 	$check = ' checked="checked"';
 	$basefont = get_option('veryplaintxt_basefontfamily');
 	$headfont = get_option('veryplaintxt_headingfontfamily');
-?>
+    ?>
 
-<div class="wrap">
+    <div class="wrap">
 
 	<h2><?php _e('Veryplaintxt Theme Options', 'veryplaintxt'); ?></h2>
-	<?php printf( __('%1$s<p>Thanks for selecting the <a href="http://www.plaintxt.org/themes/veryplaintxt/" title="Veryplaintxt theme for WordPress">veryplaintxt</a> theme by <span class="vcard"><a class="url fn n" href="http://scottwallick.com/" title="scottwallick.com" rel="me designer"><span class="given-name">Scott</span> <span class="additional-name">Allan</span> <span class="family-name">Wallick</span></a></span>. Please read the included <a href="%2$s" title="Open the readme.html" rel="enclosure" id="readme">documentation</a> for more information about veryplaintxt and its advanced features. <strong>If you find this theme useful, please consider <label for="paypal">donating</label>.</strong> You must click on <i><u>S</u>ave Options</i> to save any changes. You can also discard your changes and reload the default settings by clicking on <i><u>R</u>eset</i>.</p>', 'veryplaintxt'), veryplaintxt_donate(), get_template_directory_uri() . '/readme.html' ); ?>
+<?php printf( __('%1$s<p>Thanks for selecting the <a href="http://www.plaintxt.org/themes/veryplaintxt/" title="Veryplaintxt theme for WordPress">veryplaintxt</a> theme by <span class="vcard"><a class="url fn n" href="http://scottwallick.com/" title="scottwallick.com" rel="me designer"><span class="given-name">Scott</span> <span class="additional-name">Allan</span> <span class="family-name">Wallick</span></a></span>. Please read the included <a href="%2$s" title="Open the readme.html" rel="enclosure" id="readme">documentation</a> for more information about veryplaintxt and its advanced features. <strong>If you find this theme useful, please consider <label for="paypal">donating</label>.</strong> You must click on <i><u>S</u>ave Options</i> to save any changes. You can also discard your changes and reload the default settings by clicking on <i><u>R</u>eset</i>.</p>', 'veryplaintxt'), veryplaintxt_donate(), get_template_directory_uri() . '/readme.html' ); ?>
 
 	<form action="<?php echo wp_specialchars( $_SERVER['REQUEST_URI'] ) ?>" method="post">
-		<?php wp_nonce_field('veryplaintxt_save_options'); echo "\n"; ?>
-		<h3><?php _e('Typography', 'veryplaintxt'); ?></h3>
-		<table class="form-table" summary="Veryplaintxt typography options">
-			<tr valign="top">
-				<th scope="row"><label for="vp_basefontsize"><?php _e('Base font size', 'veryplaintxt'); ?></label></th> 
-				<td>
-					<input id="vp_basefontsize" name="vp_basefontsize" type="text" class="text" value="<?php if ( get_option('veryplaintxt_basefontsize') == "" ) { echo "90%"; } else { echo attribute_escape( get_option('veryplaintxt_basefontsize') ); } ?>" tabindex="1" size="10" />
-					<p class="info"><?php _e('The base font size globally affects the size of text throughout your blog. This can be in any unit (e.g., px, pt, em), but I suggest using a percentage (%). Default is 90%.', 'veryplaintxt'); ?></p>
-				</td>
-			</tr>
-			<tr valign="top">
-				<th scope="row"><?php _e('Base font family', 'veryplaintxt'); ?></th> 
-				<td>
-					<input id="vp_basefontArial" name="vp_basefontfamily" type="radio" class="radio" value="1"<?php if ( $basefont == 1 ) echo $check; ?> tabindex="2" /> <label for="vp_basefontArial" class="arial">Arial</label><br />
-					<input id="vp_basefontCourier" name="vp_basefontfamily" type="radio" class="radio" value="2"<?php if ( $basefont == 2 ) echo $check; ?> tabindex="3" /> <label for="vp_basefontCourier" class="courier">Courier</label><br />
-					<input id="vp_basefontGeorgia" name="vp_basefontfamily" type="radio" class="radio" value="3"<?php if ( $basefont == 3 ) echo $check; ?> tabindex="4" /> <label for="vp_basefontGeorgia" class="georgia">Georgia</label><br />
-					<input id="vp_basefontLucidaConsole" name="vp_basefontfamily" type="radio" class="radio" value="4"<?php if ( $basefont == 4 ) echo $check; ?> tabindex="5" /> <label for="vp_basefontLucidaConsole" class="lucida-console">Lucida Console</label><br />
-					<input id="vp_basefontLucidaUnicode" name="vp_basefontfamily" type="radio" class="radio" value="5"<?php if ( $basefont == 5 ) echo $check; ?> tabindex="6" /> <label for="vp_basefontLucidaUnicode" class="lucida-unicode">Lucida Sans Unicode</label><br />
-					<input id="vp_basefontTahoma" name="vp_basefontfamily" type="radio" class="radio" value="6"<?php if ( $basefont == 6 ) echo $check; ?> tabindex="7" /> <label for="vp_basefontTahoma" class="tahoma">Tahoma</label><br />
-					<input id="vp_basefontTimes" name="vp_basefontfamily" type="radio" class="radio" value="7"<?php if ( ( $basefont == '' ) || ( $basefont == 7 ) ) echo $check; ?> tabindex="8" /> <label for="vp_basefontTimes" class="times">Times</label><br />
-					<input id="vp_basefontTrebuchetMS" name="vp_basefontfamily" type="radio" class="radio" value="8"<?php if ( $basefont == 8 ) echo $check; ?> tabindex="9" /> <label for="vp_basefontTrebuchetMS" class="trebuchet">Trebuchet MS</label><br />
-					<input id="vp_basefontVerdana" name="vp_basefontfamily" type="radio" class="radio" value="9"<?php if ( $basefont == 9 ) echo $check; ?> tabindex="10" /> <label for="vp_basefontVerdana" class="verdana">Verdana</label>
-					<p class="info"><?php printf(__('The base font family sets the font for everything except content headings. The selection is limited to %1$s fonts, as they will display correctly. Default is <span class="times">Times</span>.', 'veryplaintxt'), '<cite><a href="http://en.wikipedia.org/wiki/Web_safe_fonts" title="Web safe fonts - Wikipedia">web safe</a></cite>'); ?></p>
-				</td>
-			</tr>
-			<tr valign="top">
-				<th scope="row"><?php _e('Heading font family', 'veryplaintxt'); ?></th> 
-				<td>
-					<input id="vp_headingfontArial" name="vp_headingfontfamily" type="radio" class="radio" value="1"<?php if ( ( $headfont == '' ) || ( $headfont == 1 ) ) echo $check; ?> tabindex="2" /> <label for="vp_headingfontArial" class="arial">Arial</label><br />
-					<input id="vp_headingfontCourier" name="vp_headingfontfamily" type="radio" class="radio" value="2"<?php if ( $headfont == 2 ) echo $check; ?> tabindex="3" /> <label for="vp_headingfontCourier" class="courier">Courier</label><br />
-					<input id="vp_headingfontGeorgia" name="vp_headingfontfamily" type="radio" class="radio" value="3"<?php if ( $headfont == 3 ) echo $check; ?> tabindex="4" /> <label for="vp_headingfontGeorgia" class="georgia">Georgia</label><br />
-					<input id="vp_headingfontLucidaConsole" name="vp_headingfontfamily" type="radio" class="radio" value="4"<?php if ( $headfont == 4 ) echo $check; ?> tabindex="5" /> <label for="vp_headingfontLucidaConsole" class="lucida-console">Lucida Console</label><br />
-					<input id="vp_headingfontLucidaUnicode" name="vp_headingfontfamily" type="radio" class="radio" value="5"<?php if ( $headfont == 5 ) echo $check; ?> tabindex="6" /> <label for="vp_headingfontLucidaUnicode" class="lucida-unicode">Lucida Sans Unicode</label><br />
-					<input id="vp_headingfontTahoma" name="vp_headingfontfamily" type="radio" class="radio" value="6"<?php if ( $headfont == 6 ) echo $check; ?> tabindex="7" /> <label for="vp_headingfontTahoma" class="tahoma">Tahoma</label><br />
-					<input id="vp_headingfontTimes" name="vp_headingfontfamily" type="radio" class="radio" value="7"<?php if ( $headfont == 7 ) echo $check; ?> tabindex="8" /> <label for="vp_headingfontTimes" class="times">Times</label><br />
-					<input id="vp_headingfontTrebuchetMS" name="vp_headingfontfamily" type="radio" class="radio" value="8"<?php if ( $headfont == 8 ) echo $check; ?> tabindex="9" /> <label for="vp_headingfontTrebuchetMS" class="trebuchet">Trebuchet MS</label><br />
-					<input id="vp_headingfontVerdana" name="vp_headingfontfamily" type="radio" class="radio" value="9"<?php if ( $headfont == 9 ) echo $check; ?> tabindex="10" /> <label for="vp_headingfontVerdana" class="verdana">Verdana</label>
-					<p class="info"><?php printf(__('The heading font family sets the font for all content headings. The selection is limited to %1$s fonts, as they will display correctly. Default is <span class="arial">Arial</span>. ', 'veryplaintxt'), '<cite><a href="http://en.wikipedia.org/wiki/Web_safe_fonts" title="Web safe fonts - Wikipedia">web safe</a></cite>'); ?></p>
-				</td>
-			</tr>
-		</table>
-		<h3><?php _e('Layout', 'veryplaintxt'); ?></h3>
-		<table class="form-table" summary="Veryplaintxt layout options">
-			<tr valign="top">
-				<th scope="row"><label for="vp_layoutwidth"><?php _e('Layout width', 'veryplaintxt'); ?></label></th> 
-				<td>
-					<input id="vp_layoutwidth" name="vp_layoutwidth" type="text" class="text" value="<?php if ( get_option('veryplaintxt_layoutwidth') == "" ) { echo "80%"; } else { echo attribute_escape( get_option('veryplaintxt_layoutwidth') ); } ?>" tabindex="20" size="10" />
-					<p class="info"><?php _e('The layout width determines the normal width of the entire layout. This can be in any unit (e.g., px, pt, em), but I suggest using a percentage (%). Default is <span>80%</span>.', 'veryplaintxt'); ?></p>
-				</td>
-			</tr>
-			<tr valign="top">
-				<th scope="row"><label for="vp_maxwidth"><?php _e('Maximum width', 'veryplaintxt'); ?></label></th> 
-				<td>
-					<input id="vp_maxwidth" name="vp_maxwidth" type="text" class="text" value="<?php if ( get_option('veryplaintxt_maxwidth') == "" ) { echo "55em"; } else { echo attribute_escape( get_option('veryplaintxt_maxwidth') ); } ?>" tabindex="21" size="10" />
-					<p class="info"><?php _e('The maximum width determines how wide the layout can be. When viewed in a large screen, this keeps text lines from running long (i.e., difficult hard to read). Note that this has no effect in Internet Explorer 6 and below. You may leave this blank. Default is <span>55em</span>.', 'veryplaintxt'); ?></p>
-				</td>
-			</tr>
-			<tr valign="top">
-				<th scope="row"><label for="vp_minwidth"><?php _e('Minimum width', 'veryplaintxt'); ?></label></th> 
-				<td>
-					<input id="vp_minwidth" name="vp_minwidth" type="text" class="text" value="<?php if ( get_option('veryplaintxt_minwidth') == "" ) { echo "35em"; } else { echo attribute_escape( get_option('veryplaintxt_minwidth') ); } ?>" tabindex="22" size="10" />
-					<p class="info"><?php _e('The minimum width determines how narrow the layout can be. When viewed in a small area, this keeps the layout from becoming too narrow. Note that this has no effect in Internet Explorer 6 and below. You may leave this blank. Default is <span>35em</span>.', 'veryplaintxt'); ?></p>
-				</td>
-			</tr>
-			<tr valign="top">
-				<th scope="row"><label for="vp_posttextalignment"><?php _e('Post text alignment', 'veryplaintxt'); ?></label></th> 
-				<td>
-					<select id="vp_posttextalignment" name="vp_posttextalignment" tabindex="23" class="dropdown">
-						<option value="center" <?php if ( get_option('veryplaintxt_posttextalignment') == "center" ) { echo 'selected="selected"'; } ?>><?php _e('Centered', 'veryplaintxt'); ?> </option>
-						<option value="justify" <?php if ( get_option('veryplaintxt_posttextalignment') == "justify" ) { echo 'selected="selected"'; } ?>><?php _e('Justified', 'veryplaintxt'); ?> </option>
-						<option value="left" <?php if ( ( get_option('veryplaintxt_posttextalignment') == "") || ( get_option('veryplaintxt_posttextalignment') == "left") ) { echo 'selected="selected"'; } ?>><?php _e('Left', 'veryplaintxt'); ?> </option>
-						<option value="right" <?php if ( get_option('veryplaintxt_posttextalignment') == "right" ) { echo 'selected="selected"'; } ?>><?php _e('Right', 'veryplaintxt'); ?> </option>
-					</select>
-					<p class="info"><?php _e('Choose one of the options for the alignment of the post entry text. Default is <span>left</span>.', 'veryplaintxt'); ?></p>
-				</td>
-			</tr>
-			<tr valign="top">
-				<th scope="row"><label for="vp_sidebarposition"><?php _e('Sidebar position', 'veryplaintxt'); ?></label></th> 
-				<td>
-					<select id="vp_sidebarposition" name="vp_sidebarposition" tabindex="24" class="dropdown">
-						<option value="left" <?php if ( get_option('veryplaintxt_sidebarposition') == "left" ) { echo 'selected="selected"'; } ?>><?php _e('Left of content', 'veryplaintxt'); ?> </option>
-						<option value="right" <?php if ( ( get_option('veryplaintxt_sidebarposition') == "") || ( get_option('veryplaintxt_sidebarposition') == "right") ) { echo 'selected="selected"'; } ?>><?php _e('Right of content', 'veryplaintxt'); ?> </option>
-					</select>
-					<p class="info"><?php _e('The sidebar can be positioned to the left or the right of the main content column. Default is <span>right of content</span>.', 'veryplaintxt'); ?></p>
-				</td>
-			</tr>
-			<tr valign="top">
-				<th scope="row"><label for="vp_sidebartextalignment" class="dropdown"><?php _e('Sidebar text alignment', 'veryplaintxt'); ?></label></th> 
-				<td>
-					<select id="vp_sidebartextalignment" name="vp_sidebartextalignment" tabindex="25" class="dropdown">
-						<option value="center" <?php if ( ( get_option('veryplaintxt_sidebartextalignment') == "") || ( get_option('veryplaintxt_sidebartextalignment') == "center") ) { echo 'selected="selected"'; } ?>><?php _e('Centered', 'veryplaintxt'); ?> </option>
-						<option value="left" <?php if ( get_option('veryplaintxt_sidebartextalignment') == "left" ) { echo 'selected="selected"'; } ?>><?php _e('Left', 'veryplaintxt'); ?> </option>
-						<option value="right" <?php if ( get_option('veryplaintxt_sidebartextalignment') == "right" ) { echo 'selected="selected"'; } ?>><?php _e('Right', 'veryplaintxt'); ?> </option>
-					</select>
-					<p class="info"><?php _e('Choose one of the options for the alignment of the sidebar text. Default is <span>centered</span>.', 'veryplaintxt'); ?></p>
-				</td>
-			</tr>
-		</table>
-		<h3><?php _e('Content', 'veryplaintxt'); ?></h3>
-		<table class="form-table" summary="Veryplaintxt content options">
-			<tr valign="top">
-				<th scope="row"><label for="vp_avatarsize"><?php _e('Avatar size', 'plaintxtblog'); ?></label></th> 
-				<td>
-					<input id="vp_avatarsize" name="vp_avatarsize" type="text" class="text" value="<?php if ( get_option('veryplaintxt_avatarsize') == "" ) { echo "40"; } else { echo attribute_escape( get_option('veryplaintxt_avatarsize') ); } ?>" size="6" />
-					<p class="info"><?php _e('Sets the avatar size in pixels, if avatars are enabled. Default is <span>40</span>.', 'veryplaintxt'); ?></p>
-				</td>
-			</tr>
-		</table>
-		<p class="submit">
-			<input name="save" type="submit" value="<?php _e('Save Options', 'veryplaintxt'); ?>" tabindex="26" accesskey="S" />  
-			<input name="action" type="hidden" value="save" />
-			<input name="page_options" type="hidden" value="vp_basefontsize,vp_basefontfamily,vp_headingfontfamily,vp_posttextalignment,vp_layoutwidth,vp_maxwidth,vp_minwidth,vp_sidebarposition,vp_sidebartextalignment,vp_avatarsize" />
-		</p>
-	</form>
-	<h3 id="reset"><?php _e('Reset Options', 'veryplaintxt'); ?></h3>
-	<p><?php _e('Resetting deletes all stored veryplaintxt options from your database. After resetting, default options are loaded but are not stored until you click <i>Save Options</i>. A reset does not affect the actual theme files in any way. If you are uninstalling veryplaintxt, please reset before removing the theme files to clear your databse.', 'veryplaintxt'); ?></p>
-	<form action="<?php echo wp_specialchars( $_SERVER['REQUEST_URI'] ) ?>" method="post">
-		<?php wp_nonce_field('veryplaintxt_reset_options'); echo "\n"; ?>
-		  <p class="submit">
-			    <input name="reset" type="submit" value="<?php _e('Reset Options', 'veryplaintxt'); ?>" onclick="return confirm('<?php _e('Click OK to reset. Any changes to these theme options will be lost!', 'veryplaintxt'); ?>');" tabindex="27" accesskey="R" />
-			    <input name="action" type="hidden" value="reset" />
-			    <input name="page_options" type="hidden" value="vp_basefontsize,vp_basefontfamily,vp_headingfontfamily,vp_posttextalignment,vp_layoutwidth,vp_maxwidth,vp_minwidth,vp_sidebarposition,vp_sidebartextalignment,vp_avatarsize" />
-		  </p>
-	</form>
+<?php wp_nonce_field('veryplaintxt_save_options'); echo "\n"; ?>
+<h3><?php _e('Typography', 'veryplaintxt'); ?></h3>
+<table class="form-table" summary="Veryplaintxt typography options">
+<tr valign="top">
+<th scope="row"><label for="vp_basefontsize"><?php _e('Base font size', 'veryplaintxt'); ?></label></th> 
+<td>
+<input id="vp_basefontsize" name="vp_basefontsize" type="text" class="text" value="<?php if ( get_option('veryplaintxt_basefontsize') == "" ) { echo "90%"; } else { echo attribute_escape( get_option('veryplaintxt_basefontsize') ); } ?>" tabindex="1" size="10" />
+<p class="info"><?php _e('The base font size globally affects the size of text throughout your blog. This can be in any unit (e.g., px, pt, em), but I suggest using a percentage (%). Default is 90%.', 'veryplaintxt'); ?></p>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row"><?php _e('Base font family', 'veryplaintxt'); ?></th> 
+<td>
+<input id="vp_basefontArial" name="vp_basefontfamily" type="radio" class="radio" value="1"<?php if ( $basefont == 1 ) echo $check; ?> tabindex="2" /> <label for="vp_basefontArial" class="arial">Arial</label><br />
+<input id="vp_basefontCourier" name="vp_basefontfamily" type="radio" class="radio" value="2"<?php if ( $basefont == 2 ) echo $check; ?> tabindex="3" /> <label for="vp_basefontCourier" class="courier">Courier</label><br />
+<input id="vp_basefontGeorgia" name="vp_basefontfamily" type="radio" class="radio" value="3"<?php if ( $basefont == 3 ) echo $check; ?> tabindex="4" /> <label for="vp_basefontGeorgia" class="georgia">Georgia</label><br />
+<input id="vp_basefontLucidaConsole" name="vp_basefontfamily" type="radio" class="radio" value="4"<?php if ( $basefont == 4 ) echo $check; ?> tabindex="5" /> <label for="vp_basefontLucidaConsole" class="lucida-console">Lucida Console</label><br />
+<input id="vp_basefontLucidaUnicode" name="vp_basefontfamily" type="radio" class="radio" value="5"<?php if ( $basefont == 5 ) echo $check; ?> tabindex="6" /> <label for="vp_basefontLucidaUnicode" class="lucida-unicode">Lucida Sans Unicode</label><br />
+<input id="vp_basefontTahoma" name="vp_basefontfamily" type="radio" class="radio" value="6"<?php if ( $basefont == 6 ) echo $check; ?> tabindex="7" /> <label for="vp_basefontTahoma" class="tahoma">Tahoma</label><br />
+<input id="vp_basefontTimes" name="vp_basefontfamily" type="radio" class="radio" value="7"<?php if ( ( $basefont == '' ) || ( $basefont == 7 ) ) echo $check; ?> tabindex="8" /> <label for="vp_basefontTimes" class="times">Times</label><br />
+<input id="vp_basefontTrebuchetMS" name="vp_basefontfamily" type="radio" class="radio" value="8"<?php if ( $basefont == 8 ) echo $check; ?> tabindex="9" /> <label for="vp_basefontTrebuchetMS" class="trebuchet">Trebuchet MS</label><br />
+<input id="vp_basefontVerdana" name="vp_basefontfamily" type="radio" class="radio" value="9"<?php if ( $basefont == 9 ) echo $check; ?> tabindex="10" /> <label for="vp_basefontVerdana" class="verdana">Verdana</label>
+<p class="info"><?php printf(__('The base font family sets the font for everything except content headings. The selection is limited to %1$s fonts, as they will display correctly. Default is <span class="times">Times</span>.', 'veryplaintxt'), '<cite><a href="http://en.wikipedia.org/wiki/Web_safe_fonts" title="Web safe fonts - Wikipedia">web safe</a></cite>'); ?></p>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row"><?php _e('Heading font family', 'veryplaintxt'); ?></th> 
+<td>
+<input id="vp_headingfontArial" name="vp_headingfontfamily" type="radio" class="radio" value="1"<?php if ( ( $headfont == '' ) || ( $headfont == 1 ) ) echo $check; ?> tabindex="2" /> <label for="vp_headingfontArial" class="arial">Arial</label><br />
+<input id="vp_headingfontCourier" name="vp_headingfontfamily" type="radio" class="radio" value="2"<?php if ( $headfont == 2 ) echo $check; ?> tabindex="3" /> <label for="vp_headingfontCourier" class="courier">Courier</label><br />
+<input id="vp_headingfontGeorgia" name="vp_headingfontfamily" type="radio" class="radio" value="3"<?php if ( $headfont == 3 ) echo $check; ?> tabindex="4" /> <label for="vp_headingfontGeorgia" class="georgia">Georgia</label><br />
+<input id="vp_headingfontLucidaConsole" name="vp_headingfontfamily" type="radio" class="radio" value="4"<?php if ( $headfont == 4 ) echo $check; ?> tabindex="5" /> <label for="vp_headingfontLucidaConsole" class="lucida-console">Lucida Console</label><br />
+<input id="vp_headingfontLucidaUnicode" name="vp_headingfontfamily" type="radio" class="radio" value="5"<?php if ( $headfont == 5 ) echo $check; ?> tabindex="6" /> <label for="vp_headingfontLucidaUnicode" class="lucida-unicode">Lucida Sans Unicode</label><br />
+<input id="vp_headingfontTahoma" name="vp_headingfontfamily" type="radio" class="radio" value="6"<?php if ( $headfont == 6 ) echo $check; ?> tabindex="7" /> <label for="vp_headingfontTahoma" class="tahoma">Tahoma</label><br />
+<input id="vp_headingfontTimes" name="vp_headingfontfamily" type="radio" class="radio" value="7"<?php if ( $headfont == 7 ) echo $check; ?> tabindex="8" /> <label for="vp_headingfontTimes" class="times">Times</label><br />
+<input id="vp_headingfontTrebuchetMS" name="vp_headingfontfamily" type="radio" class="radio" value="8"<?php if ( $headfont == 8 ) echo $check; ?> tabindex="9" /> <label for="vp_headingfontTrebuchetMS" class="trebuchet">Trebuchet MS</label><br />
+<input id="vp_headingfontVerdana" name="vp_headingfontfamily" type="radio" class="radio" value="9"<?php if ( $headfont == 9 ) echo $check; ?> tabindex="10" /> <label for="vp_headingfontVerdana" class="verdana">Verdana</label>
+<p class="info"><?php printf(__('The heading font family sets the font for all content headings. The selection is limited to %1$s fonts, as they will display correctly. Default is <span class="arial">Arial</span>. ', 'veryplaintxt'), '<cite><a href="http://en.wikipedia.org/wiki/Web_safe_fonts" title="Web safe fonts - Wikipedia">web safe</a></cite>'); ?></p>
+</td>
+</tr>
+</table>
+<h3><?php _e('Layout', 'veryplaintxt'); ?></h3>
+<table class="form-table" summary="Veryplaintxt layout options">
+<tr valign="top">
+<th scope="row"><label for="vp_layoutwidth"><?php _e('Layout width', 'veryplaintxt'); ?></label></th> 
+<td>
+<input id="vp_layoutwidth" name="vp_layoutwidth" type="text" class="text" value="<?php if ( get_option('veryplaintxt_layoutwidth') == "" ) { echo "80%"; } else { echo attribute_escape( get_option('veryplaintxt_layoutwidth') ); } ?>" tabindex="20" size="10" />
+<p class="info"><?php _e('The layout width determines the normal width of the entire layout. This can be in any unit (e.g., px, pt, em), but I suggest using a percentage (%). Default is <span>80%</span>.', 'veryplaintxt'); ?></p>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row"><label for="vp_maxwidth"><?php _e('Maximum width', 'veryplaintxt'); ?></label></th> 
+<td>
+<input id="vp_maxwidth" name="vp_maxwidth" type="text" class="text" value="<?php if ( get_option('veryplaintxt_maxwidth') == "" ) { echo "55em"; } else { echo attribute_escape( get_option('veryplaintxt_maxwidth') ); } ?>" tabindex="21" size="10" />
+<p class="info"><?php _e('The maximum width determines how wide the layout can be. When viewed in a large screen, this keeps text lines from running long (i.e., difficult hard to read). Note that this has no effect in Internet Explorer 6 and below. You may leave this blank. Default is <span>55em</span>.', 'veryplaintxt'); ?></p>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row"><label for="vp_minwidth"><?php _e('Minimum width', 'veryplaintxt'); ?></label></th> 
+<td>
+<input id="vp_minwidth" name="vp_minwidth" type="text" class="text" value="<?php if ( get_option('veryplaintxt_minwidth') == "" ) { echo "35em"; } else { echo attribute_escape( get_option('veryplaintxt_minwidth') ); } ?>" tabindex="22" size="10" />
+<p class="info"><?php _e('The minimum width determines how narrow the layout can be. When viewed in a small area, this keeps the layout from becoming too narrow. Note that this has no effect in Internet Explorer 6 and below. You may leave this blank. Default is <span>35em</span>.', 'veryplaintxt'); ?></p>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row"><label for="vp_posttextalignment"><?php _e('Post text alignment', 'veryplaintxt'); ?></label></th> 
+<td>
+<select id="vp_posttextalignment" name="vp_posttextalignment" tabindex="23" class="dropdown">
+<option value="center" <?php if ( get_option('veryplaintxt_posttextalignment') == "center" ) { echo 'selected="selected"'; } ?>><?php _e('Centered', 'veryplaintxt'); ?> </option>
+<option value="justify" <?php if ( get_option('veryplaintxt_posttextalignment') == "justify" ) { echo 'selected="selected"'; } ?>><?php _e('Justified', 'veryplaintxt'); ?> </option>
+<option value="left" <?php if ( ( get_option('veryplaintxt_posttextalignment') == "") || ( get_option('veryplaintxt_posttextalignment') == "left") ) { echo 'selected="selected"'; } ?>><?php _e('Left', 'veryplaintxt'); ?> </option>
+<option value="right" <?php if ( get_option('veryplaintxt_posttextalignment') == "right" ) { echo 'selected="selected"'; } ?>><?php _e('Right', 'veryplaintxt'); ?> </option>
+</select>
+<p class="info"><?php _e('Choose one of the options for the alignment of the post entry text. Default is <span>left</span>.', 'veryplaintxt'); ?></p>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row"><label for="vp_sidebarposition"><?php _e('Sidebar position', 'veryplaintxt'); ?></label></th> 
+<td>
+<select id="vp_sidebarposition" name="vp_sidebarposition" tabindex="24" class="dropdown">
+<option value="left" <?php if ( get_option('veryplaintxt_sidebarposition') == "left" ) { echo 'selected="selected"'; } ?>><?php _e('Left of content', 'veryplaintxt'); ?> </option>
+<option value="right" <?php if ( ( get_option('veryplaintxt_sidebarposition') == "") || ( get_option('veryplaintxt_sidebarposition') == "right") ) { echo 'selected="selected"'; } ?>><?php _e('Right of content', 'veryplaintxt'); ?> </option>
+</select>
+<p class="info"><?php _e('The sidebar can be positioned to the left or the right of the main content column. Default is <span>right of content</span>.', 'veryplaintxt'); ?></p>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row"><label for="vp_sidebartextalignment" class="dropdown"><?php _e('Sidebar text alignment', 'veryplaintxt'); ?></label></th> 
+<td>
+<select id="vp_sidebartextalignment" name="vp_sidebartextalignment" tabindex="25" class="dropdown">
+<option value="center" <?php if ( ( get_option('veryplaintxt_sidebartextalignment') == "") || ( get_option('veryplaintxt_sidebartextalignment') == "center") ) { echo 'selected="selected"'; } ?>><?php _e('Centered', 'veryplaintxt'); ?> </option>
+<option value="left" <?php if ( get_option('veryplaintxt_sidebartextalignment') == "left" ) { echo 'selected="selected"'; } ?>><?php _e('Left', 'veryplaintxt'); ?> </option>
+<option value="right" <?php if ( get_option('veryplaintxt_sidebartextalignment') == "right" ) { echo 'selected="selected"'; } ?>><?php _e('Right', 'veryplaintxt'); ?> </option>
+</select>
+<p class="info"><?php _e('Choose one of the options for the alignment of the sidebar text. Default is <span>centered</span>.', 'veryplaintxt'); ?></p>
+</td>
+</tr>
+</table>
+<h3><?php _e('Content', 'veryplaintxt'); ?></h3>
+<table class="form-table" summary="Veryplaintxt content options">
+<tr valign="top">
+<th scope="row"><label for="vp_avatarsize"><?php _e('Avatar size', 'plaintxtblog'); ?></label></th> 
+<td>
+<input id="vp_avatarsize" name="vp_avatarsize" type="text" class="text" value="<?php if ( get_option('veryplaintxt_avatarsize') == "" ) { echo "40"; } else { echo attribute_escape( get_option('veryplaintxt_avatarsize') ); } ?>" size="6" />
+<p class="info"><?php _e('Sets the avatar size in pixels, if avatars are enabled. Default is <span>40</span>.', 'veryplaintxt'); ?></p>
+</td>
+</tr>
+</table>
+<p class="submit">
+<input name="save" type="submit" value="<?php _e('Save Options', 'veryplaintxt'); ?>" tabindex="26" accesskey="S" />  
+<input name="action" type="hidden" value="save" />
+<input name="page_options" type="hidden" value="vp_basefontsize,vp_basefontfamily,vp_headingfontfamily,vp_posttextalignment,vp_layoutwidth,vp_maxwidth,vp_minwidth,vp_sidebarposition,vp_sidebartextalignment,vp_avatarsize" />
+</p>
+</form>
+<h3 id="reset"><?php _e('Reset Options', 'veryplaintxt'); ?></h3>
+<p><?php _e('Resetting deletes all stored veryplaintxt options from your database. After resetting, default options are loaded but are not stored until you click <i>Save Options</i>. A reset does not affect the actual theme files in any way. If you are uninstalling veryplaintxt, please reset before removing the theme files to clear your databse.', 'veryplaintxt'); ?></p>
+<form action="<?php echo wp_specialchars( $_SERVER['REQUEST_URI'] ) ?>" method="post">
+<?php wp_nonce_field('veryplaintxt_reset_options'); echo "\n"; ?>
+<p class="submit">
+<input name="reset" type="submit" value="<?php _e('Reset Options', 'veryplaintxt'); ?>" onclick="return confirm('<?php _e('Click OK to reset. Any changes to these theme options will be lost!', 'veryplaintxt'); ?>');" tabindex="27" accesskey="R" />
+<input name="action" type="hidden" value="reset" />
+<input name="page_options" type="hidden" value="vp_basefontsize,vp_basefontfamily,vp_headingfontfamily,vp_posttextalignment,vp_layoutwidth,vp_maxwidth,vp_minwidth,vp_sidebarposition,vp_sidebartextalignment,vp_avatarsize" />
+</p>
+</form>
 </div>
 <?php
 }
 // Loads settings for the theme options to use
 function veryplaintxt_wp_head() {
-	  // Our Web-safe fonts
-	  $arial     = "arial,helvetica,sans-serif";
-	  $courier   = "'courier new',courier,monospace";
-	  $georgia   = "georgia,times,serif";
-	  $lconsole  = "'lucida console',monaco,monospace";
-	  $lunicode  = "'lucida sans unicode','lucida grande',sans-serif";
-	  $tahoma    = "tahoma,geneva,sans-serif";
-	  $times     = "'times new roman',times,serif";
-	  $trebuchet = "'trebuchet ms',helvetica,sans-serif";
-	  $verdana   = "verdana,geneva,sans-serif";
-	  // Let's start inserting options
-	  if ( get_option('veryplaintxt_basefontsize') == '' ) {
-		    $basefontsize = '90%';
-	  } else {
-		    $basefontsize = attribute_escape( stripslashes( get_option('veryplaintxt_basefontsize') ) ); 
-	  }
-	  $vp_basefontfamily = get_option('veryplaintxt_basefontfamily');
-	  if ( $vp_basefontfamily == '' ) {
-		    $basefontfamily = $times;
-	  } else {
-		    if ( $vp_basefontfamily == 1 ) {
-			      $basefontfamily = $arial;
-		    } elseif ( $vp_basefontfamily == 2 ) {
-			      $basefontfamily = $courier;
-		    } elseif ( $vp_basefontfamily == 3 ) {
-			      $basefontfamily = $georgia;
-		    } elseif ( $vp_basefontfamily == 4 ) {
-			      $basefontfamily = $lconsole;
-		    } elseif ( $vp_basefontfamily == 5 ) {
-			      $basefontfamily = $lunicode;
-		    } elseif ( $vp_basefontfamily == 6 ) {
-			      $basefontfamily = $tahoma;
-		    } elseif ( $vp_basefontfamily == 7 ) {
-			      $basefontfamily = $times;
-		    } elseif ( $vp_basefontfamily == 8 ) {
-			      $basefontfamily = $trebuchet;
-		    } elseif ( $vp_basefontfamily == 9 ) {
-			      $basefontfamily = $verdana;
-		    }
-	  }
-	  $vp_headfontfamily = get_option('veryplaintxt_headingfontfamily');
-	  if ( $vp_headfontfamily == '' ) {
-		    $headingfontfamily = $arial;
-	  } else {
-		    if ( $vp_headfontfamily == 1 ) {
-			      $headingfontfamily = $arial;
-		    } elseif ( $vp_headfontfamily == 2 ) {
-			      $headingfontfamily = $courier;
-		    } elseif ( $vp_headfontfamily == 3 ) {
-			      $headingfontfamily = $georgia;
-		    } elseif ( $vp_headfontfamily == 4 ) {
-			      $headingfontfamily = $lconsole;
-		    } elseif ( $vp_headfontfamily == 5 ) {
-			      $headingfontfamily = $lunicode;
-		    } elseif ( $vp_headfontfamily == 6 ) {
-			      $headingfontfamily = $tahoma;
-		    } elseif ( $vp_headfontfamily == 7 ) {
-			      $headingfontfamily = $times;
-		    } elseif ( $vp_headfontfamily == 8 ) {
-			      $headingfontfamily = $trebuchet;
-		    } elseif ( $vp_headfontfamily == 9 ) {
-			      $headingfontfamily = $verdana;
-		    }
-	  }
-	  if ( get_option('veryplaintxt_layoutwidth') == "" ) {
-		    $layoutwidth = '80%';
-	  } else {
-		    $layoutwidth = attribute_escape( stripslashes( get_option('veryplaintxt_layoutwidth') ) ); 
-	  }
-	  if ( get_option('veryplaintxt_maxwidth') == "" ) {
-		    $maxwidth = '55em';
-	  } else {
-		    $maxwidth = attribute_escape( stripslashes( get_option('veryplaintxt_maxwidth') ) ); 
-	  }
-	  if ( get_option('veryplaintxt_minwidth') == "" ) {
-		    $minwidth = '35em';
-	  } else {
-		    $minwidth = attribute_escape( stripslashes( get_option('veryplaintxt_minwidth') ) ); 
-	  }
-	  if ( get_option('veryplaintxt_posttextalignment') == "" ) {
-		    $posttextalignment = 'left';
-	  } else {
-		    $posttextalignment = attribute_escape( stripslashes( get_option('veryplaintxt_posttextalignment') ) ); 
-	  }
+    // Our Web-safe fonts
+    $arial     = "arial,helvetica,sans-serif";
+    $courier   = "'courier new',courier,monospace";
+    $georgia   = "georgia,times,serif";
+    $lconsole  = "'lucida console',monaco,monospace";
+    $lunicode  = "'lucida sans unicode','lucida grande',sans-serif";
+    $tahoma    = "tahoma,geneva,sans-serif";
+    $times     = "'times new roman',times,serif";
+    $trebuchet = "'trebuchet ms',helvetica,sans-serif";
+    $verdana   = "verdana,geneva,sans-serif";
+    // Let's start inserting options
+    if ( get_option('veryplaintxt_basefontsize') == '' ) {
+        $basefontsize = '90%';
+    } else {
+        $basefontsize = attribute_escape( stripslashes( get_option('veryplaintxt_basefontsize') ) ); 
+    }
+    $vp_basefontfamily = get_option('veryplaintxt_basefontfamily');
+    if ( $vp_basefontfamily == '' ) {
+        $basefontfamily = $times;
+    } else {
+        if ( $vp_basefontfamily == 1 ) {
+            $basefontfamily = $arial;
+        } elseif ( $vp_basefontfamily == 2 ) {
+            $basefontfamily = $courier;
+        } elseif ( $vp_basefontfamily == 3 ) {
+            $basefontfamily = $georgia;
+        } elseif ( $vp_basefontfamily == 4 ) {
+            $basefontfamily = $lconsole;
+        } elseif ( $vp_basefontfamily == 5 ) {
+            $basefontfamily = $lunicode;
+        } elseif ( $vp_basefontfamily == 6 ) {
+            $basefontfamily = $tahoma;
+        } elseif ( $vp_basefontfamily == 7 ) {
+            $basefontfamily = $times;
+        } elseif ( $vp_basefontfamily == 8 ) {
+            $basefontfamily = $trebuchet;
+        } elseif ( $vp_basefontfamily == 9 ) {
+            $basefontfamily = $verdana;
+        }
+    }
+    $vp_headfontfamily = get_option('veryplaintxt_headingfontfamily');
+    if ( $vp_headfontfamily == '' ) {
+        $headingfontfamily = $arial;
+    } else {
+        if ( $vp_headfontfamily == 1 ) {
+            $headingfontfamily = $arial;
+        } elseif ( $vp_headfontfamily == 2 ) {
+            $headingfontfamily = $courier;
+        } elseif ( $vp_headfontfamily == 3 ) {
+            $headingfontfamily = $georgia;
+        } elseif ( $vp_headfontfamily == 4 ) {
+            $headingfontfamily = $lconsole;
+        } elseif ( $vp_headfontfamily == 5 ) {
+            $headingfontfamily = $lunicode;
+        } elseif ( $vp_headfontfamily == 6 ) {
+            $headingfontfamily = $tahoma;
+        } elseif ( $vp_headfontfamily == 7 ) {
+            $headingfontfamily = $times;
+        } elseif ( $vp_headfontfamily == 8 ) {
+            $headingfontfamily = $trebuchet;
+        } elseif ( $vp_headfontfamily == 9 ) {
+            $headingfontfamily = $verdana;
+        }
+    }
+    if ( get_option('veryplaintxt_layoutwidth') == "" ) {
+        $layoutwidth = '80%';
+    } else {
+        $layoutwidth = attribute_escape( stripslashes( get_option('veryplaintxt_layoutwidth') ) ); 
+    }
+    if ( get_option('veryplaintxt_maxwidth') == "" ) {
+        $maxwidth = '55em';
+    } else {
+        $maxwidth = attribute_escape( stripslashes( get_option('veryplaintxt_maxwidth') ) ); 
+    }
+    if ( get_option('veryplaintxt_minwidth') == "" ) {
+        $minwidth = '35em';
+    } else {
+        $minwidth = attribute_escape( stripslashes( get_option('veryplaintxt_minwidth') ) ); 
+    }
+    if ( get_option('veryplaintxt_posttextalignment') == "" ) {
+        $posttextalignment = 'left';
+    } else {
+        $posttextalignment = attribute_escape( stripslashes( get_option('veryplaintxt_posttextalignment') ) ); 
+    }
 	  
-	  if ( get_option('veryplaintxt_sidebartextalignment') == "" ) {
-		    $sidebartextalignment = 'center';
-	  } else {
-		    $sidebartextalignment = attribute_escape( stripslashes( get_option('veryplaintxt_sidebartextalignment') ) ); 
-	  }
+    if ( get_option('veryplaintxt_sidebartextalignment') == "" ) {
+        $sidebartextalignment = 'center';
+    } else {
+        $sidebartextalignment = attribute_escape( stripslashes( get_option('veryplaintxt_sidebartextalignment') ) ); 
+    }
     /*
-       ? >
-       <style type="text/css" media="all">
-       / *<![CDATA[* /
-       / * CSS inserted by theme options * /
-       body{font-size:<?php echo $basefontsize; ?>;}
-       <?php echo $sidebarposition; ?>
-       body div#content div.hentry{text-align:<?php echo $posttextalignment; ?>;}
-       body div#outerWrapper{max-width:<?php echo $maxwidth; ?>;min-width:<?php echo $minwidth; ?>;width:<?php echo $layoutwidth; ?>;}
-       / *]]>* /
-       </style>
-     */?>
+      ? >
+      <style type="text/css" media="all">
+      / *<![CDATA[* /
+      / * CSS inserted by theme options * /
+      body{font-size:<?php echo $basefontsize; ?>;}
+      <?php echo $sidebarposition; ?>
+      body div#content div.hentry{text-align:<?php echo $posttextalignment; ?>;}
+      body div#outerWrapper{max-width:<?php echo $maxwidth; ?>;min-width:<?php echo $minwidth; ?>;width:<?php echo $layoutwidth; ?>;}
+      / *]]>* /
+      </style>
+    */?>
 <?php // Checks that everything has loaded properly
 }
 
@@ -741,7 +741,12 @@ remove_filter("the_content", "wptexturize");
 
 
 function mrspeaker_indent($content) {
-    return str_replace(array("\n"),"\n\t\t\t",$content);
+    // Had to comment this out, it indented the "view-source" html better,
+    // but messes up <pre></pre> blocks.
+    // return str_replace(array("\n"),"\n\t\t\t",$content);
+    // Derp, same for blank lines. Kills PRE blanks too.
+    // $blankFree = preg_replace('/^\h*\v+/m', '', $content);
+    return $content;
 }
 add_filter("the_content", "mrspeaker_indent", 100);
 
