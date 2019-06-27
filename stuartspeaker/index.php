@@ -31,18 +31,8 @@
 <?php
   while ( have_posts() ) : the_post();
     ms_script_includes( true );
-    // Offset for a random margin for each article
-    $margin = rand(-100, 100);
 ?>
       <!-- Amazing Mr Speaker article coming up -->
-      <style>
-        @media (min-width: 900px) {
-          .wonky-<?php the_ID() ?> {
-            margin-left: <?php echo $margin ?>px;
-            margin-right: <?php echo -$margin ?>px;
-          }
-        }
-      </style>
       <article id="post-<?php the_ID() ?>" class="<?php veryplaintxt_post_class();?> wonky-<?php the_ID() ?>">
         <h2 class="entry-title">
           <a href="<?php echo wp_make_link_relative(get_permalink()) ?>" rel="bookmark"><?php the_title() ?></a>

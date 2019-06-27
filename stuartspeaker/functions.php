@@ -739,7 +739,6 @@ add_action('init', 'veryplaintxt_widgets_init');
 add_filter('archive_meta', 'wpautop');
 remove_filter("the_content", "wptexturize");
 
-
 function mrspeaker_indent($content) {
     // Had to comment this out, it indented the "view-source" html better,
     // but messes up <pre></pre> blocks.
