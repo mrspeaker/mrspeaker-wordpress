@@ -58,8 +58,7 @@
 				<?php /* comments_template(); */ ?>
 				<div id="footer-about">
 					Thank you for stoping by the <a href="/">homepage of Mr Speaker</a>.
-					For more exciting things, be sure to follow along with
-					<a href="https://twitter.com/mrspeaker" style="color:hsl(196, 100%, 47%);">Mr Speaker's <strong>Twitter</strong> shenanigans</a>!
+					We love you.
 				</div>
 			</div>
 

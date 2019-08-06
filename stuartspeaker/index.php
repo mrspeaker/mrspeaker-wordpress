@@ -2,9 +2,7 @@
     <main id="container">
       <form id="searchform" method="get" action="/">
         <p class="intro">
-          <a href="http://twitter.com/mrspeaker">
-            <img src="/images/mrspeaker_400x400.png" style="width:130px" alt="mrspeaker's head in a monitor" class="frame-right" />
-          </a>
+          <img src="/images/mrspeaker_400x400.png" style="width:130px" alt="mrspeaker's head in a monitor" class="frame-right" />
           <span>
             You find yourself at the entrance to the Hompage of
             <?php veryplaintxt_admin_hCard(); ?>.
@@ -16,7 +14,7 @@
           </span>
           <span>
             Next to it you spy a
-            <a href="http://twitter.com/mrspeaker" style="font-size:24pt;color:hsl(196, 100%, 47%);" title="Mr Speaker on Twitter">Twitter</a>
+            <span style="font-size:24pt;color:hsl(196, 100%, 47%);" title="[redacted]">■■■■■■■</span>
             account.
           </span>
           <span>
