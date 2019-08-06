@@ -54,13 +54,14 @@
 				<div class="nav-next"><?php next_post_link(__('%link &rsaquo;', 'veryplaintxt'), '%title',false, '15') ?></div>
 			</nav>
 
-			<div id="footer-bits">
-				<?php /* comments_template(); */ ?>
-				<div id="footer-about">
+            <?php comments_template(); ?>
+
+			<footer>
+ 				<div id="footer-about">
 					Thank you for stoping by the <a href="/">homepage of Mr Speaker</a>.
 					We love you.
 				</div>
-			</div>
+			</footer>
 
       </main>
 	</div><!-- #container -->

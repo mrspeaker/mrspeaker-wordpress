@@ -30,7 +30,6 @@ foreach ( $comments as $comment )
 <?php foreach ($comments as $comment) : ?>
 <?php if ( get_comment_type() == "comment" ) : ?>
 		<li id="comment-<?php comment_ID() ?>" class="<?php veryplaintxt_comment_class() ?>">
-			<div class="comment-author vcard"><?php veryplaintxt_commenter_link() ?> <?php _e('wrote:', 'veryplaintxt') ?></div>
 			<?php if ($comment->comment_approved == '0') : ?><span class="unapproved"><?php _e('Your comment is awaiting moderation.', 'veryplaintxt') ?></span><?php endif; ?>
 			<?php comment_text() ?>
 			<div class="comment-meta">
