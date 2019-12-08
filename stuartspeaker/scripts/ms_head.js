@@ -61,6 +61,7 @@ function update(state, t) {
     state.color[2] = Math.random() + 0.8;
   }
   state.time = t;
+}
 
 function render(glState, state) {
   const {
