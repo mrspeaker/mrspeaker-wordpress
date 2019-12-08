@@ -1,4 +1,5 @@
 import { fss, vss } from "./ms_shade.js";
+import main from "./mmorpg/main.js";
 
 const parent = "#placeToBe";
 const h = 377;
