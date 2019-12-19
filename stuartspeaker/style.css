@@ -20,7 +20,8 @@ body{
 	line-height: 1.6em;
 	margin:0;
 	padding:0;
-	font: 1.2em Georgia, serif;
+	font-size: 1em;
+  font-family: "Lucida Console", Monaco, monospace;
 }
 
 a#placeToBe {
@@ -44,28 +45,41 @@ body div#primary ul {
   list-style: none;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    color:#c0b8c0;
+    background-color:hsl(0, 0%, 9%);
+  }
+  img {
+    filter: brightness(0.7) saturate(0.3);
+  }
+  .intro, .entry-title a {
+    color: #d0d0d0 !important;
+  }
+  .entry-title, .page-title {
+    background-image: url('/images/lilspeaker.png') !important;
+  }
+  .entry-content img {
+    box-shadow: 0px 0 25px #000 !important;
+  }
+}
+
 #post-0 {
 	border-bottom: 1px dashed #ddd;
 	padding-bottom: 1em;
 	margin-bottom: 4em;
 }
 
-.lolblink {
-  font-family: monospace;
-}
 .blink_me {
   animation: blinker 1s linear infinite;
 }
-
 @keyframes blinker {
   50% { opacity: 0; }
 }
-
 .blur_me {
   animation: blurer 1s linear;
   animation-fill-mode: forwards;
 }
-
 @keyframes blurer {
     100% { filter: blur(4px); }
 }
@@ -81,7 +95,7 @@ a {
 	font-family: courier new, courier, monospace;
 }
 
-a img{ border:0; }
+a img { border: 0; }
 
 @media only screen and (max-width: 736px) {
 	body main {
@@ -94,7 +108,7 @@ header {
 	margin: 0 auto;
 }
 
-header h1{
+header h1 {
 	width: 100%;
 	background: transparent url(/images/mrman.png) no-repeat center -10px;
   margin-top: 0;
@@ -142,23 +156,22 @@ p {
 	line-height: 1.8em;
 }
 
-div.entry-content .clearer{ clear:both; }
-div.entry-content abbr,div.comments ol.commentlist abbr{ border-bottom:1px dotted #333;cursor:help;}
-div.entry-content blockquote,div.comments ol.commentlist blockquote{ margin-left:0;margin-right:3em;padding:0 0 0 2em;}
-div.entry-content cite,div.comments ol.commentlist cite{ border-bottom:1px dotted #999;cursor:help;}
-div.entry-content div.page-link{ font-size:1em;margin:-0.5em 0 1em;}
-div.entry-content img{
+.entry-content .clearer { clear:both; }
+.entry-content abbr,div.comments ol.commentlist abbr{ border-bottom:1px dotted #333;cursor:help;}
+.entry-content blockquote,div.comments ol.commentlist blockquote{ margin-left:0;margin-right:3em;padding:0 0 0 2em;}
+.entry-content cite,div.comments ol.commentlist cite{ border-bottom:1px dotted #999;cursor:help;}
+.entry-content div.page-link { font-size:1em ;margin:-0.5em 0 1em;}
+.entry-content img {
   max-width:100%;
   border-radius: 5px;
   box-shadow: 0 0 10px #ccc;
 }
-div.entry-content span.more-link{ }
-
-div.entry-content img.hero { min-width: 100%; }
-
+.entry-content span.more-link { }
+.entry-content img.hero { min-width: 100%; }
 .entry-content h3 {
 	padding: 8px 0;
 }
+
 body.single div.entry-meta,
 div.entry-date abbr.published{
 	border:none;display:block;
