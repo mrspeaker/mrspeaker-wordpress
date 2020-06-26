@@ -2,7 +2,7 @@
     <main id="container">
       <form id="searchform" method="get" action="/">
         <p class="intro">
-          <img src="/images/mrspeaker_400x400.png" style="width:130px" alt="mrspeaker's head in a monitor" class="frame-right" />
+          <img src="/images/mrspeaker_400x400.png" style="width:130px;border:0;border-radius:11px;" alt="mrspeaker's head in a monitor" class="frame-right" />
           <span>
             You find yourself at the entrance to the Hompage of
             <?php veryplaintxt_admin_hCard(); ?>.
@@ -59,8 +59,8 @@ ms_script_includes( false );
 ?>
       <nav>
 
-        <?php if( get_next_posts_link() ) : ?><div class="nav-previous"><?php next_posts_link(__('&lsaquo; Older posts', 'veryplaintxt')) ?></div><?php endif ?>
-        <?php if( get_previous_posts_link() ) : ?><div class="nav-next"><?php previous_posts_link(__('Newer posts &rsaquo;', 'veryplaintxt')) ?></div><?php endif ?>
+        <?php if( get_next_posts_link() ) : ?><div class="nav-previous"><?php next_posts_link(__('&lsaquo; The past', 'veryplaintxt')) ?></div><?php endif ?>
+        <?php if( get_previous_posts_link() ) : ?><div class="nav-next"><?php previous_posts_link(__('The future &rsaquo;', 'veryplaintxt')) ?></div><?php endif ?>
 
       </nav>
 

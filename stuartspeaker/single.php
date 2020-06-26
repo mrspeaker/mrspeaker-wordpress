@@ -1,6 +1,8 @@
 <?php get_header() ?>
+
 	<div id="container">
-	  <main>      
+	  <main>
+        <nav><a href="/">Home</a></nav>
 <?php the_post(); ?>
 <?php ms_script_includes( true ); ?>
         <article id="post-<?php the_ID(); ?>" class="<?php veryplaintxt_post_class(); ?>">

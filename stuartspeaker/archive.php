@@ -47,8 +47,8 @@
 <?php endwhile ?>
 
 			<div id="nav-below" class="navigation">
-				<div class="nav-previous"><?php next_posts_link(__('&lsaquo; Older posts', 'veryplaintxt')) ?></div>
-				<div class="nav-next"><?php previous_posts_link(__('Newer posts &rsaquo;', 'veryplaintxt')) ?></div>
+				<div class="nav-previous"><?php next_posts_link(__('&lsaquo; The past', 'veryplaintxt')) ?></div>
+				<div class="nav-next"><?php previous_posts_link(__('The future &rsaquo;', 'veryplaintxt')) ?></div>
 			</div>
 
 		</div><!-- #content .hfeed -->

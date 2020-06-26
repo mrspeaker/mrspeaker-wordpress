@@ -20,7 +20,7 @@ body{
 	line-height: 1.6em;
 	margin:0;
 	padding:0;
-	font-size: 1em;
+	font-size: 0.8em;
   font-family: "Lucida Console", Monaco, monospace;
 }
 
@@ -45,25 +45,6 @@ body div#primary ul {
   list-style: none;
 }
 
-@media screen and (prefers-color-scheme: dark) {
-  body {
-    color:#c0b8c0;
-    background-color:hsl(0, 0%, 9%);
-  }
-  img {
-    filter: brightness(0.7) saturate(0.3);
-  }
-  .intro, .entry-title a {
-    color: #d0d0d0 !important;
-  }
-  .entry-title, .page-title {
-    background-image: url('/images/lilspeaker.png') !important;
-  }
-  .entry-content img {
-    box-shadow: 0px 0 25px #000 !important;
-  }
-}
-
 #post-0 {
 	border-bottom: 1px dashed #ddd;
 	padding-bottom: 1em;
@@ -81,7 +62,7 @@ body div#primary ul {
   animation-fill-mode: forwards;
 }
 @keyframes blurer {
-    100% { filter: blur(4px); }
+    100% { filter: blur(0px); }
 }
 
 .gist pre {
@@ -106,6 +87,8 @@ a img { border: 0; }
 
 header {
 	margin: 0 auto;
+  overflow: hidden;
+  position: relative;
 }
 
 header h1 {
@@ -114,6 +97,10 @@ header h1 {
   margin-top: 0;
 	color: transparent;
 	height: 380px;
+}
+
+#searchform {
+  margin: 3em 0;
 }
 
 h2{ font-weight: normal;}
@@ -163,7 +150,7 @@ p {
 .entry-content div.page-link { font-size:1em ;margin:-0.5em 0 1em;}
 .entry-content img {
   max-width:100%;
-  border-radius: 5px;
+  border-radius: 1px;
   box-shadow: 0 0 10px #ccc;
 }
 .entry-content span.more-link { }
@@ -328,4 +315,53 @@ p.note a { color: #006FAF; }
 	float: left;
 	width: 36%;
 	margin-left: 20px;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    color:#c0b8c0;
+    background-color:hsl(0, 0%, 9%);
+  }
+  img {
+    filter: brightness(0.7) saturate(0.3);
+  }
+  .intro, .entry-title a {
+    color: #d0d0d0 !important;
+  }
+  .entry-title, .page-title {
+    /* background-image: url('/images/lilspeaker.png') !important;*/
+    background: none !important;
+  }
+  .entry-content img, iframe {
+    box-shadow: 0px 0 25px #000 !important;
+  }
+  header {
+    /* background: transparent url(/images/tingsm.png) no-repeat; */
+    /*background: linear-gradient(180deg, rgba(10,0,5,1) 0%, rgba(255,255,255,0) 75%);*/
+  }
+}
+
+@media screen and (prefers-color-scheme: light) {
+  body {
+    color:#222;
+    background-color:#fefdf5;
+  }
+/*  img {
+    /filter: brightness(0.7) saturate(0.3);
+  }
+  .intro, .entry-title a {
+  /*  color: #d0d0d0 !important;*/
+  }
+  .entry-title, .page-title {
+    /* background-image: url('/images/lilspeaker.png') !important;*/
+    background: none !important;
+  }
+  .entry-content img, iframe {
+    /*box-shadow: 0px 0 5px rgba(0,0,0,0.2) !important;*/
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  }
+  header {
+    /* background: transparent url(/images/tingsm.png) no-repeat; */
+   /* background: linear-gradient(180deg, rgba(10,0,5,0.4) 0%, rgba(255,255,255,0) 50%);*/
+  }
 }
