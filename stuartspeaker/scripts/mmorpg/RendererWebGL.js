@@ -56,7 +56,7 @@ class Renderer {
       });
     if (first) game = { board: lastBoard };
 
-    gl.clearColor(0, 0, 0, 1);
+    gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     // Draw blimps
