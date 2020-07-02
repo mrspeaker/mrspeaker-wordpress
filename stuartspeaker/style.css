@@ -24,15 +24,11 @@ body{
   font-family: "Lucida Console", Monaco, monospace;
 }
 
-a#placeToBe {
-  outline: 0;
-}
-
 ul {
   line-height: 1.6;
 }
 
-body div#wrapper {
+body > div {
 	margin: 0 auto;
 }
 body main,
@@ -43,12 +39,6 @@ body div#primary {
 }
 body div#primary ul {
   list-style: none;
-}
-
-#post-0 {
-	border-bottom: 1px dashed #ddd;
-	padding-bottom: 1em;
-	margin-bottom: 4em;
 }
 
 .blink_me {
@@ -99,8 +89,8 @@ header h1 {
 	height: 380px;
 }
 
-#searchform {
-  margin: 3em 0;
+header a {
+  outline: 0;
 }
 
 h2{ font-weight: normal;}
@@ -142,6 +132,18 @@ article {
 p {
 	line-height: 1.8em;
 }
+
+nav.categories {
+  margin-bottom: 35px;
+}
+
+.intro {
+  margin: 48px 0px 68px 0px;
+}
+.intro a {
+	font-weight: bold;
+}
+
 
 .entry-content .clearer { clear:both; }
 .entry-content abbr,div.comments ol.commentlist abbr{ border-bottom:1px dotted #333;cursor:help;}
@@ -192,24 +194,17 @@ nav .nav-next{ float:right;}
 
 footer {
 	clear:both;
-	font-size:0.8em;
-	line-height:1.1em;
-	margin-top: 10em;
-  height: 250px;
-}
-footer a {
-	text-decoration:none;
+	font-size: 0.8em;
+	line-height: 1.1em;
+
+  clear: both;
+
+ padding-top: 341px;
 }
 
-#footer-bits {
-    clear: both;
-    margin-top: 110px;
-}
-#footer-about {
+footer > div {
     width: 36%;
     margin: auto;
-    border-radius: 30px;
-    padding: 30px;
     text-align: center;
     background-color: #eee;
 }
@@ -239,8 +234,7 @@ div.comments ol#pingbacks li{background:#fcfcfc;border-bottom:2px solid #777;bor
 div.comments ol#pingbacks li p{margin:0.5em 0;}
 div.comments ol.commentlist{margin:0 0 3em 1.5em;padding:0;}
 div.comments ol.commentlist li{margin:0 0 1.5em;padding:0.5em;}
-div.comments ol.commentlist li img.photo{margin:0.3em 0.3em 1em 1em;float:right;border:1px solid #000;}
-div.formcontainer div#comment-notes em,div.entry-content div.page-link a,div.comments div.nopassword,div.sidebar ul li.widget_calendar table#wp-calendar tfoot{font-weight:700;}
+div.entry-content div.page-link a {font-weight:700;}
 textarea{ border:1px solid #999; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius:5px; padding:5px;}
 
 code, pre{ font-family:"courier new",courier,monospace; }
@@ -270,15 +264,6 @@ p.note { background:#FFF9D8!important;
 	border-left:6px solid #F3E378 !important;
 }
 p.note a { color: #006FAF; }
-.intro {
-	padding: 5px;
-	color: #333;
-	font-family: courier new;
-	font-size: 11pt;
-}
-.intro a {
-	font-weight: bold;
-}
 
 .frame-left, .frame-right {
 	border:1px solid #ccc;
@@ -344,7 +329,7 @@ p.note a { color: #006FAF; }
 @media screen and (prefers-color-scheme: light) {
   body {
     color:#222;
-    background-color:#fefdf5;
+    background-color:#f9f9f9;
   }
 /*  img {
     /filter: brightness(0.7) saturate(0.3);
