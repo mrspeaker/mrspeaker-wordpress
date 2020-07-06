@@ -17,10 +17,7 @@
   while ( have_posts() ) : the_post();
     $margin = rand(-100, 100);
 ?>
-       .wonky-<?php the_ID() ?> {
-           margin-left: <?php echo $margin ?>px;
-           margin-right: <?php echo -$margin ?>px;
-       }
+       .wonky-<?php the_ID() ?> { margin-left: <?php echo $margin ?>px; margin-right: <?php echo -$margin ?>px; }
 <?php endwhile ?>
     }
   </style>
