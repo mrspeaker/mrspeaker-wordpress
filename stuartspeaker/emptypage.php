@@ -3,8 +3,7 @@
 */?>
 <?php get_header() ?>
 
-	<div id="container">
-		<div id="content" class="hfeed">
+	<main>
 
 <?php the_post() ?>
 			<div id="post-<?php the_ID(); ?>" class="<?php veryplaintxt_post_class() ?>">
@@ -21,7 +20,6 @@
 
 <?php if ( get_post_custom_values('comments') ) comments_template() // Add a key/value of "comments" to load comments on a page ?>
 
-		</div><!-- #content .hfeed -->
-	</div><!-- #container -->
+	</main>
 
 <?php get_footer() ?>

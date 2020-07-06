@@ -32,13 +32,17 @@ body > div {
 	margin: 0 auto;
 }
 body main,
-body div#primary {
+.sidebar {
 	margin:auto;
 	width: 700px;
 	padding: 0.5em;
 }
-body div#primary ul {
+.sidebar ul {
   list-style: none;
+  padding: 0;
+}
+.sidebar div.navigation {
+	margin-top: 35px;
 }
 
 .blink_me {
@@ -187,9 +191,6 @@ nav .nav-next{ float:right;}
 .single nav .nav-previous,
 .single nav .nav-next {
 	font-size: 1em;
-}
-.sidebar div.navigation {
-	margin-top: 35px;
 }
 
 footer {

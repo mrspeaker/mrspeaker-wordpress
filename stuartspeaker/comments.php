@@ -25,27 +25,27 @@ foreach ( $comments as $comment )
 <?php if ( $comment_count ) : ?>
 <?php $veryplaintxt_comment_alt = 0 ?>
 
-	<h3 class="comment-header" id="numcomments"><?php printf(__($comment_count > 1 ? '%d Comments' : 'One Comment', 'veryplaintxt'), $comment_count) ?></h3>
-	<ol id="comments" class="commentlist">
+  <h3 class="comment-header" id="numcomments"><?php printf(__($comment_count > 1 ? '%d Comments' : 'One Comment', 'veryplaintxt'), $comment_count) ?></h3>
+  <ol id="comments" class="commentlist">
 <?php foreach ($comments as $comment) : ?>
 <?php if ( get_comment_type() == "comment" ) : ?>
-		<li id="comment-<?php comment_ID() ?>" class="<?php veryplaintxt_comment_class() ?>">
-			<?php if ($comment->comment_approved == '0') : ?><span class="unapproved"><?php _e('Your comment is awaiting moderation.', 'veryplaintxt') ?></span><?php endif; ?>
-			<?php comment_text() ?>
-			<div class="comment-meta">
-				<?php printf(__('<span class="comment-datetime">%1$s at %2$s</span> <span class="meta-sep">|</span> <span class="comment-permalink"><a href="%3$s" title="Permalink to this comment">Permalink</a></span>', 'veryplaintxt'),
-						get_comment_date('l, F j, Y'),
-						get_comment_time(),
-						'#comment-' . get_comment_ID() );
-				?> <?php edit_comment_link(__('Edit', 'veryplaintxt'), '<span class="comment-edit"> | ', '</span>'); ?>
+	<li id="comment-<?php comment_ID() ?>" class="<?php veryplaintxt_comment_class() ?>">
+      <?php if ($comment->comment_approved == '0') : ?><span class="unapproved"><?php _e('Your comment is awaiting moderation.', 'veryplaintxt') ?></span><?php endif; ?>
+      <?php comment_text() ?>
+      <div class="comment-meta">
+        <?php printf(__('<span class="comment-datetime">%1$s at %2$s</span> <span class="meta-sep">|</span> <span class="comment-permalink"><a href="%3$s" title="Permalink to this comment">Permalink</a></span>', 'veryplaintxt'),
+                get_comment_date('l, F j, Y'),
+                get_comment_time(),
+                '#comment-' . get_comment_ID() );
+        ?> <?php edit_comment_link(__('Edit', 'veryplaintxt'), '<span class="comment-edit"> | ', '</span>'); ?>
 
-			</div>
-		</li>
+      </div>
+    </li>
 
 <?php endif; ?>
 <?php endforeach; ?>
 
-	</ol>
+  </ol>
 
 <?php endif; ?>
 
