@@ -87,49 +87,46 @@ foreach ( $comments as $comment )
 
 <?php else : ?>
 
-	<div class="formcontainer">
-
-		<form id="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post-nospam.php" method="post">
+      <form id="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post-nospam.php" method="post">
 
 <?php if ( $user_ID ) : ?>
 
-			<div id="loggedin"><?php printf(__('Logged in as <a href="%1$s" title="View your profile" class="fn">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'veryplaintxt'),
-					get_option('siteurl') . '/wp-admin/profile.php',
-					wp_specialchars($user_identity, true),
-					get_option('siteurl') . '/wp-login.php?action=logout&amp;redirect_to=' . get_permalink() ) ?></div>
+        <div id="loggedin"><?php printf(__('Logged in as <a href="%1$s" title="View your profile" class="fn">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'veryplaintxt'),
+                get_option('siteurl') . '/wp-admin/profile.php',
+                wp_specialchars($user_identity, true),
+                get_option('siteurl') . '/wp-login.php?action=logout&amp;redirect_to=' . get_permalink() ) ?></div>
 
 <?php else : ?>
 
-			<div class="form-label"><label for="author"><?php _e('Name', 'veryplaintxt') ?></label> <?php if ($req) _e('<span class="req-field">*</span>', 'veryplaintxt') ?></div>
-			<div class="form-input"><input id="author" name="author" type="text" value="<?php echo $comment_author ?>" size="30" maxlength="20" tabindex="3" /></div>
+        <div class="form-label"><label for="author"><?php _e('Name', 'veryplaintxt') ?></label> <?php if ($req) _e('<span class="req-field">*</span>', 'veryplaintxt') ?></div>
+        <div class="form-input"><input id="author" name="author" type="text" value="<?php echo $comment_author ?>" size="30" maxlength="20" tabindex="3" /></div>
 
-			<div class="form-label"><label for="url"><?php _e('Website', 'veryplaintxt') ?></label></div>
-			<div class="form-input"><input id="url" name="url" type="text" value="<?php echo $comment_author_url ?>" size="30" maxlength="50" tabindex="4" /></div>
+        <div class="form-label"><label for="url"><?php _e('Website', 'veryplaintxt') ?></label></div>
+        <div class="form-input"><input id="url" name="url" type="text" value="<?php echo $comment_author_url ?>" size="30" maxlength="50" tabindex="4" /></div>
 
-			<div class="form-label"><label for="email"><?php _e('Secret message to Mr Speaker', 'veryplaintxt') ?></label> <?php if ($req) _e('<span class="req-field">*</span>', 'veryplaintxt') ?></div>
-			<div class="form-input"><input id="email" name="email" type="text" value="<?php echo $comment_author_email ?>" size="30" maxlength="50" tabindex="5" /></div>
+        <div class="form-label"><label for="email"><?php _e('Secret message to Mr Speaker', 'veryplaintxt') ?></label> <?php if ($req) _e('<span class="req-field">*</span>', 'veryplaintxt') ?></div>
+        <div class="form-input"><input id="email" name="email" type="text" value="<?php echo $comment_author_email ?>" size="30" maxlength="50" tabindex="5" /></div>
 
 <?php endif ?>
 
 
-			<div class="form-label"><label for="comment"><?php _e('Comment', 'veryplaintxt') ?></label></div>
-			<div class="form-textarea"><textarea id="comment" name="comment" cols="40" rows="8" tabindex="6"></textarea></div>
+        <div class="form-label"><label for="comment"><?php _e('Comment', 'veryplaintxt') ?></label></div>
+        <div class="form-textarea"><textarea id="comment" name="comment" cols="40" rows="8" tabindex="6"></textarea></div>
 
-        	<div class="form-label">Captcha! Please type 'radical' here: <span class="req-field">*</span></div>
-        	<div class="form-input>"><input type="text" tabindex="7" name="captchab" id="captchab" maxlength="20" size="30" /></div>
+        <div class="form-label">Captcha! Please type 'radical' here: <span class="req-field">*</span></div>
+        <div class="form-input>"><input type="text" tabindex="7" name="captchab" id="captchab" maxlength="20" size="30" /></div>
 
-        	<div style="display:none">
-        	    <div class="form-label">How did you find this thingo? <span class="req-field">*</span></div>
-        	    <div class="form-input>"><input type="text" tabindex="8" name="captcha-mt" id="captcha-mt" maxlength="20" size="30" /></div>
-        	</div>
+        <div style="display:none">
+            <div class="form-label">How did you find this thingo? <span class="req-field">*</span></div>
+            <div class="form-input>"><input type="text" tabindex="8" name="captcha-mt" id="captcha-mt" maxlength="20" size="30" /></div>
+        </div>
 
 
-			<div class="form-submit"><input id="submit" name="submit" type="submit" value="<?php _e('Submit comment', 'veryplaintxt') ?>" tabindex="8" /><input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" /></div>
+        <div class="form-submit"><input id="submit" name="submit" type="submit" value="<?php _e('Submit comment', 'veryplaintxt') ?>" tabindex="8" /><input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" /></div>
 
 <?php do_action('comment_form', $post->ID); ?>
 
-		</form>
-	</div>
+      </form>
 
 <?php endif ?>
 <?php endif ?>

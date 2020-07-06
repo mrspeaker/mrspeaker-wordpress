@@ -219,9 +219,10 @@ footer > div {
 }
 
 div.comments{
-	width:62%;
-	float:left;
+  padding-top: 40px;
+  clear: both;
 }
+
 div.comments span.req-field{color:red;}
 div.comments span.unapproved{color:#800;font-style:italic;}
 div.comments h3{font-size:1.2em;font-weight:400;}

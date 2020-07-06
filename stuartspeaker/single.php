@@ -48,13 +48,13 @@
 <?php edit_post_link(__('Edit this entry.', 'veryplaintxt'),'',''); ?>
               </div>
 <?php ms_script_includes( false ); ?>
-          </article>
+      </article>
+      <nav>
+        <div class="nav-previous"><?php previous_post_link(__('&lsaquo; %link', 'veryplaintxt'), '%title', false, '15') ?></div>
+        <div class="nav-next"><?php next_post_link(__('%link &rsaquo;', 'veryplaintxt'), '%title',false, '15') ?></div>
+      </nav>
 
-    <nav>
-              <div class="nav-previous"><?php previous_post_link(__('&lsaquo; %link', 'veryplaintxt'), '%title', false, '15') ?></div>
-              <div class="nav-next"><?php next_post_link(__('%link &rsaquo;', 'veryplaintxt'), '%title',false, '15') ?></div>
-          </nav>
+      <?php comments_template(); ?>
+    </main>
 
-          <?php comments_template(); ?>
-      </main>
-  <?php get_footer() ?>
+<?php get_footer() ?>
