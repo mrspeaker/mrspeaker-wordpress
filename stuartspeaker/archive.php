@@ -14,20 +14,30 @@
       <h2 class="page-title"><?php printf(__('Author Archives: <span class="vcard"><span class="fn n">%s</span></span>', 'veryplaintxt'), get_the_author() ) ?></h2>
       <div class="archive-meta"><?php if ( !(''== $authordata->user_description) ) : echo apply_filters('archive_meta', $authordata->user_description); endif; ?></div>
 <?php elseif ( is_category() ) : ?>
-      <h2 class="page-title"><?php _e('Category Archives:', 'veryplaintxt') ?> <span class="page-cat"><?php echo single_cat_title(); ?></span></h2>
+      <h2 class="page-title">Category: <span class="page-cat"><?php echo single_cat_title(); ?></span></h2>
       <div class="archive-meta"><?php if ( !(''== category_description()) ) : echo apply_filters('archive_meta', category_description()); endif; ?></div>
 <?php elseif ( is_tag() ) : ?>
-      <h2 class="page-title"><?php _e('Tag Archives:', 'veryplaintxt') ?> <span class="tag-cat"><?php single_tag_title(); ?></span></h2>
+      <h2 class="page-title"><?php _e('Tag ', 'veryplaintxt') ?> <span class="tag-cat"><?php single_tag_title(); ?></span></h2>
 <?php elseif ( isset($_GET['paged']) && !empty($_GET['paged']) ) : ?>
-      <h2 class="page-title"><?php _e('Blog Archives', 'veryplaintxt') ?></h2>
+      <h2 class="page-title"><?php _e('Archives', 'veryplaintxt') ?></h2>
 <?php endif; ?>
+
+
+      <nav class="categories">
+<?php wp_list_categories(array(
+    'title_li' => NULL,
+    'style' => '',
+    'separator' => '&nbsp;.',
+    'show_count'=> 1)
+) ?>
+      </nav>
 
 <?php rewind_posts() ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-      <div id="post-<?php the_ID() ?>" class="<?php veryplaintxt_post_class() ?>">
-          <h3 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf(__('Permalink to %s', 'veryplaintxt'), wp_specialchars(get_the_title(), 1)) ?>" rel="bookmark"><?php the_title() ?></a></h3>
+      <article id="post-<?php the_ID() ?>" class="<?php veryplaintxt_post_class() ?> wonky-<?php the_ID() ?>">
+          <h2 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf(__('Permalink to %s', 'veryplaintxt'), wp_specialchars(get_the_title(), 1)) ?>" rel="bookmark"><?php the_title() ?></a></h2>
           <div class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO'); ?>"><?php unset($previousday); printf(__('%1$s', 'veryplaintxt'), the_date('l, F j, Y', false)) ?></abbr></div>
           <div class="entry-content">
 <?php the_excerpt('<span class="more-link">'.__('Continue reading &rsaquo;', 'veryplaintxt').'</span>') ?>
@@ -41,16 +51,15 @@
 <?php edit_post_link(__('Edit', 'veryplaintxt'), "\t\t\t\t\t<span class='entry-edit'>", "</span>\n\t\t\t\t\t<span class='meta-sep'>|</span>\n"); ?>
               <span class="entry-comments"><?php comments_popup_link(__('Comments (0)', 'veryplaintxt'), __('Comments (1)', 'veryplaintxt'), __('Comments (%)', 'veryplaintxt')) ?></span>
           </div>
-      </div><!-- .post -->
+      </article>
 
 <?php endwhile ?>
 
-      <div id="nav-below" class="navigation">
+      <nav>
           <div class="nav-previous"><?php next_posts_link(__('&lsaquo; The past', 'veryplaintxt')) ?></div>
           <div class="nav-next"><?php previous_posts_link(__('The future &rsaquo;', 'veryplaintxt')) ?></div>
-      </div>
+      </nav>
 
 	</main>
 
-<?php get_sidebar() ?>
 <?php get_footer() ?>

@@ -6,10 +6,19 @@
 
       <h2 class="page-title"><?php _e('Search Results for:', 'veryplaintxt') ?> <?php echo wp_specialchars(stripslashes($_GET['s']), true); ?></h2>
 
+      <nav class="categories">
+<?php wp_list_categories(array(
+    'title_li' => NULL,
+    'style' => '',
+    'separator' => '&nbsp;.',
+    'show_count'=> 1)
+) ?>
+      </nav>
+
 <?php while (have_posts()) : the_post(); ?>
 
-      <div id="post-<?php the_ID() ?>" class="<?php veryplaintxt_post_class() ?>">
-         <h3 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf(__('Permalink to %s', 'veryplaintxt'), wp_specialchars(get_the_title(), 1)) ?>" rel="bookmark"><?php the_title() ?></a></h3>
+      <article id="post-<?php the_ID() ?>" class="<?php veryplaintxt_post_class() ?> wonky-<?php the_ID() ?>">
+         <h2 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf(__('Permalink to %s', 'veryplaintxt'), wp_specialchars(get_the_title(), 1)) ?>" rel="bookmark"><?php the_title() ?></a></h2>
          <div class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO'); ?>"><?php unset($previousday); printf(__('%1$s', 'veryplaintxt'), the_date('l, F j, Y', false)) ?></abbr></div>
          <div class="entry-content">
 <?php the_excerpt('<span class="more-link">'.__('(Continued)', 'veryplaintxt').'</span>') ?>
@@ -23,14 +32,14 @@
 <?php edit_post_link(__('Edit', 'veryplaintxt'), "\t\t\t\t\t<span class='entry-edit'>", "</span>\n\t\t\t\t\t<span class='meta-sep'>|</span>\n"); ?>
              <span class="entry-comments"><?php comments_popup_link(__('Comments (0)', 'veryplaintxt'), __('Comments (1)', 'veryplaintxt'), __('Comments (%)', 'veryplaintxt')) ?></span>
          </div>
-      </div>
+      </article>
 
 <?php endwhile; ?>
 
-      <div id="nav-below" class="navigation">
+      <nav>
           <div class="nav-previous"><?php next_posts_link(__('&lsaquo; The past', 'veryplaintxt')) ?></div>
           <div class="nav-next"><?php previous_posts_link(__('The future &rsaquo;', 'veryplaintxt')) ?></div>
-      </div>
+      </nav>
 
 <?php else : ?>
 
