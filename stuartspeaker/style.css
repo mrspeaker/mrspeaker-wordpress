@@ -320,21 +320,23 @@ p.note a { color: #006FAF; }
     background-color:hsl(0, 0%, 9%);
   }
   img {
-    filter: brightness(0.7) saturate(0.3);
+    filter: brightness(0.9);
   }
   .intro, .entry-title a {
     color: #d0d0d0 !important;
   }
   .entry-title, .page-title {
-    /* background-image: url('/images/lilspeaker.png') !important;*/
     background: none !important;
   }
   .entry-content img, iframe {
     box-shadow: 0px 0 25px #000 !important;
   }
-  header {
-    /* background: transparent url(/images/tingsm.png) no-repeat; */
-    /*background: linear-gradient(180deg, rgba(10,0,5,1) 0%, rgba(255,255,255,0) 75%);*/
+  .entry-content img.sprite {
+    box-shadow: none !important;
+  }
+  .entry-content .note {
+    background: #4F4948 !important;
+    color: #ca5 !important;
   }
 }
 
@@ -343,22 +345,10 @@ p.note a { color: #006FAF; }
     color:#222;
     background-color:#f9f9f9;
   }
-/*  img {
-    /filter: brightness(0.7) saturate(0.3);
-  }
-  .intro, .entry-title a {
-  /*  color: #d0d0d0 !important;*/
-  }
   .entry-title, .page-title {
-    /* background-image: url('/images/lilspeaker.png') !important;*/
     background: none !important;
   }
   .entry-content img, iframe {
-    /*box-shadow: 0px 0 5px rgba(0,0,0,0.2) !important;*/
     box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-  }
-  header {
-    /* background: transparent url(/images/tingsm.png) no-repeat; */
-   /* background: linear-gradient(180deg, rgba(10,0,5,0.4) 0%, rgba(255,255,255,0) 50%);*/
   }
 }
