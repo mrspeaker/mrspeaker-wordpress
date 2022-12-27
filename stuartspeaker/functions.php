@@ -21,16 +21,16 @@ function ms_script_includes( $top = true ) {
     if( $top )
     {	
         // include external script file if custom key exists
-        if( count( $customKeys[ "script" ] ) ) 
+        if( count( $customKeys[ "script" ] ?: [] ) ) 
             echo "\n<script type=\"text/javascript\" src=\"" . ms_script_tokens( $customKeys[ "script" ][ 0 ] ) . "\"></script>";
         // include pre-post javascript commands if in script-pre
-        if( count( $customKeys[ "script-pre" ] ) ) 
+        if( count( $customKeys[ "script-pre" ] ?: [] ) ) 
             echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-pre" ][ 0 ] . "</script>";
-        if( count( $customKeys[ "style" ] ) ) echo "\n<style type=\"text/css\">" . $customKeys[ "style" ][ 0 ] . "</style>";
+        if( count( $customKeys[ "style" ] ?: [] ) ) echo "\n<style type=\"text/css\">" . $customKeys[ "style" ][ 0 ] . "</style>";
     }
     else
     {
-        if( count( $customKeys[ "script-post" ] ) ) 
+        if( count( $customKeys[ "script-post" ] ?: [] ) ) 
             echo "\n<script type=\"text/javascript\">" . $customKeys[ "script-post" ][ 0 ] . "</script>";
     }
 }
